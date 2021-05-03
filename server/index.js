@@ -20,7 +20,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 
-
+//라우팅
+app.use("/api/users", require("./router/userRouter"));
 app.use("/api/post", require("./router/postRouter"));
 
 //테스트용 API
