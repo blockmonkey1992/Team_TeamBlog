@@ -1,0 +1,47 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2D3133;
+    height: 60px;
+    color: #F2F8F8;
+    font-weight: 900;
+    margin-left: -320px;
+    // font-size: 16px;
+}
+
+.headerName{
+    margin-right: 5%;
+}
+
+.headerMiddle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 55%;
+    .menu{
+        display: flex;
+        div{
+            margin-right: 40px;
+        }
+    }
+}
+
+.headerTail{
+    display: flex;
+    margin-right: 3%;
+    div{
+        margin-left: 40px;
+    }
+}
+
+.searchBar{
+    width: 200px;
+    padding: 0px 20px;
+    margin-top: 23px;
+    margin-right: 50px;
+}
+
+.ant-input{
+    background-color: white;
+}
