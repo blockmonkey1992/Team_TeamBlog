@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.post("/api/test", (req, res)=> {
-    return res.status(200).json({ success : true, test: "hiddd ><" });
+    return res.status(200).json({ success : true, test: "hidd ><" });
 });
 
 app.listen(process.env.PORT, ()=> console.log(`✅ SERVER IS RUNNING AT :${process.env.PORT}`));
