@@ -21,7 +21,7 @@ app.use(cookieParser());
 
 //테스트용 API
 app.post("/api/test", (req, res)=> {
-    return res.status(200).json({ success : true, test: "hiddd ><" });
+    return res.status(200).json({ success : true, test: "hidd ><" });
 });
 
 //서버연결확인
