@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Axios from "axios";
+import LandingCarousel from "./LandingCarousel";
 
 function LandingPage() {
 
@@ -10,6 +11,7 @@ function LandingPage() {
 
     return (
         <div>
+            <LandingCarousel />
             LANDING PAGE !
         </div>
     )
