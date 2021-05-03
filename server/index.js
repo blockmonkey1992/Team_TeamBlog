@@ -19,6 +19,10 @@ app.use(bodyParser.urlencoded({ extended : true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+
+
+app.use("/api/post", require("./router/postRouter"));
+
 //테스트용 API
 app.post("/api/test", (req, res)=> {
     return res.status(200).json({ success : true, test: "hidd ><" });
