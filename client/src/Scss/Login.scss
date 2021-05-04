@@ -1,3 +1,107 @@
-.ModalColor{
-    background-color: red;
+
+
+.ant-modal-content{
+    border-radius: 25px;
+    width: 450px;
+    height: 600px;
+    position: relative;
+    
+   
 }
+  
+    
+
+.ant-modal-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.ant-modal-header{
+    border-radius: 25px;
+    text-align: center;
+    height: 10vh;
+    border:none;
+    margin-top: 30px;
+}
+
+.ant-modal-title{
+    color: #CA526B
+    ;
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+    font-size: 30px;
+    font-weight:900;
+    
+}
+
+.ant-input{
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+.ant-modal-close-icon{
+    color: #f2f8f8;
+    position: absolute;
+    background-color: #2D3133;
+    width: 35px; height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -45px;
+}
+
+.ant-modal-footer{
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -20px;
+}
+
+.ant-btn:first-child,
+.ant-btn:nth-child(2){
+    display: none;
+}
+.ant-btn-primary{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loginBtn{
+    background-color: #2D3133;
+    border: none;
+    border-radius: 10px;
+    width:400px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8%;
+    font-size:x-large;
+    font-weight: 900;
+    
+}
+
+.RegisterIn{
+    display: flex;
+    justify-content:flex-end;
+    align-items:flex-end;
+    margin-top:340px;
+    margin-left: 350px;
+    color:#CA526B;
+    position: absolute;
+    opacity: 0.55;
+    
+} 
