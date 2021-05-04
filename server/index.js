@@ -24,6 +24,7 @@ app.use(cookieParser());
 app.use("/api/users", require("./router/userRouter"));
 app.use("/api/post", require("./router/postRouter"));
 
+
 //테스트용 API
 app.post("/api/test", (req, res)=> {
     return res.status(200).json({ success : true, test: "hidd ><" });
