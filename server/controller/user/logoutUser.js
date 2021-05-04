@@ -1,5 +1,14 @@
+const { User } = require("../../model/User");
+
 const logoutUser = (req, res) => {
-    return res.status(200).json({ success: true });
+    const user = req.user;
+    User.findOneAndUpdate({ _id: user._id }, { token: ""}, (err, result)=> {
+        if(err){
+            return res.status(401).json({ success: false, err });
+        } else {
+            return res.status(200).json({ success: true, msg: `${user.email}님이 로그아웃 했습니다.` })
+        }
+    })
 };
 
 module.exports = logoutUser;
