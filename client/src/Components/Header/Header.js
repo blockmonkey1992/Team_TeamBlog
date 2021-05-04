@@ -10,8 +10,6 @@ import Login from '../Login/Login';
 
 
 const formItemLayout = {
- 
-
   labelCol: {
     xs: {
       span: 24,
@@ -32,25 +30,25 @@ const formItemLayout = {
 
 function Header() {
     return (
-        <div className='wrapper'>
+        <div className='headerWrapper'>
             <Form
                 style={{
                 margin: '0 auto',
                 }}
                 {...formItemLayout}
             />
-            <div className='headerName'>NINJA CODERS</div>
+            <a href='/' className='headerName'>NINJA CODERS</a>
             <div className='headerMiddle'>
                 <div className='menu'>
-                    <div>MAIN</div>
-                    <div>PORTFOLIO</div>
-                    <div>TEAM</div>
-                    <div>CONTACT</div>
+                    <a href='/'>MAIN</a>
+                    <a href='/portfolio'>PORTFOLIO</a>
+                    <a href='/introduce'>TEAM</a>
+                    <a href='/contact'>CONTACT</a>
                 </div>
                 <div className='searchBar'>
                     <Form.Item style={{
                         borderRadius: '20px',
-                        backgroundColor: '#f0f5fb8b',
+                        backgroundColor: '#F0F5FB',
                         width: '200px',
                         outline: 'none',
                         }}>

@@ -1,4 +1,4 @@
-.wrapper{
+.headerWrapper{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,10 +8,17 @@
     font-weight: 900;
     margin-left: -320px;
     // font-size: 16px;
+    a{
+        color: #F2F8F8;
+    }
 }
 
 .headerName{
     margin-right: 5%;
+    color: #F2F8F8;
+    :hover{
+        color: #CA526B;
+    }
 }
 
 .headerMiddle{
@@ -21,8 +28,9 @@
     width: 55%;
     .menu{
         display: flex;
-        div{
+        a{
             margin-right: 40px;
+            color: #F2F8F8;
         }
     }
 }
@@ -43,5 +51,5 @@
 }
 
 .ant-input{
-    background-color: white;
+    background-color: #F0F5FB;
 }

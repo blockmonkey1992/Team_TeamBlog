@@ -4,29 +4,34 @@ import { Carousel } from 'antd';
 function LandingCarousel() {
 
     const contentStyle = {
-        height: '160px',
-        color: '#fff',
-        lineHeight: '160px',
+        height: '250px',
+        fontWeight: '900',
+        fontSize: '20px',
+        color: '#2D3133',
+        lineHeight: '250px',
         textAlign: 'center',
-        background: '#364d79',
+        background: '#CA526B',
       };
       
     return (
         <div>
              <Carousel autoplay>
-    <div>
-      <h3 style={contentStyle}>1</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>2</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>3</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>4</h3>
-    </div>
-  </Carousel>,
+                <div>
+                  <h3 style={contentStyle}>Hello, We are Ninja Coders!</h3>
+                </div>
+                <div>
+                  <h3 style={contentStyle}>BlockMonkey</h3>
+                </div>
+                <div>
+                  <h3 style={contentStyle}>Kkevi</h3>
+                </div>
+                <div>
+                  <h3 style={contentStyle}>Minseo</h3>
+                </div>
+                <div>
+                  <h3 style={contentStyle}>Yohan</h3>
+                </div>
+              </Carousel>
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Axios from "axios";
 import LandingCarousel from "./LandingCarousel";
+import Home from '../Home/Home';
+import Category from '../Home/Category';
 
 function LandingPage() {
 
@@ -12,7 +14,8 @@ function LandingPage() {
     return (
         <div>
             <LandingCarousel />
-            LANDING PAGE !
+            <Category />
+            <Home />
         </div>
     )
 }
