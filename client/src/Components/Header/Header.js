@@ -5,8 +5,13 @@ import '../../Scss/Header.scss';
 // import { SearchOutlined } from '@ant-design/icons';
 import { Input, AutoComplete, Form, TreeSelect, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import Login from '../Login/Login';
+
+
 
 const formItemLayout = {
+ 
+
   labelCol: {
     xs: {
       span: 24,
@@ -63,7 +68,7 @@ function Header() {
                 </div>
             </div>
             <div className='headerTail'>
-                <div>LOGIN</div>
+                <div><Login /></div>
                 <div>MY</div>
             </div>
         </div>
