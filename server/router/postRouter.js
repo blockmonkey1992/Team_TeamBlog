@@ -5,6 +5,7 @@ const createPost = require("../controller/post/createPost");
 const deletePost = require("../controller/post/deletePost");
 const updatePost = require("../controller/post/updatePost");
 const { postDetail, postAll } = require("../controller/post/readPost");
+const { auth } = require("../middleware/auth");
 
 
 
@@ -13,12 +14,12 @@ const { postDetail, postAll } = require("../controller/post/readPost");
 
 
 //글 목록 및 상세 페이지
-router.get("/postDetail/:id", postDetail )
+router.get("/postDetail/:id", postDetail)
 router.get("/postAll", postAll)
 
 //글 제어
-router.post("/create", createPost )
-router.post("/update/:id", updatePost )
-router.delete("/delete/:id", deletePost  )
+router.post("/create", auth, createPost)
+router.post("/update/:id", auth, updatePost)
+router.delete("/delete/:id", auth, deletePost)
 
 module.exports = router;
