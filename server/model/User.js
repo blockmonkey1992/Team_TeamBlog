@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 const saltRounds = 10;
 
 const userSchema = mongoose.Schema({
@@ -30,6 +32,7 @@ const userSchema = mongoose.Schema({
         type: Number,
         default: 0,
     },
+    token: String,
 }, { timeStamps: true });
 
 userSchema.pre("save", function(next){
@@ -51,6 +54,45 @@ userSchema.pre("save", function(next){
         next();
     }
 });
+
+
+userSchema.methods.comparePassword = function(plainPassword, cb){
+    bcrypt.compare(plainPassword, this.password, function(err, isMatch){
+        if(err){
+            return cb(err);
+        } else {
+            cb(null, isMatch);
+        }
+    })
+};
+
+userSchema.methods.generateToken = function(cb){
+    var user = this;
+    //JWT를 활용해 (user의 _id값 + secret Key를 합쳐 토큰을 생성한다.)
+    var token = jwt.sign(user._id.toHexString(), JWT_SECRET_KEY);
+    user.token = token;
+    user.save((err, user)=>{
+        if(err){
+            return cb(err);
+        } else {
+            return cb(null, user);
+        }
+    })
+}
+
+userSchema.statics.compareToken = function(token, cb){
+    var user = this;
+
+    jwt.verify(token, process.env.JWT_SECRET_KEY, function(err, decodedId){
+        user.findOne({ "_id": decodedId, "token": token }, function(err, user){
+            if(err){
+                return cb(err);
+            } else {
+                cb(null, user);
+            }
+        })
+    })
+}
 
 
 const User = mongoose.model("User", userSchema);
