@@ -12,6 +12,7 @@ import Footer from "./Components/Footer/Footer";
 import Detail from "./Components/Detail/Detail";
 import Profile from './Components/Profile/Profile';
 import Search from './Components/Search/Search';
+import Posting from './Components/Posting/Posting';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path='/login' component={Login}/>
         <Route path='/profile/:user' component={Profile} />
         <Route path='/search' component={Search}/>
+        <Route path='/create' component={Posting}/>
       </Switch>
 
       <Footer />
