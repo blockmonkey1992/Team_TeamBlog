@@ -6,11 +6,13 @@ const deletePost = require("../controller/post/deletePost");
 const updatePost = require("../controller/post/updatePost");
 const { postDetail, postAll } = require("../controller/post/readPost");
 const { auth } = require("../middleware/auth");
+const { searchPost }  = require("../controller/post/searchPost");
 
 
 
 //글 검색
 
+router.get("/search", searchPost);
 
 
 //글 목록 및 상세 페이지
