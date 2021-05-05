@@ -7,7 +7,7 @@ import '../../Scss/Login.scss';
 
 function Login() {
 
-    const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -27,38 +27,24 @@ function Login() {
         </div>
         
         <Modal title="Login to Ninja Coders" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} >
-          <Input style={{
-            borderRadius:'5px',
-            marginTop: '30px',
-            width: '54vw'        
-          }}
-            type="email"
-            placeholder="E-mail"
-          />
-          <Space direction="vertical">
-            <div>
-              <Input.Password
-                style={{
-                  borderRadius:'5px',
-                  marginTop: '30px',
-                  width: '54vw'        
-                }}
-                  type="password"
-                  placeholder="password"
-                  iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                )}
-              />
+          
+          <div className="ant-modal-input_group">
+            <Input type="email" placeholder="E-mail" id="modal-input-email" />
+            <Input.Password type="password" placeholder="password" id="modal-input-pw"
+                iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+              )} />
+          </div>
+          
+          <div class="ant-modal-footer" onClick={handleOk}>
+            <button type="button" id="loginBtn">
+              <span>LOGIN</span>
+            </button>
+            <div className="ant-modal-footer__column">
+              <a href="/register">
+                Register in
+              </a>
             </div>
-        </Space>
-        <div class="ant-modal-footer" onClick={handleOk}>
-          <button type="button" class="ant-btn ant-btn-primary" id="loginBtn">
-            <span>LOGIN</span>
-          </button>
-        </div>
-
-        <a href="/register"
-        className="RegisterIn">Register in</a>
-        
+          </div>        
       </Modal>
   
       </div>

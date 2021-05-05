@@ -1,22 +1,11 @@
 .ant-modal-content{
     border-radius: 25px;
-    width: 450px;
-    height: 600px;
+    width: 500px;
+    height: 530px;
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-}
-  
-    
-
-.ant-modal-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
 }
 
 .ant-modal-header{
@@ -24,94 +13,119 @@
     text-align: center;
     height: 100px;
     border:none;
-    margin-bottom: 20px;
+    margin-top: 55px;
+    .ant-modal-title{   
+        color: #CA526B;
+        display: flex;
+        flex-direction: column;
+        font-size: 23px;
+        font-weight: 900;
+    }
 }
-
-.ant-modal-title{   
-    color: #CA526B
-    ;
-    display: flex;
-    flex-direction: column;
-    margin-top: 35px;
-    font-size: 30px;
-    font-weight:900;
-    
-}
-
-.ant-input{
-    height: 7vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
 
 .ant-modal-close-icon{
     color: #f2f8f8;
     position: absolute;
-    background-color: #2D3133;
-    width: 35px; height: 35px;
+    background-color: black;
+    width: 23px; height: 23px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    right: -45px;
+    right: -30px;
+}
+
+.ant-modal-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: -20px;
+
+    .ant-input-password{
+        width: 440px;
+        margin-top: 30px;
+    }
+
+    .ant-input{
+        height: 60px;
+        width: 440px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        // &:active{
+        //     outline: #CA526B;
+        // }
+    }
+
+    .ant-modal-input_group{
+        margin-bottom: 20px;
+
+        #modal-input-email{
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .ant-input-affix-wrapper{
+            background-color: white;
+            padding: 0px;
+            border-radius: 10px;
+        }
+        #modal-input-pw{
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .ant-input-password-icon{
+            margin-right: 10px;
+        }
+    }
 }
 
 .ant-modal-footer{
     border: none;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: -20px;
+    
+    #loginBtn{
+        background-color: #2D3133;
+        border: none;
+        border-radius: 10px;
+        width: 440px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 8%;
+        font-size:x-large;
+        font-weight: 900;
+        color: #f2f8f8;
+        &:hover{
+            color: white;
+            background-color: #CA526B;
+        }
+    }
+    .ant-modal-footer__column{
+        width: 440px;
+        display: flex;
+        justify-content: flex-end;
+        a{
+            margin-top: 20px;
+            padding-right: 5px;
+            color:#CA526B;
+            font-weight: 200;
+            &:hover{
+                font-weight: 400;
+            }
+        }
+    }
 }
 
 .ant-btn:first-child,
 .ant-btn:nth-child(2){
     display: none;
-}
-.ant-btn-primary{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#loginBtn{
-    background-color: #2D3133;
-    border: none;
-    border-radius: 10px;
-    width:400px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 8%;
-    font-size:x-large;
-    font-weight: 900;
-}
-
-.RegisterIn{
-    display: flex;
-    justify-content:flex-end;
-    align-items:flex-end;
-    margin-top:340px;
-    margin-left: 350px;
-    color:#CA526B;
-    position: absolute;
-    opacity: 0.55;
-    
-}
-
-.ant-input-affix-wrapper{
-    width: 100%;
-}
-
-.ant-space{
-    width: 100%;
-}
-
-.ant-input-password{
-    width: 20px;
 }
