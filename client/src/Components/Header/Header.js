@@ -31,12 +31,7 @@ const formItemLayout = {
 function Header() {
     return (
         <div className='headerWrapper'>
-            <Form
-                style={{
-                margin: '0 auto',
-                }}
-                {...formItemLayout}
-            />
+            <Form {...formItemLayout} />
             <a href='/' className='headerName'>NINJA CODERS</a>
             <div className='headerMiddle'>
                 <div className='menu'>

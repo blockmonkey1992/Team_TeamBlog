@@ -4,6 +4,7 @@
 
 .App{
 	background-color: #F4F7F9;
-	height: 100vh;
+	height: 100%;
 	font-family: 'Noto Sans KR', sans-serif;
+	color: #2D3133;
 }
