@@ -9,7 +9,7 @@ const { auth } = require("../middleware/auth");
 
 router.get("/auth", auth, authUser);
 
-router.get("/logout", auth, logoutUser);
+router.get("/logout", logoutUser);
 
 router.post("/login", loginUser);
 

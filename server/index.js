@@ -24,6 +24,7 @@ app.use(cookieParser());
 app.use("/api/users", require("./router/userRouter"));
 app.use("/api/post", require("./router/postRouter"));
 app.use("/api/contact", require("./router/contactRouter"));
+app.use("/api/comments", require("./router/commentRouter"));
 
 
 //테스트용 API

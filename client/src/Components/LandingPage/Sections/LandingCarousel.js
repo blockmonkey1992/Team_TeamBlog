@@ -1,5 +1,6 @@
 import React from 'react'
 import { Carousel } from 'antd';
+import '../../../Scss/Carousel.scss';
 
 function LandingCarousel() {
 

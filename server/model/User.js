@@ -33,7 +33,7 @@ const userSchema = mongoose.Schema({
         default: 0,
     },
     token: String,
-}, { timeStamps: true });
+}, { timestamps: true });
 
 userSchema.pre("save", function(next){
     let user = this;

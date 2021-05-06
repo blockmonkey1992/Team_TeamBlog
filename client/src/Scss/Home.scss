@@ -1,0 +1,48 @@
+.homeCard{
+    background-color: white;
+    height: 250px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 0px 0px 30px;
+}
+
+.homeCard_column:first-child{
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeCard_column:last-child{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 12px;
+    .homeCard_description{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        .homeCard__title{
+            font-size: 16px;
+            font-weight: 900;
+        }
+        .homeCard__date{
+            font-size: 12px;
+            font-weight: 200;
+            color: #666768;
+            margin-left: 10px;
+        }
+    }
+    .homeCard_description:last-child{
+        justify-content: space-between;
+        font-size: 12px;
+        font-weight: 200;
+        margin-top: 10px;
+        color: #666768;
+        .homeCard__counts{
+            display: flex;
+            div{
+                margin-left: 20px;
+            }
+        }
+    }
+}
