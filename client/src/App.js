@@ -12,13 +12,15 @@ import Footer from "./Components/Footer/Footer";
 import Detail from "./Components/Detail/Detail";
 import Profile from './Components/Profile/Profile';
 import Search from './Components/Search/Search';
+import { Provider } from 'react-redux';
 import Posting from './Components/Posting/Posting';
+
 
 function App() {
   return (
     <div className="App">
       <Header />
-
+    
       <Switch>
         <Route exact path='/' component={LandingPage}/>
         <Route path='/introduce' component={Introduce}/>
@@ -31,7 +33,7 @@ function App() {
         <Route path='/search' component={Search}/>
         <Route path='/create' component={Posting}/>
       </Switch>
-
+    
       <Footer />
     </div>
   );
