@@ -12,7 +12,7 @@ import Footer from "./Components/Footer/Footer";
 import Detail from "./Components/Detail/Detail";
 import Profile from './Components/Profile/Profile';
 import Search from './Components/Search/Search';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 import Posting from './Components/Posting/Posting';
 
 
