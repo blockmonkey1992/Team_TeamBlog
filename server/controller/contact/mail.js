@@ -17,7 +17,7 @@ const mail = (req, res) => {
     
     const mailOptions = {
         from : from,
-        to : "blockmonkey1992@gmail.com, zzoo32165@gmail.com",
+        to : "blockmonkey1992@gmail.com, zzoo32165@gmail.com, ykim3532@gmail.com, borakim874@gmail.com",
         subject: `NinjaCoders Page에서 ${date.getMonth()+1}월${date.getDate()}일에 " ${from} " 님으로 부터 온 메일입니다.`,
         text: description,
     }

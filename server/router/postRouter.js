@@ -16,13 +16,13 @@ router.get("/search", searchPost);
 
 
 //글 목록 및 상세 페이지
-router.get("/postDetail/:id", postDetail)
-router.get("/postAll", postAll)
-router.post("/category/:category", postCategory)
+router.get("/postDetail/:id", postDetail);
+router.get("/postAll", postAll);
+router.post("/category/:category", postCategory);
 
 //글 제어
-router.post("/create", auth, createPost)
-router.post("/update/:id", auth, updatePost)
-router.delete("/delete/:id", auth, deletePost)
+router.post("/create", createPost);
+router.post("/update/:id", updatePost);
+router.delete("/delete/:id", deletePost);
 
 module.exports = router;
