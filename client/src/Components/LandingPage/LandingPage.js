@@ -29,7 +29,12 @@ function LandingPage(props) {
                 <Row gutter={[24, 24]} style={{margin: "0px 30px"}}>
                     {Data.map((item, idx)=> (
                         <Col key={idx} lg={8} md={12} xs={24}>
-                            <Home title={item.title} views={item.views} creator={item.creator}/>
+                            <Home
+                                title={item.title}
+                                views={item.views}
+                                creator={item.creator}
+                                createdAt={item.createdAt}
+                            />
                         </Col>
                     ))}
                 </Row>}

@@ -12,7 +12,7 @@ function Home(props) {
             <div className="homeCard_column">
                 <div className="homeCard_description">
                     <div className="homeCard__title">{props.title}</div>
-                    <div className="homeCard__date">21-00-00</div>
+                    <div className="homeCard__date">{props.createdAt}</div>
                 </div>
                 <div className="homeCard_description">
                     <div className="homeCard__author">{props.creator}</div>
