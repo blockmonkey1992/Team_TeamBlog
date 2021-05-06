@@ -64,7 +64,7 @@ function Login(props) {
     setIsModalVisible(false);
   };
     return (
-      <div>
+      <div className="loginWrapper">
         <div type="primary" onClick={showModal}>
           로그인
         </div>

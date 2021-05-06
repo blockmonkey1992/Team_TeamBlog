@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "../../Scss/Home.scss";
 import { EyeOutlined, HeartOutlined, CommentOutlined } from '@ant-design/icons';
-import { Row, Col, Divider } from 'antd';
 
 function Home(props) {
+
+    const date = props.createdAt.split("T")[0];
+
     return (
         <div className="homeCard">
             <div className="homeCard_column">
@@ -12,7 +14,7 @@ function Home(props) {
             <div className="homeCard_column">
                 <div className="homeCard_description">
                     <div className="homeCard__title">{props.title}</div>
-                    <div className="homeCard__date">{props.createdAt}</div>
+                    <div className="homeCard__date">{date}</div>
                 </div>
                 <div className="homeCard_description">
                     <div className="homeCard__author">{props.creator}</div>

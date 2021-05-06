@@ -28,7 +28,7 @@ function LandingPage(props) {
                 {Data && 
                 <Row gutter={[24, 24]} style={{margin: "0px 30px"}}>
                     {Data.map((item, idx)=> (
-                        <Col key={idx} lg={8} md={12} xs={24}>
+                        <Col key={idx} xl = {6} lg={8} md={12} xs={24}>
                             <Home
                                 title={item.title}
                                 views={item.views}
