@@ -1,9 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const { createComment } = require("../controller/comment/createComment");
+const { createCommnent } = require("../controller/comment/createComment");
+const { readComment } = require("../controller/comment/readCommnet");
+const { auth } = require("../middleware/auth");
 
 
-router.post("/create", createComment);
+router.get("/:id", readComment);
+router.post("/create/:id", auth, createCommnent);
+
+
 
 
 
