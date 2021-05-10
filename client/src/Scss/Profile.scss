@@ -1,0 +1,90 @@
+.myWrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+}
+
+.myMenu__Wrapper{
+    background-color: white;
+    width: 20%; height: 400px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    .myMenu__contents{
+        width: 100%;
+    }
+
+    .myMenu__list{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 50px 25px;
+        color: #2D3133;
+
+        .anticon{
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        &:hover{
+            color: #CA526B;
+            cursor: pointer;
+        }
+    }
+}
+
+.myMenu__title{
+    width: 100%;
+    border-bottom: 1px solid  #8a8a8a5c;
+    padding: 30px 25px 20px 25px;
+}
+
+.myMy__title{
+    width: 100%;
+    border-bottom: 1px solid  #8a8a8a5c;
+    padding: 30px 40px 20px 40px;
+}
+
+.myWrapper__container{
+    width: 78%; height: 500px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+
+//My only
+
+.myMy__contents{
+    display: flex;
+    flex-direction: column;
+    button{
+        width: 120px; height: 35px;
+        border: 1px solid #CA526B;
+        background-color: white;
+        border-radius: 20px;
+        color: #CA526B;
+        margin: 0 50px;
+        font-size: 15px;
+        letter-spacing: 2px;
+        font-weight: 600;
+    }
+}
+
+.myMy__inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+
+    input{
+        border: 1px solid #8a8a8a5c;
+        border-radius: 12px;
+        width: 80%;
+        padding: 15px;
+        margin: 0px 40px;
+        margin-top: 20px;
+    }
+}

@@ -55,13 +55,6 @@ function Register(props) {
         })
     }
 
-    const Success = () => {
-
-    }
-  
-
-
-  
     return (
         <div className="register_my__container" onSubmit={submitHandler}>
           

@@ -62,7 +62,7 @@ function Header() {
             </div>
             <div className='headerTail'>
                 <div><Login /></div>
-                <div>MY</div>
+                <a href='/profile/:user'>MY</a>
             </div>
         </div>
     )
