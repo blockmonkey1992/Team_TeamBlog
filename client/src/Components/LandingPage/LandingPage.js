@@ -21,6 +21,8 @@ function LandingPage(props) {
             });
     }, []);
 
+    
+
     return (
         <div>
             <LandingCarousel />
