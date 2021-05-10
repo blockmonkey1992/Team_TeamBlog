@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../actions/user_action';
+
 import { Modal, Input } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone} from '@ant-design/icons';
 import '../../Scss/Login.scss';
 
-import { useDispatch } from 'react-redux';
-import { loginUser } from '../../actions/user_action';
+
 
 
 function Login(props) {

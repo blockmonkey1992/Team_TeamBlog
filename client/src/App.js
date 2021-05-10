@@ -7,7 +7,7 @@ import Contact from "./Components/Contact/Contact"
 import Introduce from './Components/Introduce/Introduce';
 import Login from './Components/Login/Login';
 import Portfolio from './Components/Portfolio/Portfolio';
-import Register from './Components/register/register';
+import Register from './Components/Register/register';
 import Footer from "./Components/Footer/Footer";
 import Detail from "./Components/Detail/Detail";
 import Profile from './Components/Profile/Profile';
