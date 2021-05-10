@@ -1,13 +1,21 @@
 import { verify } from 'jsonwebtoken';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../actions/user_action';
+import { useHistory } from 'react-router-dom';
 
 
 import '../../Scss/Register.scss';
 
 
 function Register(props) {
+
+    const history = useHistory();
+
+    useEffect(() => {
+      console.log(history);
+    }, [])
+
     const dispatch = useDispatch();
 
     const [Name, setName] = useState("")
@@ -43,12 +51,14 @@ function Register(props) {
         email : Email,
         password : PassWord,
       }
+
+      console.log(body)
   
       dispatch(registerUser(body))
         .then(response => {
           if(response.payload.success){
             //가입이 성공적으로 끝날을 떄 할 일,
-            props.history.push("/");
+            history.push("/")
           } else {
             alert("회원가입에 실패했습니다. 다시 시도해주세요");
           }

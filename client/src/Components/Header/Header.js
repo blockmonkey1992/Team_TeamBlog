@@ -6,7 +6,7 @@ import '../../Scss/Header.scss';
 import { Input, AutoComplete, Form, TreeSelect, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import Login from '../Login/Login';
-
+import Logout from '../Login/Logout'
 
 
 const formItemLayout = {
@@ -62,6 +62,7 @@ function Header() {
             </div>
             <div className='headerTail'>
                 <div><Login /></div>
+                <Logout/>
                 <a href='/profile/:user'>MY</a>
             </div>
         </div>
