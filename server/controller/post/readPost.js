@@ -24,8 +24,7 @@ const postAll = async (req, res) => {
 }
 
 const postCategory = async(req, res) => {
-    const findcategory = req.params.category
-    console.log(findcategory);
+    const findcategory = req.query.id;
     await Post.find({ category : findcategory }).exec((err, result) => {
         if(err){
             res.status(400).json({ success:false , err})
