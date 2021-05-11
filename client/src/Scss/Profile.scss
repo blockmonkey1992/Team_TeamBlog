@@ -1,9 +1,19 @@
+//공통 css
 .myWrapper{
     display: flex;
     justify-content: space-between;
     width: 80vw;
 }
 
+.myWrapper__container{
+    width: 78%; height: 500px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+
+
+//my menu 
 .myMenu__Wrapper{
     background-color: white;
     width: 20%; height: 400px;
@@ -13,9 +23,17 @@
     align-items: center;
     justify-content: flex-start;
 
+    .myMenu__title{
+        width: 100%;
+        border-bottom: 1px solid  #8a8a8a5c;
+        padding: 30px 25px 20px 25px;
+    }
+
     .myMenu__contents{
         width: 100%;
     }
+
+    a{color: #2D3133;}
 
     .myMenu__list{
         display: flex;
@@ -35,11 +53,8 @@
     }
 }
 
-.myMenu__title{
-    width: 100%;
-    border-bottom: 1px solid  #8a8a8a5c;
-    padding: 30px 25px 20px 25px;
-}
+
+//My only
 
 .myMy__title{
     width: 100%;
@@ -47,18 +62,32 @@
     padding: 30px 40px 20px 40px;
 }
 
-.myWrapper__container{
-    width: 78%; height: 500px;
-    background-color: white;
-    border-radius: 20px;
-}
-
-
-//My only
-
 .myMy__contents{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .myMy__inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+    
+        input{
+            border: 1px solid #8a8a8a5c;
+            border-radius: 12px;
+            width: 80%;
+            padding: 15px;
+            margin: 0px 40px;
+            margin-top: 30px;
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+
     button{
         width: 120px; height: 35px;
         border: 1px solid #CA526B;
@@ -69,22 +98,89 @@
         font-size: 15px;
         letter-spacing: 2px;
         font-weight: 600;
+        margin-top: 25px;
+        &:hover{
+            cursor: pointer;
+            color: white;
+            background-color: #CA526B;
+        }
     }
 }
 
-.myMy__inputs{
+
+
+//Like only
+.myLike__contents{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
+    .myLike__list{
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid  #8a8a8a5c;
+        padding: 30px 40px;
+        font-weight: 200;
+        font-size: 14px;
 
-    input{
-        border: 1px solid #8a8a8a5c;
-        border-radius: 12px;
-        width: 80%;
-        padding: 15px;
-        margin: 0px 40px;
-        margin-top: 20px;
+        &:hover{
+            // cursor: pointer;
+            .myLike__title{
+                div:first-child{
+                    color: #CA526B;
+                }
+            }
+        }
+
+        .myLike__title{
+            display: flex;
+            margin-bottom: 10px;
+            div:first-child{
+                font-weight: 400;
+                margin-right: 25px;
+            }
+        }
+
+        .myLike__descriptions{
+            display: flex;
+            justify-content: space-between;
+            .myLike__numbers{
+                display: flex;
+                div{
+                    margin-left: 15px;
+                }
+            }
+        }
     }
+}
+
+
+
+//Comment only
+.myComment_contents{
+    display: flex;
+    flex-direction: column;
+    font-weight: 200;
+    font-size: 14px;
+    .myComment__list{
+        display: flex;
+        justify-content: space-between;
+        padding: 30px 40px;
+        border-bottom: 1px solid  #8a8a8a5c;
+        a{
+            color: #2D3133;
+            margin-right: 55px;
+            &:hover{
+                color: #CA526B;
+                text-decoration: underline;
+                text-underline-position: under;
+            }
+        }
+    }
+}
+
+
+//No Only
+.myNo__Wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
