@@ -45,7 +45,7 @@ function Posting(props) {
         Axios.post('/api/post/create', variable)
             .then(response => {
                 if(response.data.success){
-                    props.history.push("/");
+                    alert("글작성완료");
                 } else {
                     alert("포스팅에 실패하였습니다.");
                 }
