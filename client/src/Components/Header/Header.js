@@ -1,13 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import '../../Scss/Header.scss';
-import { Input, AutoComplete, Form, TreeSelect, Button } from 'antd';
+import { Input, AutoComplete, Form } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import Auth from '../../hoc/auth'
 
 import Login from '../Login/Login';
 import Logout from '../Login/Logout';
-import { loginUser } from '../../actions/user_action';
+// import { loginUser } from '../../actions/user_action';
 
 
 const formItemLayout = {

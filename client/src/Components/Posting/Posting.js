@@ -1,5 +1,6 @@
 import Axios from 'axios';
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
 //ckEditor 깔기
 
@@ -45,7 +46,7 @@ function Posting(props) {
         Axios.post('/api/post/create', variable)
             .then(response => {
                 if(response.data.success){
-                    alert("글작성완료");
+                    props.history.push("/");
                 } else {
                     alert("포스팅에 실패하였습니다.");
                 }
@@ -89,4 +90,4 @@ function Posting(props) {
     )
 }
 
-export default Posting
+export default withRouter(Posting)

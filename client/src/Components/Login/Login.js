@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { loginUser, auth } from '../../actions/user_action';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../actions/user_action';
 import Logout from './Logout';
 
 import { Modal, Input } from 'antd';
@@ -9,14 +9,16 @@ import { EyeInvisibleOutlined, EyeTwoTone} from '@ant-design/icons';
 import '../../Scss/Login.scss';
 
 
-function Login(props) {
+function Login() {
 
-  console.log(loginUser(props));
+  // console.log(loginUser(props));
 
   const dispatch = useDispatch();
 
   const [Email, setEmail] = useState("");
   const [PassWord, setPassWord] = useState("");
+
+  // const is_login = useSelector(state => state.is_login);
 
 
   const emailHandler = (e) => {
@@ -47,6 +49,7 @@ function Login(props) {
             dispatch(loginUser(body))
             setEmail("");
             setPassWord("");
+            // localStorage.setItem("user", JSON.stringify(response.data));
             console.log('로그인 햇음');
           } else {
             //로그인에 실패했네? 이 때 할 작업이 뭘까?
@@ -71,12 +74,10 @@ function Login(props) {
   
     return (
       <div className="loginWrapper">
-         <div type="primary" onClick={showModal}>
-        로그인
+        <div type="primary" onClick={showModal}>
+          로그인
         </div>
-
       
-        
         <Modal title="Login to Ninja Coders" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} >
           <form onSubmit={submitHandler}>
             <div className="ant-modal-input_group">

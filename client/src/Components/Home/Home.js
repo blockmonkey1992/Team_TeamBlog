@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import "../../Scss/Home.scss";
 import { EyeOutlined, HeartOutlined, CommentOutlined } from '@ant-design/icons';
 

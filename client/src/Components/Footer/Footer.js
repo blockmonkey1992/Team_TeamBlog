@@ -3,7 +3,7 @@ import '../../Scss/Footer.scss';
 
 function Footer() {
 
-    const year = new Date();
+    // const year = new Date();
 
     return (
         <div className="footerWrapper">

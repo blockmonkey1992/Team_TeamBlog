@@ -10,7 +10,6 @@ function Logout() {
       }
     return (
         <div>
-
           <button onClick={LogoutHandler}>로그아웃</button>
         </div>
     )
