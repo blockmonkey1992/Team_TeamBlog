@@ -16,16 +16,14 @@ export default function(state = initialState, action){
             return{
                 ...state,
                 loginSuccess: action.payload,
-                is_login: true,
             }
         case LOGOUT_USER:
             return{
                 ...state,
-                is_login: false,
                 user: null,
             }
         case REGISTER_USER:
-            return { ...state, register:action.payload }
+            return { ...state, register:action.payload}
         case AUTH_USER :
             return { ...state, userData: action.payload }
         default:

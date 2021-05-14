@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
     LOGIN_USER
+    , LOGOUT_USER
     , REGISTER_USER
     , AUTH_USER 
 } from './types';
@@ -10,7 +11,17 @@ export function loginUser(dataTosubmit){
         .then(response => response.data)
 
     return{
-        type: LOGIN_USER,   
+        type: LOGIN_USER,
+        payload: request,
+    }
+}
+
+export function logoutUser(dataTosubmit){
+    const request = axios.get("api/users/logout", dataTosubmit)
+        .then(response => response.data)
+
+    return{
+        type: LOGOUT_USER,
         payload: request,
     }
 }

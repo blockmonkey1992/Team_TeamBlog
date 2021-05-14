@@ -1,4 +1,3 @@
-import { verify } from 'jsonwebtoken';
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../actions/user_action';

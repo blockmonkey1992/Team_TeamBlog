@@ -31,7 +31,7 @@ const formItemLayout = {
 
 function Header() {
 
-  const is_login = useSelector(state => state.user.is_login);
+  const is_login = useSelector(state => state.user.user);
   console.log(is_login);
 
     return (
@@ -67,7 +67,7 @@ function Header() {
             </div>
             <div className='headerTail'>
                 <div>
-                  {is_login ? <Logout /> : <Login />}
+                  {is_login === null ? <Login /> : <Logout />}
                   {/* <Login />
                   <Logout /> */}
                 </div>
