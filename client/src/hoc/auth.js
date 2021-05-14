@@ -3,7 +3,7 @@ import React,{useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {auth} from '../actions/user_action';
 
-export default function(SpecificComponent, option, adminRoute = null){
+export default function(SpecificComponent, option,adminRoute = null){
 
     function AuthenticationCheck(props){
 
@@ -16,7 +16,7 @@ export default function(SpecificComponent, option, adminRoute = null){
 
                 if(!response.payload.isAuth){
                     if(option){
-                        props.history.push('/login')
+                        props.history.push('/profile/:user')
                     }
                 }else{
                     if(adminRoute && !response.payload.isAuth){
@@ -34,10 +34,6 @@ export default function(SpecificComponent, option, adminRoute = null){
             <SpecificComponent/>
         )
     }
-
-
-
-
 
     return AuthenticationCheck
 }

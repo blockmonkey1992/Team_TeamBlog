@@ -6,9 +6,9 @@ import '../../Scss/Category.scss';
 
 function Category(props) {
 
-    useEffect(() => {
-        console.log(props);
-    }, [])
+    // useEffect(() => {
+    //     console.log(props);
+    // }, [])
 
     const [HtmlCssCategory, setHtmlCssCategory] = useState(true);
     const [JsCategory, setJsCategory] = useState(true);

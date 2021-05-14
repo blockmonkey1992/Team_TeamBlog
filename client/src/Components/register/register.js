@@ -58,7 +58,7 @@ function Register(props) {
         .then(response => {
           if(response.payload.success){
             //가입이 성공적으로 끝날을 떄 할 일,
-            history.push("/")
+            history.push("/");
           } else {
             alert("회원가입에 실패했습니다. 다시 시도해주세요");
           }

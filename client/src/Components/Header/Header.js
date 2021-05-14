@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../../Scss/Header.scss';
-// import { DatePicker } from 'antd';
-// import { SearchOutlined } from '@ant-design/icons';
 import { Input, AutoComplete, Form, TreeSelect, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import Auth from '../../hoc/auth'
+
 import Login from '../Login/Login';
-import Logout from '../Login/Logout'
+import Logout from '../Login/Logout';
+import { loginUser } from '../../actions/user_action';
 
 
 const formItemLayout = {
@@ -27,6 +28,8 @@ const formItemLayout = {
     },
   },
 };
+
+
 
 function Header() {
     return (
@@ -61,8 +64,10 @@ function Header() {
                 </div>
             </div>
             <div className='headerTail'>
-                <div><Login /></div>
-                <Logout/>
+                <div>
+                  <Login/>
+                  <Logout/>
+                </div>
                 <a href='/profile/:user'>MY</a>
             </div>
         </div>

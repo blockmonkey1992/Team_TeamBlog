@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../actions/user_action';
+import { loginUser, auth } from '../../actions/user_action';
+import Logout from './Logout';
 
 import { Modal, Input } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone} from '@ant-design/icons';
 import '../../Scss/Login.scss';
 
 
-
-
-
 function Login(props) {
+
+  console.log(loginUser(props));
 
   const dispatch = useDispatch();
 
   const [Email, setEmail] = useState("");
   const [PassWord, setPassWord] = useState("");
+
 
   const emailHandler = (e) => {
     setEmail(e.currentTarget.value);
@@ -25,6 +26,7 @@ function Login(props) {
   const pwdHandler = (e) => {
     setPassWord(e.currentTarget.value);
   }
+
 
 
   const submitHandler = (e) => {
@@ -40,7 +42,6 @@ function Login(props) {
 
     axios.post("/api/users/login", body)
         .then(response => {
-          console.log(response);
           if(response.data.success){
             //로그인에 성공했을 때 할 작업을 여기서 하면되겠네?
             dispatch(loginUser(body))
@@ -67,11 +68,14 @@ function Login(props) {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+  
     return (
       <div className="loginWrapper">
-        <div type="primary" onClick={showModal}>
-          로그인
+         <div type="primary" onClick={showModal}>
+        로그인
         </div>
+
+      
         
         <Modal title="Login to Ninja Coders" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} >
           <form onSubmit={submitHandler}>
