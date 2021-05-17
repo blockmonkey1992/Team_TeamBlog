@@ -30,7 +30,7 @@ function App() {
         <Route path='/contact' component={Auth(Contact ,null)}/>
         <Route path='/detail:id' component={Auth(Detail, null)}/>
         <Route path='/register' component={Auth(Register, false)}/>
-        <Route path="/profile/:user" component={Auth(Profile, true, true)} />  
+        <Route path="/profile/:user" component={Auth(Profile, true)} />  
         <Route path='/search' component={Auth(Search, null)}/>
         <Route path='/create' component={Auth(Posting, false)}/>
       </Switch>

@@ -14,13 +14,14 @@ export default function(SpecificComponent, option, adminRoute =null){
   
 
         useEffect(() => {
-            dispatch(auth()).then(response => {
+            dispatch(auth())
+            .then(response => {
                 console.log(response)
                     //if(response.payload.user.role){
                        // setUserRole = response.payload.user.role;
                  //   }
                  //로그인 하지않은 상태
-                    if(!response.payload.isAuth){
+                    if(!response.payload.is_login){
                         if(option){
                         props.history.push('/')
                         alert('로그인해주세요')
