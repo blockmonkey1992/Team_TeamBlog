@@ -2,15 +2,32 @@ import axios from 'axios';
 import {
     LOGIN_USER
     , REGISTER_USER
-    , AUTH_USER 
+    , AUTH_USER
+    , LOGOUT_USER
 } from './types';
 
 export function loginUser(dataTosubmit){
     const request = axios.post('/api/users/login', dataTosubmit)
-        .then(response => response.data)
+        .then(response => {
+            console.log(response.data);    
+            return response.data;
+        });
 
     return{
         type: LOGIN_USER,
+        payload: request,
+    }
+}
+
+export function logoutUser(){
+    const request = axios.post('/api/users/logout')
+        .then(response => {
+            console.log(response);
+            return response.data;
+        });
+
+    return{
+        type: LOGOUT_USER,
         payload: request,
     }
 }
@@ -27,10 +44,15 @@ export function registerUser(dataTosubmit){
 
 export function auth(){
     const request = axios.get('/api/users/auth')
-        .then(response => response.data)
+        .then(response => {
+            console.log(response);
+            return response.data;
+        });
 
     return{
         type: AUTH_USER,
         payload: request,
     }
 }
+
+

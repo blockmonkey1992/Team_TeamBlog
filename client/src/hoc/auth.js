@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {auth} from '../actions/user_action';
 import axios from 'axios'
 
@@ -11,16 +11,17 @@ export default function(SpecificComponent, option, adminRoute =null){
     {/* true 로그인을 했을때 접근가능 */}
     function AuthenticationCheck(props){
         const dispatch = useDispatch();
+        const user = useSelector(state => state.user);
   
 
         useEffect(() => {
             dispatch(auth())
             .then(response => {
-                console.log(response)
-                    //if(response.payload.user.role){
-                       // setUserRole = response.payload.user.role;
-                 //   }
-                 //로그인 하지않은 상태
+                console.log(`auth`, response);
+                //     if(response.payload.user.role){
+                //        setUserRole = response.payload.user.role;
+                //    }
+                //  로그인 하지않은 상태
                     if(!response.payload.is_login){
                         if(option){
                         props.history.push('/')
@@ -28,7 +29,7 @@ export default function(SpecificComponent, option, adminRoute =null){
                         }
                         //로그인 한 상태
                     }else{
-                        if(adminRoute &&!response.payload.isAdmin ){
+                        if(adminRoute &&!response.payload.is_login){
                             props.history.push('/')
                             alert('접근권한이없음')
                         }else{
@@ -42,7 +43,7 @@ export default function(SpecificComponent, option, adminRoute =null){
 
 
         return(
-            <SpecificComponent />
+            <SpecificComponent {...props} user={user} />
         )
 
 

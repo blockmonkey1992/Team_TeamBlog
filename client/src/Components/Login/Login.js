@@ -42,7 +42,7 @@ function Login() {
 
     axios.post("/api/users/login", body)
         .then(response => {
-          if(response.data.success){
+          if(response.data.loginSuccess){
             //로그인에 성공했을 때 할 작업을 여기서 하면되겠네?
             dispatch(loginUser(body))
             setEmail("");

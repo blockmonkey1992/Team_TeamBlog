@@ -20,7 +20,7 @@ const loginUser = (req, res) => {
                     if(err){
                         return res.status(400).json({ success: false, err });
                     } else {
-                        res.cookie("x_auth", user.token).status(200).json({ success: true, userInfo: user });
+                        res.cookie("x_auth", user.token).status(200).json({ loginSuccess: true, userId: user._id });
                     }
                 })
             }

@@ -29,10 +29,7 @@ const formItemLayout = {
 
 
 
-function Header() {
-
-  const is_login = useSelector(state => state.user.is_login);
-  console.log(is_login);
+function Header(props) {
 
     return (
         <div className='headerWrapper'>
@@ -67,7 +64,8 @@ function Header() {
             </div>
             <div className='headerTail'>
                 <div>
-                  {is_login === true ?  <Logout /> : <Login />}
+                  <Logout />
+                  <Login />
                 </div>
                 <a href='/profile/:user'>MY</a>
             </div>
