@@ -6,7 +6,7 @@ const logoutUser = (req, res) => {
         if(err){
             return res.status(401).json({ success: false, err });
         } else {
-            return res.status(200).json({ success: true, msg: `${user.email}님이 로그아웃 했습니다.` })
+            return res.status(200).json({ success: true, result });
         }
     })
 };

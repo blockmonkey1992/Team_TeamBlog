@@ -2,13 +2,12 @@ import React from 'react';
 import axios from "axios";
 import { useSelector } from 'react-redux';
 
-function Logout() {
+function Logout(props) {
 
   const LogoutHandler = () => {
     axios.get("api/users/logout")
       .then(response => {
-      console.log(response);
-      window.location.reload();
+        console.log(response);
       })
     }
   return (
