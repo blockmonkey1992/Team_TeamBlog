@@ -17,7 +17,6 @@ const postAll = async (req, res) => {
         if(err){
             res.status(400).json({ success : false, err})
         } else {
-            console.log(result);
             res.status(200).json({ success : true , result})
         }
     });    
