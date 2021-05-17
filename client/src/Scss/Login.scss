@@ -1,3 +1,11 @@
+.loginWrapper{
+    div{
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
 .ant-modal-content{
     border-radius: 25px;
     width: 500px;
@@ -22,6 +30,10 @@
         font-weight: 900;
     }
 }
+
+// .ant-modal-close{
+//     display: none;
+// }
 
 .ant-modal-close-icon{
     color: #f2f8f8;
@@ -56,9 +68,6 @@
         justify-content: center;
         align-items: center;
         background-color: white;
-        // &:active{
-        //     outline: #CA526B;
-        // }
     }
 
     .ant-modal-input_group{
@@ -104,9 +113,12 @@
         font-size:x-large;
         font-weight: 900;
         color: #f2f8f8;
+        box-shadow: 0 4px 15px 0 rgba(79, 73, 74, 0.75);
         &:hover{
             color: white;
             background-color: #CA526B;
+            box-shadow: 0 4px 15px 0 rgba(186, 71, 90, 0.75);
+            cursor: pointer;
         }
     }
     .ant-modal-footer__column{

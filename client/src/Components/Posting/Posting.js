@@ -1,27 +1,15 @@
 import Axios from 'axios';
-import React, { useEffect, useState, useMemo } from 'react';
-import Select from "react-select";
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
-function Posting() {
+//ckEditor 깔기
+
+function Posting(props) {
     
     const [Title, setTitle] = useState("");
     const [Description, setDescription] = useState("");
-    const [Category, setCategory] = useState("");
+    const [Category, setCategory] = useState(0);
 
-    const options = useMemo(
-        () => [
-            { value : "HtmlCss", label : "HTML/CSS" },
-            { value : "Js", label : "Js" },
-            { value : "React", label : "React" },
-            { value : "Node/Express", label : "Node/Express" },
-            { value : "MongoDB", label : "MongoDB" },
-            { value : "Git", label : "Git/GitHub" },
-            { value : "HTTP", label : "HTTP" },
-            { value : "Algorithm", label : "Algorithm" },
-            { value : "AWS", label : "AWS" },
-        ],
-        []
-    );
 
     useEffect(() => {
         //화면 랜더링 됐을때 내가 실행된다.
@@ -30,49 +18,76 @@ function Posting() {
 
     const handleTitle = (e) => {
         e.preventDefault();
+        
         setTitle(e.currentTarget.value);
     }
 
     const handleDescription = (e) => {
         e.preventDefault();
+
         setDescription(e.currentTarget.value);
     }
 
     const handleCategory = (e) => {
-        e.preventDefault();
-        setCategory(e.currentTarget.value);
+        setCategory({ value: e.target.value });
     }
 
     const handleSubmit = (e) => {
+        
         e.preventDefault();
+
         const variable = {
             "title": Title,
             "description": Description,
-            "category": options,
+            "category": Number(Category.value),
             "creator": "blockmonkey",
         }
+
         Axios.post('/api/post/create', variable)
-            .then(response => console.log(response))
+            .then(response => {
+                if(response.data.success){
+                    props.history.push("/");
+                } else {
+                    alert("포스팅에 실패하였습니다.");
+                }
+        })
     }
+
+    const categoryOptions = [
+            { value : 0, label : "HTML/CSS" },
+            { value : 1, label : "Js" },
+            { value : 2, label : "React" },
+            { value : 3, label : "Node/Express" },
+            { value : 4, label : "MongoDB" },
+            { value : 5, label : "Git/GitHub" },
+            { value : 6, label : "HTTP" },
+            { value : 7, label : "Algorithm" },
+            { value : 8, label : "AWS" },
+            { value : 9, label : "Network" },
+        ]
 
     return (
         <div style={{
             margin: '20px',
         }}>
-            <form style={{
+            <div style={{
                 display: 'flex',
                 flexDirection: 'column',
                 padding: '30px',
-            }}>
-                <Select options={options} isSearchable />
+            }} >
+                <select onChange={handleCategory}>
+                    {categoryOptions.map((item, idx) => (
+                        <option value={item.value}>{categoryOptions[idx].label}</option>
+                    ))}
+                </select>
                 <input type="text" placeholder="title" value={Title} onChange={handleTitle} />
                 <textarea placeholder="내용을 입력하세요." value={Description} onChange={handleDescription}
                     style={{height: '300px', resize: 'none'}}
                 ></textarea>
-                <input type="submit" onClick={handleSubmit} />
-            </form>
+                <button onClick={handleSubmit}>제출</button>
+            </div>
         </div>
     )
 }
 
-export default Posting
+export default withRouter(Posting)

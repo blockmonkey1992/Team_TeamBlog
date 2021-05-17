@@ -41,8 +41,13 @@
 .headerTail{
     display: flex;
     margin-right: 3%;
-    div{
-        margin-left: 40px;
+    div,
+    a{
+        width: 80px;
+        text-align: center;
+    &:hover{
+        cursor: pointer;
+    }
     }
 }
 
@@ -50,7 +55,7 @@
     width: 200px;
     padding: 0px 20px;
     margin-top: 23px;
-    margin-right: -100px;
+    margin-right: -3%;
 }
 
 .ant-input{

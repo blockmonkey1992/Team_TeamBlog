@@ -1,12 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import '../../Scss/Header.scss';
-// import { DatePicker } from 'antd';
-// import { SearchOutlined } from '@ant-design/icons';
-import { Input, AutoComplete, Form, TreeSelect, Button } from 'antd';
+import { Input, AutoComplete, Form } from 'antd';
+import { useSelector } from 'react-redux';
 import { SearchOutlined } from '@ant-design/icons';
-import Login from '../Login/Login';
 
+import Login from '../Login/Login';
+import Logout from '../Login/Logout';
 
 
 const formItemLayout = {
@@ -28,7 +27,13 @@ const formItemLayout = {
   },
 };
 
+
+
 function Header() {
+
+  const is_login = useSelector(state => state.user.is_login);
+  console.log(is_login);
+
     return (
         <div className='headerWrapper'>
             <Form {...formItemLayout} />
@@ -61,8 +66,10 @@ function Header() {
                 </div>
             </div>
             <div className='headerTail'>
-                <div><Login /></div>
-                <div>MY</div>
+                <div>
+                  {is_login === true ?  <Logout /> : <Login />}
+                </div>
+                <a href='/profile/:user'>MY</a>
             </div>
         </div>
     )

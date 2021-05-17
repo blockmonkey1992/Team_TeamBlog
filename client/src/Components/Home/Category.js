@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { CloseOutlined } from '@ant-design/icons'
+import React, { useState } from 'react';
+import { CloseOutlined } from '@ant-design/icons';
+import { Row , Col } from 'antd';
 import styled from "styled-components";
 import '../../Scss/Category.scss';
 
 function Category(props) {
 
-    useEffect(() => {
-        console.log(props);
-    }, [])
+    // useEffect(() => {
+    //     console.log(props);
+    // }, [])
 
     const [HtmlCssCategory, setHtmlCssCategory] = useState(true);
     const [JsCategory, setJsCategory] = useState(true);
@@ -142,23 +143,46 @@ function Category(props) {
     }
 
     return (
+        //767px sm
         <div className="categoryWrapper">
             <button className="closeBtn" onClick={handleCloseBtnClick} value={CloseBtn} style={{display: CloseBtn ? 'none' : 'block'}}>
                 <CloseOutlined style={{marginLeft: '-3.7px'}} />
             </button>
-            <div className="buttonColumn">
-                <CategoryBtn onClick={handleHtmlBtnClick} value={HtmlCssCategory} opacity={HtmlCssCategory ? 1 : 0.4}>HTML/CSS</CategoryBtn>
-                <CategoryBtn onClick={handleJsBtnClick} value={JsCategory} opacity={JsCategory ? 1 : 0.4}>JS</CategoryBtn>
-                <CategoryBtn onClick={handleReactBtnClick} value={ReactCategory} opacity={ReactCategory ? 1 : 0.4}>React</CategoryBtn>
-                <CategoryBtn onClick={handleNodeBtnClick} value={NodeExpressCategory} opacity={NodeExpressCategory ? 1 : 0.4}>Node/Express</CategoryBtn>
-                <CategoryBtn onClick={handleMongoBtnClick} value={MongodbCategory} opacity={MongodbCategory ? 1 : 0.4}>MongoDB</CategoryBtn>
+
+
+            
+            <div className="buttonWrapper">
+                <Row gutter={[24, 24]}>
+                    <Col lg={4} md={6} sm={8}>
+                        <CategoryBtn onClick={handleHtmlBtnClick} value={HtmlCssCategory} opacity={HtmlCssCategory ? 1 : 0.3}>HTML/CSS</CategoryBtn>
+                    </Col>
+                    <Col lg={4} md={6} sm={8}>
+                        <CategoryBtn onClick={handleJsBtnClick} value={JsCategory} opacity={JsCategory ? 1 : 0.3}>JS</CategoryBtn>
+                    </Col>
+                    <Col lg={4} md={6} sm={8}>
+                        <CategoryBtn onClick={handleReactBtnClick} value={ReactCategory} opacity={ReactCategory ? 1 : 0.3}>React</CategoryBtn>
+                    </Col>
+                    <Col lg={4} md={6} sm={8}>
+                        <CategoryBtn onClick={handleNodeBtnClick} value={NodeExpressCategory} opacity={NodeExpressCategory ? 1 : 0.3}>Node/Express</CategoryBtn>
+                    </Col>
+                    <Col lg={4} md={8}>
+                        <CategoryBtn onClick={handleMongoBtnClick} value={MongodbCategory} opacity={MongodbCategory ? 1 : 0.3}>MongoDB</CategoryBtn>
+                    </Col>
+                    <Col lg={4} md={8}>
+                        <CategoryBtn onClick={handleGitBtnClick} value={GitCategory} opacity={GitCategory ? 1 : 0.3}>Git/GitHub</CategoryBtn>
+                    </Col>
+                    <Col lg={4} md={8}>
+                        <CategoryBtn onClick={handleHttpBtnClick} value={HttpCategory} opacity={HttpCategory ? 1 : 0.3}>HTTP</CategoryBtn>
+                    </Col>
+                    <Col lg={4} md={8}>
+                        <CategoryBtn onClick={handleAlgorithmBtnClick} value={AlgorithmCategory} opacity={AlgorithmCategory ? 1 : 0.3}>Algorithm</CategoryBtn>
+                    </Col>
+                    <Col lg={4} md={8}>
+                        <CategoryBtn onClick={handleAwsBtnClick} value={AwsCategory} opacity={AwsCategory ? 1 : 0.4}>AWS</CategoryBtn>
+                    </Col>
+                </Row>
             </div>
-            <div className="buttonColumn">
-                <CategoryBtn onClick={handleGitBtnClick} value={GitCategory} opacity={GitCategory ? 1 : 0.4}>Git/GitHub</CategoryBtn>
-                <CategoryBtn onClick={handleHttpBtnClick} value={HttpCategory} opacity={HttpCategory ? 1 : 0.4}>HTTP</CategoryBtn>
-                <CategoryBtn onClick={handleAlgorithmBtnClick} value={AlgorithmCategory} opacity={AlgorithmCategory ? 1 : 0.4}>Algorithm</CategoryBtn>
-                <CategoryBtn onClick={handleAwsBtnClick} value={AwsCategory} opacity={AwsCategory ? 1 : 0.4}>AWS</CategoryBtn>
-            </div>
+
         </div>
     )
 }
