@@ -48,8 +48,6 @@ function Login() {
             setEmail("");
             setPassWord("");
             console.log('로그인 햇음');
-            localStorage.setItem("user", JSON.stringify(response.data));
-            window.location.reload();
           } else {
             //로그인에 실패했네? 이 때 할 작업이 뭘까?
             alert("이메일 혹은 비밀번호가 일치하지 않습니다.");
