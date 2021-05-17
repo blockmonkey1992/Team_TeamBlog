@@ -4,7 +4,6 @@ const { Post } = require("../../model/Post");
 
 const postDetail = async (req, res) => {
     const id = req.params.id;
-    console.log(id);
        try{ const post = await Post.findById(id);
        res.status(200).json({success : true , post});
 }      catch(error) {
@@ -17,7 +16,6 @@ const postAll = async (req, res) => {
         if(err){
             res.status(400).json({ success : false, err})
         } else {
-            console.log(result);
             res.status(200).json({ success : true , result})
         }
     });    

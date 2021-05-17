@@ -2,7 +2,8 @@ const { User } = require("../../model/User");
 
 const logoutUser = (req, res) => {
     const user = req.user;
-    User.findOneAndUpdate({ _id: user._id }, { token: ""}, (err, result)=> {
+    console.log(user);
+    User.findOneAndUpdate({ _id: user._id }, { token: "" }, (err, result)=> {
         if(err){
             return res.status(401).json({ success: false, err });
         } else {
