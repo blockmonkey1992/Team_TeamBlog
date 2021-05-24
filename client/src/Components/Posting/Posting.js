@@ -1,6 +1,9 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import Dropzone from 'react-dropzone';
+import { FileAddOutlined } from "@ant-design/icons";
+import axios from 'axios';
 
 //ckEditor 깔기
 
@@ -9,7 +12,7 @@ function Posting(props) {
     const [Title, setTitle] = useState("");
     const [Description, setDescription] = useState("");
     const [Category, setCategory] = useState(0);
-
+    const [Image, setImage] = useState("");
 
     useEffect(() => {
         //화면 랜더링 됐을때 내가 실행된다.
@@ -36,10 +39,12 @@ function Posting(props) {
         
         e.preventDefault();
 
+
         const variable = {
             "title": Title,
             "description": Description,
             "category": Number(Category.value),
+            "imgUrl" : Image,
             "creator": "blockmonkey",
         }
 
@@ -66,6 +71,19 @@ function Posting(props) {
         { value : 9, label : "Network" },
     ]
 
+    const imgDropHandler = (file) => {
+        let formData = new FormData();
+        const config = {
+            header: {"content-type": "multipart/form-data"}
+        };
+        formData.append("postImg", file[0])
+
+        axios.post("/api/post/uploadImg", formData, config)
+            .then(response => {
+                setImage(response.data.img);
+            });
+    };
+
     return (
         <div style={{
             margin: '20px',
@@ -80,6 +98,17 @@ function Posting(props) {
                         <option value={item.value}>{categoryOptions[idx].label}</option>
                     ))}
                 </select>
+                <Dropzone onDrop={imgDropHandler}>
+                    {({getRootProps, getInputProps}) => (
+                        <section>
+                        <div style={{ width: 300, height: 240, border: "1px solid lightgray", display: "flex", alignItems: "center", justifyContent: "center"}}
+                            {...getRootProps()}>
+                            <input {...getInputProps()} />
+                            <FileAddOutlined style={{ fontSize: "3rem" }} />
+                        </div>
+                        </section>
+                    )}
+                </Dropzone>
                 <input type="text" placeholder="title" value={Title} onChange={handleTitle} />
                 <textarea placeholder="내용을 입력하세요." value={Description} onChange={handleDescription}
                     style={{height: '300px', resize: 'none'}}

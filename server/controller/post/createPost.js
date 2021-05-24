@@ -1,8 +1,5 @@
 const { Post } = require("../../model/Post");
 
-
-
-
 const createPost = (req, res) => {
     const post = new Post({
         title : req.body.title,
