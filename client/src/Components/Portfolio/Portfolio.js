@@ -1,10 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { Carousel } from 'antd';
 // import styled from 'styled-components';
 
 function Portfolio() {
     return (
         <div>
-            This is Portfolio
+            {/* <Carousel effect="fade">
+                <div>
+                <h3 style={contentStyle}>1</h3>
+                </div>
+                <div>
+                <h3 style={contentStyle}>2</h3>
+                </div>
+                <div>
+                <h3 style={contentStyle}>3</h3>
+                </div>
+                <div>
+                <h3 style={contentStyle}>4</h3>
+                </div>
+            </Carousel> */}
         </div>
     )
 }
