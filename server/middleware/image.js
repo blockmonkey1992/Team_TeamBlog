@@ -12,9 +12,10 @@ const uploadImg = multer({
         s3: s3,
         bucket: 'minseo-test-1',
         acl: 'public-read',
+        key: function(req, file, cb){
+            cb(null, Date.now() + '.' + file.originalname.split('.').pop());      
+        }   
     })
-}, (err, result)=> {
-    console.log(result);
 });
 
 //이미지 삭제
