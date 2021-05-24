@@ -5,7 +5,8 @@ const createPost = (req, res) => {
         title : req.body.title,
         description : req.body.description,
         creator : req.body.creator,
-        category: req.body.category
+        category: req.body.category,
+        postImg: req.body.imgUrl
     });
     post.save((err, result) => {
         if(err){
