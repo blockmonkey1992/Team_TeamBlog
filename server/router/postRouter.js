@@ -7,7 +7,7 @@ const updatePost = require("../controller/post/updatePost");
 const { postDetail, postAll, postCategory } = require("../controller/post/readPost");
 const { auth } = require("../middleware/auth");
 const { searchPost }  = require("../controller/post/searchPost");
-
+const {uploadImg, awsDeleteImg}  = require("../middleware/image"); 
 
 
 //글 검색
@@ -21,8 +21,8 @@ router.get("/postAll", postAll);
 router.get("/category", postCategory);
 
 //글 제어
-router.post("/create", createPost);
+router.post("/create", uploadImg.single('postImg'), createPost);
 router.post("/update/:id", updatePost);
-router.delete("/delete/:id", deletePost);
+router.delete("/delete/:id",awsDeleteImg, deletePost);
 
 module.exports = router;
