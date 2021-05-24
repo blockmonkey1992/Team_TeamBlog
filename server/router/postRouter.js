@@ -21,7 +21,8 @@ router.get("/postAll", postAll);
 router.get("/category", postCategory);
 
 //글 제어
-router.post("/create", uploadImg.single('postImg'), createPost);
+router.post("/uploadImg", uploadImg.single('postImg') );
+router.post("/create",  createPost);
 router.post("/update/:id", updatePost);
 router.delete("/delete/:id",awsDeleteImg, deletePost);
 
