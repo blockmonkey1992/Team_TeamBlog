@@ -7,7 +7,7 @@ const auth = (req, res, next) => {
     //-> 유저가 존재하면 인증시켜주고, 없으면 인증시키면 인증안됨.
     User.compareToken(token, (err, user)=>{
         if(err) return res.send(err);
-        if(!user) return res.json({ is_login: false, err });
+        if(!user) return res.json({ is_login: false, msg: "유저가 존재하지 않습니다." });
         req.token = token;
         req.user = user;
         next();

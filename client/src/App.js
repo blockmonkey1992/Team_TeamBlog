@@ -12,27 +12,25 @@ import Detail from "./Components/Detail/Detail";
 import Profile from './Components/Profile/Profile';
 import Search from './Components/Search/Search';
 // import { Provider } from 'react-redux';
-import Posting from './Components/Posting/Posting'
-import Auth from './hoc/auth'
+import Posting from './Components/Posting/Posting';
+import AuthCheck from "./hoc/auth";
 
 
 function App() {
   return (
     <div className="App">
       <Header />
-    {/* null 누구나 접근가능 */}
-    {/* false 로그인을 했을때 접근이 불가능*/}
-    {/* true 로그인을 했을때 접근가능 */}
+      {/* option = null(아무나), true(로그인유저만), false(손님만); */}
       <Switch>
-        <Route exact path='/' component={Auth(LandingPage, null)}/>
-        <Route path='/introduce' component={Auth(Introduce , null)}/>
-        <Route path='/portfolio' component={Auth(Portfolio, null)}/>
-        <Route path='/contact' component={Auth(Contact ,null)}/>
-        <Route path='/detail:id' component={Auth(Detail, null)}/>
-        <Route path='/register' component={Auth(Register, false)}/>
-        <Route path="/profile/:user" component={Auth(Profile, true)} />  
-        <Route path='/search' component={Auth(Search, null)}/>
-        <Route path='/create' component={Auth(Posting, false)}/>
+        <Route exact path='/' component={AuthCheck(LandingPage, null)}/>
+        <Route path='/introduce' component={AuthCheck(Introduce, null)}/>
+        <Route path='/portfolio' component={AuthCheck(Portfolio, null)}/>
+        <Route path='/contact' component={AuthCheck(Contact, null)}/>
+        <Route path='/detail:id' component={AuthCheck(Detail, null)}/>
+        <Route path='/register' component={AuthCheck(Register, false)}/>
+        <Route path="/profile/:user" component={AuthCheck(Profile, true)} />  
+        <Route path='/search' component={Search}/>
+        <Route path='/create' component={Posting}/>
       </Switch>
     
       <Footer />

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../actions/user_action';
-
-
+import { loginUser } from "../../actions/user_action";
 import { Modal, Input } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone} from '@ant-design/icons';
 import '../../Scss/Login.scss';
@@ -12,47 +10,35 @@ import '../../Scss/Login.scss';
 function Login() {
 
   const dispatch = useDispatch();
+  const [UserEmail, setUserEmail] = useState("");
+  const [UserPassword, setUserPassWord] = useState("");
 
-  const [Email, setEmail] = useState("");
-  const [PassWord, setPassWord] = useState("");
-
-
-
-
-  const emailHandler = (e) => {
-    setEmail(e.currentTarget.value);
+  const UserEmailHandler = (e) => {
+    setUserEmail(e.currentTarget.value);
   }
 
-  const pwdHandler = (e) => {
-    setPassWord(e.currentTarget.value);
+  const UserpwdHandler = (e) => {
+    setUserPassWord(e.currentTarget.value);
   }
-
-
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    let body = {
-      email : Email,
-      password : PassWord,
+    let data = {
+      email : UserEmail,
+      password : UserPassword,
     }
 
-    dispatch(loginUser(body));
-    //loginUser = action
-
-    axios.post("/api/users/login", body)
-        .then(response => {
-          if(response.data.loginSuccess){
-            //로그인에 성공했을 때 할 작업을 여기서 하면되겠네?
-            dispatch(loginUser(body))
-            setEmail("");
-            setPassWord("");
-            console.log('로그인 햇음');
-          } else {
-            //로그인에 실패했네? 이 때 할 작업이 뭘까?
-            alert("이메일 혹은 비밀번호가 일치하지 않습니다.");
-          }
-        });
+    dispatch(loginUser(data))
+      .then(response => {
+        if(response.payload.loginSuccess){
+          //로그인 성공시 할 일,
+          console.log(response);
+        } else {
+          //로그인 실패시 할 일,
+          alert(response.payload.msg);
+        }
+      });
   }
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -81,14 +67,14 @@ function Login() {
               <Input
                 type="email"
                 placeholder="E-mail"
-                value={Email}
-                onChange={emailHandler}
+                value={UserEmail}
+                onChange={UserEmailHandler}
                 id="modal-input-email" />
               <Input.Password
                 type="password"
                 placeholder="password"
-                value={PassWord}
-                onChange={pwdHandler}
+                value={UserPassword}
+                onChange={UserpwdHandler}
                 id="modal-input-pw"
                 iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
             </div>
