@@ -19,7 +19,7 @@ function LandingPage(props) {
                     alert('홈화면 데이터를 가져오지 못했습니다.');
                 } else {
                     setData(response.data.result);
-                    // console.log(response);
+                    console.log(response);
                 }
             });
     }, []);
@@ -35,6 +35,7 @@ function LandingPage(props) {
                     {Data.map((item, idx)=> (
                         <Col key={idx} xl = {6} lg={8} md={12} xs={24}>
                             <Home
+                                id={item._id}
                                 title={item.title}
                                 views={item.views}
                                 creator={item.creator}

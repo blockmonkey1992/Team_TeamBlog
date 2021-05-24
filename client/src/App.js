@@ -26,7 +26,7 @@ function App() {
         <Route path='/introduce' component={AuthCheck(Introduce, null)}/>
         <Route path='/portfolio' component={AuthCheck(Portfolio, null)}/>
         <Route path='/contact' component={AuthCheck(Contact, null)}/>
-        <Route path='/detail:id' component={AuthCheck(Detail, null)}/>
+        <Route path='/detail/:id' component={AuthCheck(Detail, null)}/>
         <Route path='/register' component={AuthCheck(Register, false)}/>
         <Route path="/profile/:user" component={AuthCheck(Profile, true)} />  
         <Route path='/search' component={Search}/>
