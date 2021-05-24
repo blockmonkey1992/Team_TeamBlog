@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../Scss/Header.scss';
 import { Input, AutoComplete, Form } from 'antd';
 import { useSelector } from 'react-redux';
@@ -28,8 +28,12 @@ const formItemLayout = {
 };
 
 
-
 function Header(props) {
+  const user = useSelector(state => state.user);
+
+    useEffect(() => {
+      console.log(user);
+    }, [user]);
 
     return (
         <div className='headerWrapper'>
@@ -62,15 +66,18 @@ function Header(props) {
                     </Form.Item>
                 </div>
             </div>
+            
             <div className='headerTail'>
-                <div>
-                  <Logout />
-                  <Login />
-                </div>
-                <a href='/profile/:user'>MY</a>
+            {user.userData &&
+              <div>
+                  {user.userData.is_login ? <Logout /> : <Login />}
+              </div>
+            }
+              <a href='/profile/:user'>MY</a>
             </div>
+           
         </div>
     )
 }
 
-export default Header
+export default Header;

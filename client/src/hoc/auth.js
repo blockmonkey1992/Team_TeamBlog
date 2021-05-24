@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { authUser } from "../actions/user_action";
 
-
+{/* option = null(아무나), true(로그인유저만), false(손님만); */}
 export default function(SpecificComponent, option, admin=null){
     function AuthCheck(props){
         const dispatch = useDispatch();
+        const user = useSelector(state => state.user);
 
         //Node의 Auth API로 리퀘스트를 보내 현재상태 수신.
         useEffect(() => {
@@ -32,7 +33,7 @@ export default function(SpecificComponent, option, admin=null){
         }, []);
 
         return (
-            <SpecificComponent />
+            <SpecificComponent {...props} user={user}/>
         )
     }
     return AuthCheck;

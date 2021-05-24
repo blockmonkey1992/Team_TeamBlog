@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* option = null(아무나), true(로그인유저만), false(손님만); */}
+
       <Switch>
         <Route exact path='/' component={AuthCheck(LandingPage, null)}/>
         <Route path='/introduce' component={AuthCheck(Introduce, null)}/>
