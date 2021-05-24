@@ -1,7 +1,7 @@
 const express = require("express");
 const { model } = require("mongoose");
 const router = express.Router();
-const createPost = require("../controller/post/createPost");
+const {createPost, upImg} = require("../controller/post/createPost");
 const deletePost = require("../controller/post/deletePost");
 const updatePost = require("../controller/post/updatePost");
 const { postDetail, postAll, postCategory } = require("../controller/post/readPost");
@@ -21,7 +21,7 @@ router.get("/postAll", postAll);
 router.get("/category", postCategory);
 
 //글 제어
-router.post("/uploadImg", uploadImg.single('postImg') );
+router.post("/uploadImg", uploadImg.single('postImg'), upImg );
 router.post("/create",  createPost);
 router.post("/update/:id", updatePost);
 router.delete("/delete/:id",awsDeleteImg, deletePost);
