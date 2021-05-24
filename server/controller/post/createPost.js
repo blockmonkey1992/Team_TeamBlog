@@ -1,6 +1,8 @@
 const { Post } = require("../../model/Post");
 
 
+
+
 const createPost = (req, res) => {
     const post = new Post({
         title : req.body.title,
@@ -17,5 +19,9 @@ const createPost = (req, res) => {
     });
     
 };  
+const upImg = async(req, res) => {
+    const img = req.file.location
+    res.json({ img });
+};
 
-module.exports = createPost;
+module.exports = { createPost, upImg}
