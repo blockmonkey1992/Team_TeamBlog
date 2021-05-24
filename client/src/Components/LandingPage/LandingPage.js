@@ -4,8 +4,6 @@ import LandingCarousel from "./Sections/LandingCarousel";
 import Home from '../Home/Home';
 import Category from '../Home/Category';
 import { Row , Col } from 'antd';
-import { LOGIN_USER } from '../../actions/types';
-import { loginUser, auth } from '../../actions/user_action';
 
 function LandingPage(props) {
 
@@ -40,6 +38,8 @@ function LandingPage(props) {
                                 views={item.views}
                                 creator={item.creator}
                                 createdAt={item.createdAt}
+                                description={item.description}
+                                category={item.category}
                             />
                         </Col>
                     ))}

@@ -54,17 +54,17 @@ function Posting(props) {
     }
 
     const categoryOptions = [
-            { value : 0, label : "HTML/CSS" },
-            { value : 1, label : "Js" },
-            { value : 2, label : "React" },
-            { value : 3, label : "Node/Express" },
-            { value : 4, label : "MongoDB" },
-            { value : 5, label : "Git/GitHub" },
-            { value : 6, label : "HTTP" },
-            { value : 7, label : "Algorithm" },
-            { value : 8, label : "AWS" },
-            { value : 9, label : "Network" },
-        ]
+        { value : 0, label : "HTML/CSS" },
+        { value : 1, label : "Js" },
+        { value : 2, label : "React" },
+        { value : 3, label : "Node/Express" },
+        { value : 4, label : "MongoDB" },
+        { value : 5, label : "Git/GitHub" },
+        { value : 6, label : "HTTP" },
+        { value : 7, label : "Algorithm" },
+        { value : 8, label : "AWS" },
+        { value : 9, label : "Network" },
+    ]
 
     return (
         <div style={{
