@@ -44,6 +44,7 @@ function Posting(props) {
             "title": Title,
             "description": Description,
             "category": Number(Category.value),
+            "imgUrl" : Image,
             "creator": "blockmonkey",
         }
 
@@ -75,9 +76,13 @@ function Posting(props) {
         const config = {
             header: {"content-type": "multipart/form-data"}
         };
-        formData.append("file", file[0]);
-        console.log(file);
-    }
+        formData.append("postImg", file[0])
+
+        axios.post("/api/post/uploadImg", formData, config)
+            .then(response => {
+                setImage(response.data.img);
+            });
+    };
 
     return (
         <div style={{
