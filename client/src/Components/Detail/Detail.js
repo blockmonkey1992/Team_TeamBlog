@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-// import Axios from "axios";
+import Axios from "axios";
+
+import Comment from './Sections/Comment';
 import { EyeOutlined, HeartOutlined, CommentOutlined, HeartFilled } from '@ant-design/icons';
 import "../../Scss/Detail.scss";
-import Axios from "axios";
 
 
 function Detail(props) {
@@ -36,7 +37,10 @@ function Detail(props) {
         }
         //댓글띄우는 API
         Axios.get(`/api/comments/${props.match.params.id}`)
-            .then(response => console.log(response));
+            .then(response => {
+                console.log(response.data.result);
+                
+            });
     }, []);
 
     const handleContent = (e) => {
@@ -51,11 +55,7 @@ function Detail(props) {
         //댓글작성 API
         Axios.post(`/api/comments/create/${props.match.params.id}`, dataToSubmit)
             .then(response => {
-                if(response.data.success){
-                    alert("댓글작성 완료");
-                } else {
-                    alert("댓글작성 실패");
-                }
+                alert("댓글작성 완료");
             });
     }
 
@@ -78,7 +78,13 @@ function Detail(props) {
                 <div className="detailWrapper_like"><HeartOutlined /><span>2</span></div>  
             </div>
             <div className="detailWrapper_comment">
-                <div className="detailWrapper_comment__column">
+                <Comment />
+                {/* {Content.map((item, idx) => (
+                    <Comment
+                        {...item}
+                    />
+                ))} */}
+                {/* <div className="detailWrapper_comment__column">
                     <div className="detailWrapper_comment_creator">
                         <div>Nickname</div>
                         <div>21-05-30</div>
@@ -87,7 +93,7 @@ function Detail(props) {
                         <div>굿굿~ 잘하셨네요 ㅋㅋ</div>
                         <button>답글</button>
                     </div>
-                </div>
+                </div> */}
                 <div className="detailWrapper_comment__column">
                     <textarea 
                         value={Content} 

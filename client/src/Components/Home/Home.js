@@ -5,8 +5,7 @@ import "../../Scss/Home.scss";
 import { EyeOutlined, HeartOutlined, CommentOutlined } from '@ant-design/icons';
 
 function Home(props) {
-
-    const date = props.createdAt.split("T")[0];
+    
     console.log(props);
 
     return (
