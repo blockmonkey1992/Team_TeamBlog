@@ -59,6 +59,12 @@ function Detail(props) {
             });
     }
 
+    const likeBtnHandler = (e) => {
+        e.preventDefault();
+        Axios.get(`/api/like/${props.match.params.id}`)
+            .then(response => console.log(response));
+    }
+
     return (
         <div className="detailContainer">
             <div className="detailWrapper">
@@ -75,7 +81,10 @@ function Detail(props) {
                     </div>
                 </div>
                 <div className="detailWrapper_description">{root.description}</div>
-                <div className="detailWrapper_like"><HeartOutlined /><span>2</span></div>  
+                <div className="detailWrapper_like">
+                    <HeartOutlined onClick={likeBtnHandler}/>
+                    <span>1</span>
+                </div>  
             </div>
             <div className="detailWrapper_comment">
                 <Comment />
