@@ -10,16 +10,12 @@ function LandingPage(props) {
     const [Data, setData] = useState([]);
 
     useEffect(() => {
-
         Axios.get('/api/post/postAll')
             .then(response => {
-                if(!response.data.success){
-                    alert('홈화면 데이터를 가져오지 못했습니다.');
-                } else {
+                if(response.data.success){
                     setData(response.data.result);
-                    console.log(response);
                 }
-            });
+            })
     }, []);
 
     
@@ -40,6 +36,7 @@ function LandingPage(props) {
                                 createdAt={item.createdAt}
                                 description={item.description}
                                 category={item.category}
+                                imgSrc={item.postImg}
                             />
                         </Col>
                     ))}

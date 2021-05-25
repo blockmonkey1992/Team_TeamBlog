@@ -6,17 +6,19 @@ import { EyeOutlined, HeartOutlined, CommentOutlined } from '@ant-design/icons';
 
 function Home(props) {
     
-    console.log(props);
+    console.log(props.imgSrc);
 
     return (
-        <Link to={{
+        <Link className='homeLink' to={{
             pathname: `/detail/${props.id}`,
             state : {props},
             }}>
 
             <div className="homeCard">
                 <div className="homeCard_column">
-                    <img src="#" />
+                    <div className="homeCard_ImgContainer">
+                        <img src={props.imgSrc} />
+                    </div>
                 </div>
                 <div className="homeCard_column">
                     <div className="homeCard_description">

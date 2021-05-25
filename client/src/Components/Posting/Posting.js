@@ -2,8 +2,9 @@ import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
-import { FileAddOutlined } from "@ant-design/icons";
 import axios from 'axios';
+import { FileAddOutlined } from "@ant-design/icons";
+import '../../Scss/Posting.scss';
 
 
 function Posting(props) {
@@ -84,39 +85,37 @@ function Posting(props) {
     };
 
     return (
-        <div style={{
-            margin: '20px',
-        }}>
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                padding: '30px',
-            }} >
-                <select onChange={handleCategory}>
-                    {categoryOptions.map((item, idx) => (
-                        <option value={item.value}>{categoryOptions[idx].label}</option>
-                    ))}
-                </select>
-                <Dropzone onDrop={imgDropHandler}>
-                    {({getRootProps, getInputProps}) => (
-                        <section>
-                        <div style={{ width: 300, height: 240, border: "1px solid lightgray", display: "flex", alignItems: "center", justifyContent: "center"}}
-                            {...getRootProps()}>
-                            <input {...getInputProps()} />
-                            <FileAddOutlined style={{ fontSize: "3rem" }} />
-                        </div>
-                        </section>
-                    )}
-                </Dropzone>
+        <div className='postingWrapper'>
+            <div className='postingContents'>
+                <div className='postingContents__column'>
+                    <select className='postingCategory' onChange={handleCategory}>
+                        {categoryOptions.map((item, idx) => (
+                            <option value={item.value}>{categoryOptions[idx].label}</option>
+                        ))}
+                    </select>
+
+                    <input className='postingTitle' type="text" placeholder="제목을 입력해주세요." value={Title} onChange={handleTitle} />
+
+                    <Dropzone onDrop={imgDropHandler}>
+                        {({getRootProps, getInputProps}) => (
+                            <section>
+                                <div {...getRootProps()}>
+                                    <input {...getInputProps()}/>
+                                    <FileAddOutlined style={{ fontSize: "35px" }} />
+                                </div>
+                            </section>
+                        )}
+                    </Dropzone>
+                </div>
+
                 {/* 드랍존에 넣으면 옆에 이미지가 출력되기 위한 이미지태그. */}
-                <div>
+                <div className='postingImg_Container'>
                     <img src={Image} alt="Image"/>
                 </div>
-                <input type="text" placeholder="title" value={Title} onChange={handleTitle} />
-                <textarea placeholder="내용을 입력하세요." value={Description} onChange={handleDescription}
-                    style={{height: '300px', resize: 'none'}}
-                ></textarea>
-                <button onClick={handleSubmit}>제출</button>
+                
+                <textarea className='postingTextarea' placeholder="내용을 입력하세요." value={Description} onChange={handleDescription}></textarea>
+
+                <button className='postingBtn' onClick={handleSubmit}>작성</button>
             </div>
         </div>
     )
