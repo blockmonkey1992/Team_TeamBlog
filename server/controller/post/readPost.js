@@ -6,7 +6,7 @@ const postDetail = async (req, res) => {
     const id = req.params.id;
        try{ const post = await Post.findById(id);
        res.status(200).json({success : true , post});
-}      catch(error) {
+       } catch(error) {
        res.status(400).json({success : false , error});
   }
 };

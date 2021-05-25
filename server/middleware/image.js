@@ -19,24 +19,24 @@ const uploadImg = multer({
 });
 
 //이미지 삭제
-const awsDeleteImg = async (req, res, next) => {
-    const id = req.params.id;
-    const img = await Post.findById(id);
-    const url = img.fileUrl.split('/');
-    const delImg = url[url.length - 1]
-    const params = {
-        Bucket: 'minseo-test-1',
-        Key: delImg
-    }
-    s3.deleteObject(params, (err, data) => {
-        if(err) {
-            res.json({ imgSuccess : false , err})
-            console.log(err, err.stack)
-        }else {
-            res.json({ imgSuccess : true, data})
-        }
-    })
-    next();
+    const awsDeleteImg = async (req, res, next) => {
+        try {
+            const id = req.params.id;
+            const img = await Post.findById(id);
+            console.log(img);
+            const url = img.postImg.split('/');
+            const delImg = url[url.length - 1];
+            const params = {
+                Bucket: 'minseo-test-1',
+                Key: delImg
+            };
+            s3.deleteObject(params, (err, data) => {
+                next();
+            });
+        } catch(err){
+            res.status(400).json({ imgSuccess : false , err });
+            console.log(err, err.stack);
+        };
 }
 
 module.exports = {uploadImg, awsDeleteImg};
