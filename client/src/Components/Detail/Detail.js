@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 // import Axios from "axios";
 import { EyeOutlined, HeartOutlined, CommentOutlined, HeartFilled } from '@ant-design/icons';
 import "../../Scss/Detail.scss";
+import Axios from "axios";
+
 
 function Detail(props) {
+    const [Content, setContent] = useState("");
 
     const { location, history } = props;
     const root = location.state.props;
-    console.log(location.state.props);
 
     const categoryOptions = [
         { value : 0, label : "HTML/CSS" },
@@ -29,12 +31,33 @@ function Detail(props) {
     
 
     useEffect(() => {
-
         if(location.state === undefined){
             history.push('/');
         }
-        
+        //댓글띄우는 API
+        Axios.get(`/api/comments/${props.match.params.id}`)
+            .then(response => console.log(response));
     }, []);
+
+    const handleContent = (e) => {
+        setContent(e.currentTarget.value);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let dataToSubmit = {
+            content : Content
+        }
+        //댓글작성 API
+        Axios.post(`/api/comments/create/${props.match.params.id}`, dataToSubmit)
+            .then(response => {
+                if(response.data.success){
+                    alert("댓글작성 완료");
+                } else {
+                    alert("댓글작성 실패");
+                }
+            });
+    }
 
     return (
         <div className="detailContainer">
@@ -66,8 +89,12 @@ function Detail(props) {
                     </div>
                 </div>
                 <div className="detailWrapper_comment__column">
-                    <textarea placeholder="덧글을 달아주세요." />
-                    <button>작성</button>
+                    <textarea 
+                        value={Content} 
+                        placeholder="덧글을 달아주세요." 
+                        onChange={handleContent} 
+                    />
+                    <button onClick={handleSubmit}>작성</button>
                 </div>
             </div>
         </div>

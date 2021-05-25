@@ -6,14 +6,15 @@ const commentSchema = mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
-    post: {
+    content: {
+        type: String,
+        minlength: 3
+    },
+    postId: {
         type: Schema.Types.ObjectId,
         ref: "Post"
     },
-    contents: {
-        type: String,
-        minlength: 3
-    }
+
 }, {timestamps: true});
 
 const Comment = mongoose.model("Comment", commentSchema);

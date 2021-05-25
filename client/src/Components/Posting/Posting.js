@@ -5,7 +5,6 @@ import Dropzone from 'react-dropzone';
 import { FileAddOutlined } from "@ant-design/icons";
 import axios from 'axios';
 
-//ckEditor 깔기
 
 function Posting(props) {
     
@@ -109,6 +108,10 @@ function Posting(props) {
                         </section>
                     )}
                 </Dropzone>
+                {/* 드랍존에 넣으면 옆에 이미지가 출력되기 위한 이미지태그. */}
+                <div>
+                    <img src={Image} alt="Image"/>
+                </div>
                 <input type="text" placeholder="title" value={Title} onChange={handleTitle} />
                 <textarea placeholder="내용을 입력하세요." value={Description} onChange={handleDescription}
                     style={{height: '300px', resize: 'none'}}
