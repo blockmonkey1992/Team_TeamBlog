@@ -11,14 +11,19 @@ const postDetail = async (req, res) => {
   }
 };
 
-const postAll = async (req, res) => {
-        await Post.find().exec((err, result) => {
-        if(err){
-            res.status(400).json({ success : false, err})
-        } else {
-            res.status(200).json({ success : true , result})
-        }
-    });    
+const postAll =  async(req, res) => {
+            skip = 0;
+            limit = 5;
+        await Post.find().skip(skip).limit(limit).exec((err, result) => {  
+            console.log(result.length);        
+            if(err){
+                
+                res.status(400).json({ success : false, err})
+            } else {
+                res.status(200).json({ success : true , result})
+                
+            }
+        });     
 }
 
 const postCategory = async(req, res) => {
