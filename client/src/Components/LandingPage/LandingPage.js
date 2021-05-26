@@ -11,8 +11,6 @@ function LandingPage(props) {
     const [Skip, setSkip] = useState(0);
     const [Limit, setLimit] = useState(8);
 
-
-
     useEffect(() => {
 
         let body = {
@@ -33,6 +31,19 @@ function LandingPage(props) {
         })
     }
 
+    const loadMoreHandler = () => {
+        let skip = Skip + Limit;
+
+        let body = {
+            skip : skip,
+            limit : Limit,
+            loadMore: true,
+        }
+
+        getHomes(body);
+        setSkip(skip);
+
+    }
  
 
     return (
@@ -57,7 +68,7 @@ function LandingPage(props) {
                     ))}
                 </Row>}
             <div>
-                <button>더보기</button>
+                <button onClick={loadMoreHandler}>더보기</button>
             </div>
         </div>
     )
