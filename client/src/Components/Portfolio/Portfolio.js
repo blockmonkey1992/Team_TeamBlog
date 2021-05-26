@@ -1,39 +1,25 @@
 import React from 'react';
-import { Carousel } from 'antd';
+import '../../Scss/Portfolio.scss';
 
 function Portfolio() {
 
-    const carouselStyle = {
-        display: 'flex',
-        justifyContent: 'center',
-    };
-
-    const contentStyle = {
-        height: '500px',
-        width: '90%',
-        fontWeight: '900',
-        fontSize: '20px',
-        lineHeight: '250px',
-        textAlign: 'center',
-        background: '#CA526B',
-    };
-
     return (
-        <div>
-            <Carousel effect="fade" style={carouselStyle}>
-                <div>
-                    <h3 style={contentStyle}>1</h3>
+        <div className='portfolioWrapper'>
+            <div className='portfolio_content'>
+                <div className='portfolio__Img'><img /></div>
+                <div className='portfolio_content__Wrapper'>
+                    <div className='portfolio_content__Title'>
+                        <div>Title</div>
+                        <div>(2021-06)</div>
+                    </div>
+                    <div className='portfolio_content__Description'>Description</div>
+                    <div className='portfolio_content_Links'>
+                        <a href='/' target='_blank'>Go to Page</a>
+                        <a href='/' target='_blank'>GitHub</a>
+                        <a href='/' target='_blank'>Read Me</a>
+                    </div>
                 </div>
-                <div>
-                    <h3 style={contentStyle}>2</h3>
-                </div>
-                <div>
-                    <h3 style={contentStyle}>3</h3>
-                </div>
-                <div>
-                    <h3 style={contentStyle}>4</h3>
-                </div>
-            </Carousel>
+            </div>
         </div>
     )
 }

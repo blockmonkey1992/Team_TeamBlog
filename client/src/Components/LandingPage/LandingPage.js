@@ -8,17 +8,24 @@ import { Row , Col } from 'antd';
 function LandingPage(props) {
 
     const [Data, setData] = useState([]);
+    const [Skip, setSkip] = useState(0);
+    const [Limit, setLimit] = useState(8);
+
+    let body = {
+        skip : Skip,
+        limit : Limit,
+    }
 
     useEffect(() => {
-        Axios.get('/api/post/postAll')
-            .then(response => {
-                if(response.data.success){
-                    setData(response.data.result);
-                }
-            })
-    }, []);
+        Axios.get('/api/post/postAll', body)
+        .then(response => {
+            if(response.data.success){
+                setData(response.data.result);
+            }
+        })
+    }, [])
 
-    
+ 
 
     return (
         <div>
@@ -41,6 +48,9 @@ function LandingPage(props) {
                         </Col>
                     ))}
                 </Row>}
+            <div>
+                <button>더보기</button>
+            </div>
         </div>
     )
 }
