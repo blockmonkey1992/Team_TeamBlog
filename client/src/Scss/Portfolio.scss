@@ -1,12 +1,62 @@
 .portfolioWrapper{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 40px 0 20px 0;
+    padding: 40px 70px 20px 70px;
 }
 
 .portfolio_content{
     background-color: white;
     width: 400px; height: 80vh;
     border-radius: 20px;
+    .portfolio__Img{
+        background-color: black;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        width: 100%; height: 70%;
+    }
+    .portfolio_content__Wrapper{
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 30px 30px 30px;
+        .portfolio_content__Title{
+            display: flex;
+            align-items: flex-end;
+            div:first-child{
+                font-size: 24px;
+                font-weight: 900;
+                color: #CA526B;
+            }
+            div:last-child{
+                font-size: 15px;
+                font-weight: 400;
+                color: #CA526B;
+                margin-left: 7px;
+            }
+        }
+        .portfolio_content__Description{
+            font-size: 14px;
+            p{
+                margin-bottom: 2px;
+            }
+        }
+
+        .portfolio_content_Links{
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            a{
+                border: #CA526B 1px solid;
+                color: #CA526B;
+                width: 30%; height: 30px;
+                border-radius: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
 }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginUser } from "../../actions/user_action";
 import { Modal, Input } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone} from '@ant-design/icons';
@@ -34,6 +33,7 @@ function Login() {
         if(response.payload.loginSuccess){
           //로그인 성공시 할 일,
           console.log(response);
+          window.location.reload();
         } else {
           //로그인 실패시 할 일,
           alert(response.payload.msg);

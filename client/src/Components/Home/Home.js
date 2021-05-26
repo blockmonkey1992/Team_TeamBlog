@@ -5,8 +5,6 @@ import "../../Scss/Home.scss";
 import { EyeOutlined, HeartOutlined, CommentOutlined } from '@ant-design/icons';
 
 function Home(props) {
-    
-    console.log(props.imgSrc);
 
     return (
         <Link className='homeLink' to={{

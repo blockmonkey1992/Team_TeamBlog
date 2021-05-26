@@ -36,7 +36,7 @@ function Header(props) {
 
     return (
         <div className='headerWrapper'>
-            <Form {...formItemLayout} />
+            {/* <Form {...formItemLayout} /> */}
             <a href='/' className='headerName'>NINJA CODERS</a>
             <div className='headerMiddle'>
                 <div className='menu'>
@@ -67,11 +67,11 @@ function Header(props) {
             </div>
             
             <div className='headerTail'>
-            {user.userData &&
-              <div>
-                  {user.userData.is_login ? <Logout /> : <Login />}
-              </div>
-            }
+              {user.userData &&
+                <div>
+                    {user.userData.is_login ? <Logout /> : <Login />}
+                </div>
+              }
               <a href='/profile/:user'>MY</a>
             </div>
            

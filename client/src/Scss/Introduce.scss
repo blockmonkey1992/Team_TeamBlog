@@ -1,0 +1,34 @@
+.introduceWrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 200px 300px;
+}
+
+.introduce__Person{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &:hover{
+        cursor: pointer;
+    }
+
+    .introduce_Profile{
+        width: 200px; height: 200px;
+        border-radius: 50%;
+        background-color: black;
+    }
+
+    .introduce_Name{
+        color: #CA526B;
+        font-weight: 900;
+        font-size: 19px;
+        margin: 25px 0 12px 0;
+    }
+
+    .introduce_Intro{
+        font-size: 14px;
+        font-weight: 200;
+    }
+}
