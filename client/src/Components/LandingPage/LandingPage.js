@@ -11,19 +11,27 @@ function LandingPage(props) {
     const [Skip, setSkip] = useState(0);
     const [Limit, setLimit] = useState(8);
 
-    let body = {
-        skip : Skip,
-        limit : Limit,
-    }
+
 
     useEffect(() => {
-        Axios.get('/api/post/postAll', body)
+
+        let body = {
+            skip : Skip,
+            limit : Limit,
+        }
+
+        getHomes(body);
+
+    }, [])
+
+    const getHomes = (body) => {
+        Axios.post('/api/post/postAll', body)
         .then(response => {
             if(response.data.success){
                 setData(response.data.result);
             }
         })
-    }, [])
+    }
 
  
 
