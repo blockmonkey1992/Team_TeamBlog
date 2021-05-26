@@ -15,7 +15,12 @@ router.post("/login", loginUser);
 
 router.post("/register", registerUser);
 
-router.get("/profile", userProfile);
+router.post("/profile/:user", auth, userProfile);
+
+router.get("/profile/like/:user");
+
+router.get("/profile/comment/:user");
+
 
 
 

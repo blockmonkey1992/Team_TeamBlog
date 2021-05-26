@@ -1,6 +1,5 @@
 const authUser = (req, res) => {
     const user = req.user;
-    
     return res.status(200).json({ 
         _id: user._id,
         email : user.email,
