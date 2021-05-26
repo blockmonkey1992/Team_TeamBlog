@@ -12,7 +12,7 @@ const postDetail = async (req, res) => {
 };
 
 const postAll =  async(req, res) => {
-        const limit = req.body.limit ? parseInt(req.body.limit) : 8;
+        const limit = req.body.limit ? parseInt(req.body.limit) : 6;
         const skip = req.body.skip ? parseInt(req.body.skip) : 0;
         console.log(req.body);
         await Post.find().skip(skip).limit(limit).exec((err, result) => {  
@@ -20,7 +20,7 @@ const postAll =  async(req, res) => {
              if(err){
                 res.status(400).json({ success : false, err})
             } else {
-                res.status(200).json({ success : true , result  })
+                res.status(200).json({ success : true , result , postCount : result.length })
             }
         });     
 }
