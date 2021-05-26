@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import Axios from "axios";
-
+import Like from "./Sections/Like";
 import Comment from './Sections/Comment';
 import { EyeOutlined, HeartOutlined, CommentOutlined, HeartFilled } from '@ant-design/icons';
 import "../../Scss/Detail.scss";
@@ -9,7 +9,6 @@ import "../../Scss/Detail.scss";
 
 function Detail(props) {
     const [Content, setContent] = useState("");
-
     const { location, history } = props;
     const root = location.state.props;
 
@@ -32,14 +31,15 @@ function Detail(props) {
     
 
     useEffect(() => {
+        console.log(props);
         if(location.state === undefined){
             history.push('/');
         }
+
         //댓글띄우는 API
         Axios.get(`/api/comments/${props.match.params.id}`)
             .then(response => {
-                console.log(response.data.result);
-                
+                //댓글 띄우고 처리내용?
             });
     }, []);
 
@@ -59,11 +59,7 @@ function Detail(props) {
             });
     }
 
-    const likeBtnHandler = (e) => {
-        e.preventDefault();
-        Axios.get(`/api/like/${props.match.params.id}`)
-            .then(response => console.log(response));
-    }
+    
 
     return (
         <div className="detailContainer">
@@ -76,15 +72,12 @@ function Detail(props) {
                     </div>
                     <div className="detailColumn">
                         <div><EyeOutlined /> {root.views}</div>
-                        <div><HeartOutlined /> 1</div>
-                        <div><CommentOutlined /> 1</div>
+                        <div><HeartOutlined /> 2</div>
+                        <div><CommentOutlined /> 3</div>
                     </div>
                 </div>
                 <div className="detailWrapper_description">{root.description}</div>
-                <div className="detailWrapper_like">
-                    <HeartOutlined onClick={likeBtnHandler}/>
-                    <span>1</span>
-                </div>  
+                <Like />
             </div>
             <div className="detailWrapper_comment">
                 <Comment />

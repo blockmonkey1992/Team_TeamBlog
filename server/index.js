@@ -25,7 +25,7 @@ app.use("/api/users", require("./router/userRouter"));
 app.use("/api/post", require("./router/postRouter"));
 app.use("/api/contact", require("./router/contactRouter"));
 app.use("/api/comments", require("./router/commentRouter"));
-app.use("/api/like/", require("./router/likeRouter"));
+app.use("/api/like", require("./router/likeRouter"));
 
 //테스트용 API
 app.post("/api/test", (req, res)=> {
