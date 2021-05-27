@@ -11,6 +11,8 @@ function Detail(props) {
 
     const { location, history } = props;
     const root = location.state.props;
+    const [LikeCount, setLikeCount] = useState(0);
+    const [CommentCount, setCommentCount] = useState(0);
 
     const categoryOptions = [
         { value : 0, label : "HTML/CSS" },
@@ -40,7 +42,13 @@ function Detail(props) {
         Axios.get(`/api/comments/${props.match.params.id}`)
             .then(response => {
                 //댓글 띄우고 처리내용?
+                setCommentCount(response.data.result.length);
             });
+        //좋아요 갯수 API
+        Axios.get(`/api/like/${props.match.params.id}`)
+        .then(response => {
+            setLikeCount(response.data.liked.length);
+        });
     }, []);
     
 
@@ -55,8 +63,8 @@ function Detail(props) {
                     </div>
                     <div className="detailColumn">
                         <div><EyeOutlined /> {root.views}</div>
-                        <div><HeartOutlined /> 2</div>
-                        <div><CommentOutlined /> 3</div>
+                        <div><HeartOutlined /> {LikeCount}</div>
+                        <div><CommentOutlined /> {CommentCount}</div>
                     </div>
                 </div>
                 <div className="detailWrapper_description">{root.description}</div>

@@ -19,7 +19,9 @@ router.post("/register", registerUser);
 router.post("/profile/:user", auth, updateUser);
 router.get("/profile/:user", auth, updatedUser);
 
+
 router.get("/profile/:user/like",auth, userLiked);
+
 
 router.get("/profile/comment/:user");
 
