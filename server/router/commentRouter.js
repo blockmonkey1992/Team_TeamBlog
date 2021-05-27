@@ -9,7 +9,4 @@ const { auth } = require("../middleware/auth");
 router.get("/:id", readComment);
 router.post("/create/:id", auth, createCommnent);
 
-
-
-
 module.exports = router;

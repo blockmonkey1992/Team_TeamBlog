@@ -44,7 +44,7 @@ function Like(props){
                 {LikeActionState ?
                     <HeartFilled onClick={likeBtnHandler} /> :
                     <HeartOutlined onClick={likeBtnHandler} />
-                 }
+                }
                 <span>{LikeCount}</span>
             </div>  
         </div>
