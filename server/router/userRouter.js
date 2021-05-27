@@ -5,7 +5,7 @@ const registerUser = require("../controller/user/registerUser");
 const logoutUser = require("../controller/user/logoutUser");
 const authUser = require("../controller/user/authUser");
 const { auth } = require("../middleware/auth");
-const { userProfile } = require("../controller/user/profile");
+const { updateUser } = require("../controller/user/updateUser");
 
 router.get("/auth", auth, authUser);
 
@@ -15,7 +15,7 @@ router.post("/login", loginUser);
 
 router.post("/register", registerUser);
 
-router.post("/profile/:user", auth, userProfile);
+router.post("/profile/:user", auth, updateUser);
 
 router.get("/profile/like/:user");
 
