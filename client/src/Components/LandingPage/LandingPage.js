@@ -31,7 +31,7 @@ function LandingPage(props) {
     const getHomes = (body) => {
         Axios.post('/api/post/postAll', body)
         .then(response => {
-            console.log(response);
+            // console.log(response);
             if(response.data.success){
                 if(body.loadMore){
                     setData([...Data, ...response.data.result]);

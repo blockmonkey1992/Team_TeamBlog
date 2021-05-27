@@ -1,24 +1,32 @@
 import React from 'react';
-import { UserOutlined, HeartOutlined, CommentOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
+import { UserOutlined, HeartOutlined, CommentOutlined, LogoutOutlined } from '@ant-design/icons';
 import "../../../Scss/Profile.scss";
 
-function Menu() {
+function Menu(props) {
+
     return (
         <div className="myMenu__Wrapper">
             <div className="myMenu__title">나의 정보</div>
             <div className="myMenu__contents">
                 <div className="myMenu__list">
                     <UserOutlined />
-                    <a href="/profile/:user/">My</a>
+                    <Link to={{
+                        pathname: `/profile/${props.id}`
+                    }}>My</Link>
                 </div>
                 <div className="myMenu__list">
                     <HeartOutlined />
-                    <a href="/profile/:user/like">Like</a>
+                    <Link to={{
+                        pathname: `/profile/like/${props.id}`
+                    }}>Like</Link>
                 </div>
                 <div className="myMenu__list">
                     <CommentOutlined />
-                    <a href="/profile/:user/comment">Comment</a>
+                    <Link to={{
+                        pathname: `/profile/comment/${props.id}`
+                    }}>Comment</Link>
                 </div>
                 <div className="myMenu__list">
                     <LogoutOutlined />

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Route, Switch } from 'react-router-dom';
-import Axios from "axios";
 
 import Menu from './Sections/Menu';
 import My from './Sections/My';
@@ -9,31 +8,23 @@ import Comment from './Sections/Comment';
 
 import "../../Scss/Profile.scss";
 
-function Profile() {
+function Profile(props) {
 
-    const [UserInfo, setUserInfo] = useState([]);
-
-    useEffect(() => {
-        Axios.get("/api/users/auth")
-            .then(response => {
-                setUserInfo(response.data);
-            });
-    }, []);
     
     return (
         <div className="register_my__container">
             <div className="register_my__wrapper">
-                {/* {props.user &&
-                <div className="register_my__wrapper-title">{props.user.userData.name}</div>
-                } */}
-                <div className="register_my__wrapper-title"><p>{UserInfo.name}</p></div>
+                <div className="register_my__wrapper-title"><p>{props.user.userData.name}</p></div>
                 <div className="myWrapper">
-                    <Menu />
+                    <Menu
+                        id={props.user.userData._id}
+                        name={props.user.userData.name}
+                        email={props.user.userData.email}
+                    />
                     <Switch>
-                        <Route exact path="/profile/:user" component={My} />
-                        <Route exact path="/profile/:user/like" component={Like} />
-                        <Route exact path="/profile/:user/comment" component={Comment} />
-
+                        <Route exact path="/profile/:userId" component={My} />
+                        <Route exact path="/profile/like/:userId" component={Like} />
+                        <Route exact path="/profile/comment/:userId" component={Comment} />
                     </Switch>
                 </div>
             </div>

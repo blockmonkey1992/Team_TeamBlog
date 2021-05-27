@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Axios from "axios";
+
 import '../../Scss/Header.scss';
 import { Input, AutoComplete, Form } from 'antd';
-import { useSelector } from 'react-redux';
 import { SearchOutlined } from '@ant-design/icons';
 
 import Login from '../Login/Login';
@@ -29,10 +32,21 @@ const formItemLayout = {
 
 
 function Header(props) {
+
+
   const user = useSelector(state => state.user);
 
-    useEffect(() => {
-    }, []);
+  const [UserInfo, setUserInfo] = useState([]);
+
+  useEffect(() => {
+      Axios.get("/api/users/auth")
+          .then(response => {
+              // console.log(response);
+              setUserInfo(response.data);
+          });
+  }, []);
+
+  // console.log(UserInfo);
 
     return (
         <div className='headerWrapper'>
@@ -72,7 +86,10 @@ function Header(props) {
                     {user.userData.is_login ? <Logout /> : <Login />}
                 </div>
               }
-              <a href='/profile/:user'>MY</a>
+              <Link to={{
+                pathname: `/profile/${UserInfo._id}`,
+                state : UserInfo,
+              }}>MY</Link>
             </div>
            
         </div>
