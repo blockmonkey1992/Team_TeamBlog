@@ -17,8 +17,8 @@ function Profile(props) {
                     <Menu />
                     <Switch>
                         <Route exact path="/profile/:user/" component={My} />
-                        <Route exact path="/profile/:user/like" component={Like} />
-                        <Route exact path="/profile/:user/comment" component={Comment} />
+                        <Route exact path="/profile/like/:user" component={Like} />
+                        <Route exact path="/profile/comment/:user" component={Comment} />
                     </Switch>
                 </div>
             </div>
