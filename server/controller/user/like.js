@@ -3,7 +3,7 @@ const { Like } = require("../../model/Like");
 
 const userLiked = async (req, res) => {
    const userId = req.user.id;
-   console.log(userId);
+   console.log(req);
    await Like.find(({ "likedUser" : userId }, { whichPost })).exec((err, result)=> {
        console.log(result);
     if(err){
