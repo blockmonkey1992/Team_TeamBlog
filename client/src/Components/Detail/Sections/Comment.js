@@ -34,6 +34,7 @@ function Comment(props) {
                 if(response.data.success){
                     alert("댓글작성완료");
                     setContent("");
+                    // window.location.reload();
                 } else {
                     alert("댓글작성실패");
                 }
@@ -44,10 +45,10 @@ function Comment(props) {
  
     <div className="detailWrapper_comment">
 
-        {Comments.length > 1 && 
+        {Comments.length > 0 && 
             <div className="detailWrapper_comment__column">
                 {Comments.map((item, idx)=>(
-                    <div key={idx}>
+                    <div className='detailWrapper_comment__contents' key={idx}>
                         <div className="detailWrapper_comment_creator">
                                 <div>{item.creator.name}</div>
                                 <div>{item.createdAt.split(".")[0].replace("T", " ")}</div>

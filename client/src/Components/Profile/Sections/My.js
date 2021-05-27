@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import Axios from "axios";
 
 import '../../../Scss/Profile.scss';
 
-import { useSelector } from 'react-redux';
-import Axios from "axios";
 
-function My(props) {
+function My() {
 
     const [UserInfo, setUserInfo] = useState([]);
 
     useEffect(() => {
         Axios.get("/api/users/auth")
             .then(response => {
-                console.log(response.data);
                 setUserInfo(response.data);
             });
     }, []);
