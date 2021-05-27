@@ -4,6 +4,8 @@ const { User } = require("../../model/User");
 const updateUser = async (req, res) => {
     const id = req.params.id
     const userName = req.user.name
+    console.log(userName);
+    console.log(id);
     await User.findByIdAndUpdate({ _id : id }, userName).exec((err, result) => {
         if(err){
             res.status(400).json({ success : false , err })
@@ -13,4 +15,16 @@ const updateUser = async (req, res) => {
     });
 }
 
-module.exports = { updateUser };
+const updatedUser = async(req , res) => {
+    const name = req.user.name;
+    const email = req.user.email;
+    await User.find(({ name , email})).exec((err, result) => {
+        if(err){
+            res.json({ success : false , err})
+        }else { 
+            res.json({ success : true , result})
+        }
+    });
+}
+
+module.exports = { updateUser, updatedUser };

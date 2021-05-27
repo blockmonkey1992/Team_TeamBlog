@@ -31,4 +31,64 @@
         font-size: 14px;
         font-weight: 200;
     }
+
+}
+
+.introduce__Modal{
+    margin-top: 7%;
+    width: 1000px !important;
+
+    .ant-modal-content{
+        width: 100%;
+        height: 350px;
+        display: flex;
+    }
+
+    .ant-modal-body{
+        width: 100%; height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 50px;
+        margin-top: 5px;
+
+        .introduce__Modal__Profile{
+            background-color: black;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+        }
+
+        .introduce__Modal__Contents{
+            margin-left: 3%;
+            width: 650px; height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            font-size: 14px;
+            
+            .introduce__Modal__Name{
+                font-size: 24px;
+                font-weight: 900;
+                color: #CA526B;
+            }
+            .introduce__Modal__Date{
+                margin-top: -2px;
+            }
+            .introduce__Modal__Graduate{
+                margin: 25px 0;
+            }
+            .introduce__Modal-footer{
+                display: flex;
+                justify-content: space-between;
+
+                .introduce__Modal__Link{
+                    color: #CA526B;
+                }
+            }
+        }
+
+    }
+
+
 }

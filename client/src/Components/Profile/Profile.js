@@ -16,7 +16,7 @@ function Profile(props) {
                 <div className="myWrapper">
                     <Menu />
                     <Switch>
-                        <Route exact path="/profile/:user/" component={My} />
+                        <Route exact path="/profile/:user" component={My} />
                         <Route exact path="/profile/like/:user" component={Like} />
                         <Route exact path="/profile/comment/:user" component={Comment} />
                     </Switch>
