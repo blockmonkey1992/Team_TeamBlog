@@ -4,8 +4,6 @@ import '../../../Scss/Profile.scss';
 
 
 function My(props) {
-
-    console.log(props);
     
     return (
         <div className="myWrapper__container">

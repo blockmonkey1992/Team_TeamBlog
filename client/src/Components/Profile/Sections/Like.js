@@ -5,17 +5,11 @@ import Axios from "axios";
 
 
 function Like(props) {
-
-    console.log(props);
-
-    // const [UserInfo, setUserInfo] = useState([]);
-
     useEffect(() => {
-        Axios.post(`/api/users/profile/like/${props.match.param}`)
+        Axios.get(`/api/users/profile/like/${props.match.params.userId}`)
             .then(response => {
                 console.log(response)
             })
-
     }, [])
 
     return (
