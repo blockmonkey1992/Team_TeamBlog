@@ -3,16 +3,19 @@ import { withRouter } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import Axios from "axios";
 
+import Reply from './Reply';
+
 function Comment(props) {
     const [Comments, setComments] = useState([]);
     const [Content, setContent] = useState("");
+    const [Reply, setReply] = useState(false);
     const currentUser = useSelector(state => state.user);
 
     useEffect(() => {
         Axios.get(`/api/comments/${props.match.params.id}`)
             .then(response => {
                 setComments(response.data.result);
-                console.log(Comments);
+                // console.log(Comments);
             });
     }, [Comments.length]);
 
@@ -29,6 +32,7 @@ function Comment(props) {
         const variables = {
             content : Content,
         }
+
         Axios.post(`/api/comments/create/${props.match.params.id}`, variables)
             .then(response => {
                 if(response.data.success){
@@ -39,6 +43,10 @@ function Comment(props) {
                     alert("댓글작성실패");
                 }
             });
+    }
+
+    const handleClick = (e) => {
+        setReply(isOpen => !isOpen);
     }
 
     return (
@@ -55,15 +63,13 @@ function Comment(props) {
                         </div>
                         <div className="detailWrapper_comment_reply">
                             <div>{item.content}</div>
-                            <button>답글</button>
+                            <button onClick={handleClick}>답글</button>
                         </div>
+                        {/* {Reply.isOpen? <Reply /> : <Reply />} */}
                     </div>
                 ))}
             </div>
         }
-
-
-
 
         <div className="detailWrapper_comment__column">
             <textarea 

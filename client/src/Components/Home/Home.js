@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Axios from "axios";
 
 import "../../Scss/Home.scss";
 import { EyeOutlined, HeartOutlined, CommentOutlined } from '@ant-design/icons';
 
 function Home(props) {
 
-    return (
-        <Link className='homeLink' to={{
-            pathname: `/detail/${props.id}`,
-            state : {props},
-            }}>
+    // console.log(props);
 
+    Axios.get(`/api/post/postDetail/${props.id}`)
+        .then(response => {})
+
+    return (
+        <a href={`/detail/${props.id}`}>
             <div className="homeCard">
                 <div className="homeCard_column">
                     <div className="homeCard_ImgContainer">
@@ -33,7 +35,7 @@ function Home(props) {
                     </div>
                 </div>
             </div>
-        </Link>
+        </a>
     )
 }
 

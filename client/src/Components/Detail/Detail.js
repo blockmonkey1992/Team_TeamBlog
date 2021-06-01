@@ -9,8 +9,7 @@ import "../../Scss/Detail.scss";
 
 function Detail(props) {
 
-    const { location, history } = props;
-    const root = location.state.props;
+    const [DetailData, setDetailData] = useState([]);
     const [LikeCount, setLikeCount] = useState(0);
     const [CommentCount, setCommentCount] = useState(0);
 
@@ -28,15 +27,20 @@ function Detail(props) {
     ];
 
     let sortingCategory = categoryOptions.filter( (list) => {
-        return list.value === root.category;
+        return list.value === DetailData.category;
     });
+
+    const createdAt = (DetailData.createdAt || '').split("T")[0];
     
 
     useEffect(() => {
-        console.log(props);
-        if(location.state === undefined){
-            history.push('/');
-        }
+        console.log(sortingCategory[0].label);
+
+        Axios.get(`/api/post/postDetail/${props.match.params.id}`)
+            .then(response => {
+                console.log(response)
+                setDetailData(response.data.post)
+            })
 
         //댓글띄우는 API
         Axios.get(`/api/comments/${props.match.params.id}`)
@@ -52,27 +56,26 @@ function Detail(props) {
     }, []);
     
 
+    // console.log(DetailData);
     return (
         <div className="detailContainer">
             <div className="detailWrapper">
                 <div className="detailWrapper_title">
                     <div className="detailColumn">
-                        <div className="detail__category">{sortingCategory[0].label}</div>
-                        <div>{root.title}</div>
-                        <div>{root.createdAt.split("T")[0]}</div>
+                        <div className="detail__category"></div>
+                        <div>{DetailData.title}</div>
+                        <div>{createdAt}</div>
                     </div>
                     <div className="detailColumn">
-                        <div><EyeOutlined /> {root.views}</div>
+                        <div><EyeOutlined />{DetailData.views}</div>
                         <div><HeartOutlined /> {LikeCount}</div>
                         <div><CommentOutlined /> {CommentCount}</div>
                     </div>
                 </div>
-                <div className="detailWrapper_description">{root.description}</div>
+                <div className="detailWrapper_description">{DetailData.description}</div>
                 <Like />
             </div>
-            
-                <Comment />
-
+            <Comment />
         </div>
     )
 }
