@@ -45,19 +45,3 @@ export function authUser(){
         payload: request
     }
 }
-
-
-// export function auth(){
-//     const request = axios.get('/api/users/auth')
-//         .then(response => {
-//             console.log(response);
-//             return response.data;
-//         });
-
-//     return{
-//         type: AUTH_USER,
-//         payload: request,
-//     }
-// }
-
-
