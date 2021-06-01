@@ -12,6 +12,7 @@ function Detail(props) {
     const [DetailData, setDetailData] = useState([]);
     const [LikeCount, setLikeCount] = useState(0);
     const [CommentCount, setCommentCount] = useState(0);
+    // const [state, setstate] = useState(initialState)
 
     const categoryOptions = [
         { value : 0, label : "HTML/CSS" },
@@ -26,16 +27,10 @@ function Detail(props) {
         { value : 9, label : "Network" },
     ];
 
-    let sortingCategory = categoryOptions.filter( (list) => {
-        return list.value === DetailData.category;
-    });
-
     const createdAt = (DetailData.createdAt || '').split("T")[0];
-    
 
     useEffect(() => {
-        console.log(sortingCategory[0].label);
-
+       
         Axios.get(`/api/post/postDetail/${props.match.params.id}`)
             .then(response => {
                 console.log(response)
@@ -56,21 +51,24 @@ function Detail(props) {
     }, []);
     
 
-    // console.log(DetailData);
+    console.log(DetailData);
+
+
     return (
         <div className="detailContainer">
             <div className="detailWrapper">
                 <div className="detailWrapper_title">
-                    <div className="detailColumn">
-                        <div className="detail__category"></div>
+                    {DetailData.category &&
+                        <div className="detailColumn">
+                        <div className="detail__category">{categoryOptions[DetailData.category].label}</div>
                         <div>{DetailData.title}</div>
                         <div>{createdAt}</div>
-                    </div>
-                    <div className="detailColumn">
-                        <div><EyeOutlined />{DetailData.views}</div>
-                        <div><HeartOutlined /> {LikeCount}</div>
-                        <div><CommentOutlined /> {CommentCount}</div>
-                    </div>
+                    </div>}
+                <div className="detailColumn">
+                    <div><EyeOutlined />{DetailData.views}</div>
+                    <div><HeartOutlined /> {LikeCount}</div>
+                    <div><CommentOutlined /> {CommentCount}</div>
+                </div>
                 </div>
                 <div className="detailWrapper_description">{DetailData.description}</div>
                 <Like />
