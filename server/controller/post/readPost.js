@@ -5,10 +5,9 @@ const { Post } = require("../../model/Post");
 const postDetail = async (req, res) => {
     const id = req.params.id;
        try{ const post = await Post.findById(id)
-        post.views++
+        post.views = post.views + 1;
         post.save();
        res.status(200).json({success : true , post});
-       console.log(post);
        } catch(error) {
        res.status(400).json({success : false , error});
     }
@@ -17,9 +16,7 @@ const postDetail = async (req, res) => {
 const postAll =  async(req, res) => {
         const limit = req.body.limit ? parseInt(req.body.limit) : 6;
         const skip = req.body.skip ? parseInt(req.body.skip) : 0;
-        console.log(req.body);
         await Post.find().skip(skip).limit(limit).exec((err, result) => {  
-            console.log(result.length); 
              if(err){
                 res.status(400).json({ success : false, err})
             } else {

@@ -19,7 +19,6 @@ const createPost = (req, res) => {
 };  
 const upImg = async(req, res) => {
     const img = req.file.location
-    console.log(img)
     res.json({ img });
 };
 
