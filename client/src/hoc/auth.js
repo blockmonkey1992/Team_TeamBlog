@@ -10,6 +10,7 @@ export default function(SpecificComponent, option, admin=null){
         // console.log(user);
         //Node의 Auth API로 리퀘스트를 보내 현재상태 수신.
         useEffect(() => {
+            console.log(user);
             dispatch(authUser()).then(response => {
                 if(!response.payload.is_login){
                     //비로그인 유저
@@ -33,7 +34,7 @@ export default function(SpecificComponent, option, admin=null){
         }, []);
 
         return (
-            <SpecificComponent {...props} user={user}/>
+            <SpecificComponent {...props} />
         )
     }
     return AuthCheck;

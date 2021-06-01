@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Axios from "axios";
 import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 
 function Like(props){
+    const dispatch = useDispatch()
     const [LikeCount, setLikeCount] = useState(0);
     const [LikeActionState, setLikeActionState] = useState(false);
-    const user = useSelector(state => state.user);
+    const user = useSelector(state => state);
     useEffect(() => {
+        console.log(user);
         Axios.get(`/api/like/${props.match.params.id}`)
             .then(response => {
                 setLikeCount(response.data.liked.length);
