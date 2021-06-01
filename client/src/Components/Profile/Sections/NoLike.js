@@ -1,6 +1,6 @@
 import React from 'react';
 
-function NoComment() {
+function NoLike() {
     return (
         <div className="myNo__Wrapper">
             <p>좋아요 한 글이 없습니다.</p>
@@ -8,4 +8,4 @@ function NoComment() {
     )
 }
 
-export default NoComment;
+export default NoLike;

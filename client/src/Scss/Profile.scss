@@ -120,22 +120,22 @@
         padding: 30px 40px;
         font-weight: 200;
         font-size: 14px;
-
-        &:hover{
-            // cursor: pointer;
-            .myLike__title{
-                div:first-child{
-                    color: #CA526B;
-                }
-            }
-        }
+        background-color: white;
 
         .myLike__title{
             display: flex;
-            margin-bottom: 10px;
-            div:first-child{
-                font-weight: 400;
-                margin-right: 25px;
+            margin-bottom: 10px;            
+            a{
+                font-weight: 500;
+                margin-right: 20px;
+                color: #2D3133;
+                &:hover{
+                    text-decoration: underline;
+                    color: #CA526B;
+                }
+            }
+            div{
+                font-size: 12px;
             }
         }
 

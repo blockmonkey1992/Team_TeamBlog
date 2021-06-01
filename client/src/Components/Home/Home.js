@@ -1,16 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Axios from "axios";
 
 import "../../Scss/Home.scss";
-import { EyeOutlined, HeartOutlined, CommentOutlined } from '@ant-design/icons';
+import { EyeOutlined } from '@ant-design/icons';
 
 function Home(props) {
-
-    // console.log(props);
-
-    Axios.get(`/api/post/postDetail/${props.id}`)
-        .then(response => {})
 
     return (
         <a href={`/detail/${props.id}`}>
@@ -29,8 +22,6 @@ function Home(props) {
                         <div className="homeCard__author">{props.creator}</div>
                         <div className="homeCard__counts">
                             <div className="homeCard__counts-view"><EyeOutlined /> {props.views}</div>
-                            <div className="homeCard__counts-like"><HeartOutlined /> 0</div>
-                            <div className="homeCard__counts-comment"><CommentOutlined /> 0</div>
                         </div>
                     </div>
                 </div>

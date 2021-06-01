@@ -43,6 +43,7 @@ function Detail(props) {
                 //댓글 띄우고 처리내용?
                 setCommentCount(response.data.result.length);
             });
+        
         //좋아요 갯수 API
         Axios.get(`/api/like/${props.match.params.id}`)
         .then(response => {

@@ -7,7 +7,7 @@ export default function(SpecificComponent, option, admin=null){
     function AuthCheck(props){
         const dispatch = useDispatch();
         const user = useSelector(state => state.user);
-        console.log(user);
+        // console.log(user);
         //Node의 Auth API로 리퀘스트를 보내 현재상태 수신.
         useEffect(() => {
             dispatch(authUser()).then(response => {
