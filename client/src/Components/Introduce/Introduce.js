@@ -34,12 +34,12 @@ function Introduce() {
                 <div className='introduce_Profile' onClick={showModal3}>
                     <img />
                 </div>
-                <div className='introduce_Name'>Block Monkey</div>
-                <div className='introduce_Intro'>Fullstack Developer</div>
+                <div className='introduce_Name'>BlockMonkey</div>
+                <div className='introduce_Intro'>MERNstack Developer</div>
                 <Modal className='introduce__Modal' visible={ModalVisible3}  onCancel={handleCancel} >
                     <div className='introduce__Modal__Profile'><img /></div>
                     <div className='introduce__Modal__Contents'>
-                        <div className='introduce__Modal__Name'>Block Monkey</div>
+                        <div className='introduce__Modal__Name'>BlockMonkey</div>
                         <div className='introduce__Modal__Date'>1992.08.31</div>
                         <div className='introduce__Modal__Graduate'>
                             <p>홍익대학교 경영학과 학사</p>
@@ -57,7 +57,7 @@ function Introduce() {
                     <img />
                 </div>
                 <div className='introduce_Name'>Kkevi Do</div>
-                <div className='introduce_Intro'>Front End Developer & Designer</div>
+                <div className='introduce_Intro'>Front-End Developer & Designer</div>
                 <Modal className='introduce__Modal' visible={ModalVisible2} onCancel={handleCancel} >
                     <div className='introduce__Modal__Profile'><img /></div>
                     <div className='introduce__Modal__Contents'>
@@ -76,7 +76,7 @@ function Introduce() {
                     <img />
                 </div>
                 <div className='introduce_Name'>MinSeo</div>
-                <div className='introduce_Intro'>Node JS Back End Developer</div>
+                <div className='introduce_Intro'>Node JS Back-End Developer</div>
                 <Modal className='introduce__Modal' visible={ModalVisible} onCancel={handleCancel} >
                     <div className='introduce__Modal__Profile'><img /></div>
                     <div className='introduce__Modal__Contents'>

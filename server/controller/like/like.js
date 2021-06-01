@@ -2,7 +2,7 @@ const { Like } = require("../../model/Like");
 
 
 const getLikeController = (req, res) => {
-    const currentPostId = req.params.id;
+    const currentPostId = req.params.id || req.body.whichPost;
     Like.find(({ "whichPost" : currentPostId }))
         .exec((err, liked)=> {
             if(err) res.status(400).json({ success: false });
