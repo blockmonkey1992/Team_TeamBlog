@@ -8,10 +8,11 @@ function Like(props){
     const dispatch = useDispatch()
     const [LikeCount, setLikeCount] = useState(0);
     const [LikeActionState, setLikeActionState] = useState(false);
-    const user = useSelector(state => state);
+    let user = useSelector(state => state.user);
+
     useEffect(() => {
-        console.log(user);
-        Axios.get(`/api/like/${props.match.params.id}`)
+        if(user.userData){
+            Axios.get(`/api/like/${props.match.params.id}`)
             .then(response => {
                 setLikeCount(response.data.liked.length);
                 response.data.liked.map((item, idx)=> {
@@ -22,7 +23,10 @@ function Like(props){
                     }
                 })
             });
-    }, [])
+        } else {
+            return ;
+        }
+    }, [user.userData]);
 
     const likeBtnHandler = (e) => {
         e.preventDefault();
@@ -39,7 +43,6 @@ function Like(props){
                 }
             });
     }
-
     return (
         <div>
             <div className="detailWrapper_like">

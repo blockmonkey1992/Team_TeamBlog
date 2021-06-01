@@ -32,11 +32,12 @@ function Login() {
       .then(response => {
         if(response.payload.loginSuccess){
           //로그인 성공시 할 일,
-          console.log(response);
-          window.location.reload();
+          console.log('로그인성공');
+          alert("로그인성공");
         } else {
           //로그인 실패시 할 일,
-          alert(response.payload.msg);
+          console.log(response);
+          alert(`로그인실패`);
         }
       });
   }

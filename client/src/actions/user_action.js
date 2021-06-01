@@ -18,7 +18,7 @@ export function registerUser(bodyData){
 
 export function loginUser(bodyData){
     const request = axios.post("/api/users/login", bodyData)
-        .then(response => response.data)
+        .then(response => response.data);
     
     return {
         type: LOGIN_USER,

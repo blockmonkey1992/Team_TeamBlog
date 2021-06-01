@@ -6,12 +6,13 @@ import { authUser } from "../actions/user_action";
 export default function(SpecificComponent, option, admin=null){
     function AuthCheck(props){
         const dispatch = useDispatch();
-        const user = useSelector(state => state.user);
+        let user = useSelector(state => state.user);
         // console.log(user);
         //Node의 Auth API로 리퀘스트를 보내 현재상태 수신.
         useEffect(() => {
             console.log(user);
             dispatch(authUser()).then(response => {
+                console.log(response);
                 if(!response.payload.is_login){
                     //비로그인 유저
                     if(option){
@@ -34,7 +35,7 @@ export default function(SpecificComponent, option, admin=null){
         }, []);
 
         return (
-            <SpecificComponent {...props} />
+            <SpecificComponent {...props} user={user}/>
         )
     }
     return AuthCheck;

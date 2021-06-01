@@ -33,7 +33,6 @@ function Detail(props) {
        
         Axios.get(`/api/post/postDetail/${props.match.params.id}`)
             .then(response => {
-                console.log(response)
                 setDetailData(response.data.post)
             })
 

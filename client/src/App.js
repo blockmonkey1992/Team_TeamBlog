@@ -29,8 +29,8 @@ function App() {
         <Route path='/detail/:id' component={AuthCheck(Detail, null)}/>
         <Route path='/register' component={AuthCheck(Register, false)}/>
         <Route path="/profile/:user" component={AuthCheck(Profile, true)} />  
-        <Route path='/search' component={Search}/>
-        <Route path='/create' component={Posting}/>
+        <Route path='/search' component={AuthCheck(Search, null)}/>
+        <Route path='/create' component={Posting} />
       </Switch>
     
       <Footer />
