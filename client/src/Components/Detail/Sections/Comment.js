@@ -46,15 +46,19 @@ function Comment(props) {
 
     const elems = document.getElementsByClassName('toggle');
 
+    // console.log(elems);
+
     const handleClick = (e) => {
-        if(elems.style.display === 'none'){
-            for( let i = 0; i < elems.length; i+= 1 ){
-                elems[i].style.display = 'block';
+        let target_id = e.target.id;
+        console.log(target_id);
+        for( let i = 0; i < elems.length; i+= 1 ){
+            let elems_id = document.getElementById(`${i}`).getAttribute('id')
+            console.log(elems_id);
+            if(target_id === elems_id){
+                elems[i].classList.toggle('toggle_fold');
+                console.log(elems[i].style.display)
             }
         }
-        // else{
-        //     elems.style.display = 'none';
-        // }
     }
 
     return (
@@ -71,10 +75,10 @@ function Comment(props) {
                         </div>
                         <div className="detailWrapper_comment_reply">
                             <div>{item.content}</div>
-                            <button onClick={handleClick}>답글</button>
+                            <button onClick={handleClick} id={idx}>답글</button>
                         </div>
-                        <div>
-                            <div className="detailWrapper_comment__column toggle">
+                        <div className='toggle' id={idx}>
+                            <div className="detailWrapper_comment__column">
                                 <textarea 
                                     value={Content}
                                     placeholder="답글을 달아주세요." 
@@ -82,7 +86,7 @@ function Comment(props) {
                                 />
                                 <button onClick={handleSubmit}>작성</button>
                             </div>
-                        </div>    
+                        </div>
                     </div>
                 ))}
             </div>
