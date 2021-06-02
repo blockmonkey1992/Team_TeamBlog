@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import Axios from "axios";
+
 import Like from "./Sections/Like";
 import Comment from './Sections/Comment';
 import { EyeOutlined, HeartOutlined, CommentOutlined, HeartFilled } from '@ant-design/icons';
@@ -51,8 +52,6 @@ function Detail(props) {
     }, []);
     
 
-    console.log(DetailData);
-
 
     return (
         <div className="detailContainer">
@@ -74,6 +73,7 @@ function Detail(props) {
                 <Like />
             </div>
             <Comment />
+            {/* <Reply /> */}
         </div>
     )
 }

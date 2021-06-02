@@ -8,14 +8,13 @@ import Reply from './Reply';
 function Comment(props) {
     const [Comments, setComments] = useState([]);
     const [Content, setContent] = useState("");
-    const [Reply, setReply] = useState(false);
+    // const [Reply, setReply] = useState(false);
     const currentUser = useSelector(state => state.user);
 
     useEffect(() => {
         Axios.get(`/api/comments/${props.match.params.id}`)
             .then(response => {
                 setComments(response.data.result);
-                // console.log(Comments);
             });
     }, [Comments.length]);
 
@@ -38,15 +37,24 @@ function Comment(props) {
                 if(response.data.success){
                     alert("댓글작성완료");
                     setContent("");
-                    // window.location.reload();
+                    window.location.reload();
                 } else {
                     alert("댓글작성실패");
                 }
             });
     }
 
+    const elems = document.getElementsByClassName('toggle');
+
     const handleClick = (e) => {
-        setReply(isOpen => !isOpen);
+        if(elems.style.display === 'none'){
+            for( let i = 0; i < elems.length; i+= 1 ){
+                elems[i].style.display = 'block';
+            }
+        }
+        // else{
+        //     elems.style.display = 'none';
+        // }
     }
 
     return (
@@ -59,13 +67,22 @@ function Comment(props) {
                     <div className='detailWrapper_comment__contents' key={idx}>
                         <div className="detailWrapper_comment_creator">
                                 <div>{item.creator.name}</div>
-                                <div>{item.createdAt.split(".")[0].replace("T", " ")}</div>
+                                <div>{item.createdAt.split("T")[0]}</div>
                         </div>
                         <div className="detailWrapper_comment_reply">
                             <div>{item.content}</div>
                             <button onClick={handleClick}>답글</button>
                         </div>
-                        {/* {Reply.isOpen? <Reply /> : <Reply />} */}
+                        <div>
+                            <div className="detailWrapper_comment__column toggle">
+                                <textarea 
+                                    value={Content}
+                                    placeholder="답글을 달아주세요." 
+                                    onChange={handleContent}
+                                />
+                                <button onClick={handleSubmit}>작성</button>
+                            </div>
+                        </div>    
                     </div>
                 ))}
             </div>

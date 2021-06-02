@@ -10,16 +10,22 @@ function CommentComponent(props) {
     useEffect(() => {
         Axios.get(`/api/users/profile/comment/${history.location.pathname.split('/')[3]}`)
             .then(response => {
-                console.log(response);
-                // setCommentData(response.data.result);
+                console.log(response.data.result);
+                setCommentData(response.data.result);
             })
     }, [])
 
 
     return (
-        <div className="myComment__list">
-            <a href="/">덧글 내용</a>
-            <div>21-05-11</div>
+        <div>
+            {CommentData &&
+                CommentData.map((itm, idx) => (
+                    <div className="myComment__list">
+                        <a href={`/detail/${itm.postId._id}`} target='blank'>{itm.content}</a>
+                        <div>{itm.createdAt.split('T')[0]}</div>
+                    </div>
+                ))
+            }
         </div>
     )
 }
