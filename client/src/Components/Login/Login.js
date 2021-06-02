@@ -32,12 +32,10 @@ function Login() {
       .then(response => {
         if(response.payload.loginSuccess){
           //로그인 성공시 할 일,
-          console.log('로그인성공');
-          alert("로그인성공");
+          window.location.reload();
         } else {
           //로그인 실패시 할 일,
-          console.log(response);
-          alert(`로그인실패`);
+          alert(`아이디 혹은 비밀번호가 일치하지 않습니다.`);
         }
       });
   }
