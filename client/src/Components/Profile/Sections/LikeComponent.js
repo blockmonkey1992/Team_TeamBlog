@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Axios from "axios";
 import { useHistory } from 'react-router-dom';
 
-import NoLike from './NoLike';
 import { EyeOutlined } from '@ant-design/icons';
 
 function LikeComponent(props) {
@@ -20,16 +19,14 @@ function LikeComponent(props) {
 
     console.log(LikeData);
 
-    // LikeData === []? <p>안돼</p> :
-
     return (
         <div>
-            {
+            {LikeData.length === 0? <p className='noData'>좋아요를 누른 글이 없습니다.</p> :
             LikeData &&
                 LikeData.map((itm, idx) => (
                     <div className="myLike__list">
                         <div className="myLike__title">
-                            <a href='/' target='blank'>{itm.whichPost.title}</a>
+                            <a href={`/detail/${itm.whichPost._id}`} target='blank'>{itm.whichPost.title}</a>
                             <div>{itm.whichPost.createdAt.split('T')[0]}</div>
                         </div>
                         <div className="myLike__descriptions">

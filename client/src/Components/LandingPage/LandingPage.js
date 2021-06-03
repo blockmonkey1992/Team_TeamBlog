@@ -15,12 +15,9 @@ function LandingPage(props) {
     const [Data, setData] = useState([]);
     const [Skip, setSkip] = useState(0);
     const [Limit, setLimit] = useState(8);
-    const [LikeCount, setLikeCount] = useState(0);
 
 
     useEffect(() => {
-
-        console.log(props)
 
         let body = {
             skip : Skip,
@@ -29,18 +26,11 @@ function LandingPage(props) {
 
         getHomes(body);
 
-        // Axios.get(`/api/like/${props.match.params.id}`)
-        // .then(response => {
-        //     console.log(response);
-        //     setLikeCount(response.data.liked.length);
-        // });
-
     }, [])
 
     const getHomes = (body) => {
         Axios.post('/api/post/postAll', body)
         .then(response => {
-            // console.log(response);
             if(response.data.success){
                 if(body.loadMore){
                     setData([...Data, ...response.data.result]);

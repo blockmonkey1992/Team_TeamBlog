@@ -18,10 +18,11 @@ function CommentComponent(props) {
 
     return (
         <div>
-            {CommentData &&
+            {CommentData.length === 0? <p className='noData'>작성한 덧글이 없습니다.</p> :
+            CommentData &&
                 CommentData.map((itm, idx) => (
                     <div className="myComment__list">
-                        <a href='/' target='blank'>{itm.content}</a>
+                        <a href={`/detail/${itm.postId._id}`} target='blank'>{itm.content}</a>
                         <div>{itm.createdAt.split('T')[0]}</div>
                     </div>
                 ))
@@ -29,5 +30,5 @@ function CommentComponent(props) {
         </div>
     )
 }
-//{`/detail/${itm.whichPost._id}`}
+
 export default CommentComponent

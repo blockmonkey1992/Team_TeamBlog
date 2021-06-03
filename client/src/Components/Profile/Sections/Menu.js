@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logout from '../../Login/Logout';
 
 import { UserOutlined, HeartOutlined, CommentOutlined, LogoutOutlined } from '@ant-design/icons';
 import "../../../Scss/Profile.scss";
@@ -30,7 +31,8 @@ function Menu(props) {
                 </div>
                 <div className="myMenu__list">
                     <LogoutOutlined />
-                    <a href="/">Logout</a>
+                    <Logout />
+                    {/* <a href="/">Logout</a> */}
                 </div>
             </div>
         </div>

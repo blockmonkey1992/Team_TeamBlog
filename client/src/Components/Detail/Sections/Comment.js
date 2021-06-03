@@ -5,12 +5,9 @@ import Axios from "axios";
 
 import { CloseOutlined } from '@ant-design/icons';
 
-import Reply from './Reply';
-
 function Comment(props) {
     const [Comments, setComments] = useState([]);
     const [Content, setContent] = useState("");
-    // const [Reply, setReply] = useState(false);
     const currentUser = useSelector(state => state.user);
 
     useEffect(() => {
@@ -50,13 +47,10 @@ function Comment(props) {
 
     const handleClick = (e) => {
         let target_id = e.target.id;
-        console.log(target_id);
         for( let i = 0; i < elems.length; i+= 1 ){
             let elems_id = document.getElementById(`${i}`).getAttribute('id')
-            console.log(elems_id);
             if(target_id === elems_id){
                 elems[i].classList.toggle('toggle_fold');
-                console.log(elems[i].style.display)
             }
         }
     }

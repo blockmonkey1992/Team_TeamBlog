@@ -13,6 +13,14 @@
     padding-bottom: 25px;
 }
 
+.noData{
+    font-size: 14px;
+    font-weight: 200;
+    text-align: center;
+    height: 308px;
+    padding-top: 150px;
+}
+
 
 
 //my menu 
@@ -48,6 +56,7 @@
             font-size: 20px;
             margin-right: 10px;
         }
+
         &:hover{
             color: #CA526B;
             cursor: pointer;
