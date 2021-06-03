@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import Axios from "axios";
 
+import { CloseOutlined } from '@ant-design/icons';
+
 import Reply from './Reply';
 
 function Comment(props) {
@@ -46,8 +48,6 @@ function Comment(props) {
 
     const elems = document.getElementsByClassName('toggle');
 
-    // console.log(elems);
-
     const handleClick = (e) => {
         let target_id = e.target.id;
         console.log(target_id);
@@ -70,8 +70,11 @@ function Comment(props) {
                 {Comments.map((item, idx)=>(
                     <div className='detailWrapper_comment__contents' key={idx}>
                         <div className="detailWrapper_comment_creator">
-                                <div>{item.creator.name}</div>
-                                <div>{item.createdAt.split("T")[0]}</div>
+                                <div>
+                                    <div>{item.creator.name}</div>
+                                    <div>{item.createdAt.split("T")[0]}</div>    
+                                </div>
+                                <CloseOutlined />
                         </div>
                         <div className="detailWrapper_comment_reply">
                             <div>{item.content}</div>

@@ -4,7 +4,7 @@ import Axios from "axios";
 
 import Like from "./Sections/Like";
 import Comment from './Sections/Comment';
-import { EyeOutlined, HeartOutlined, CommentOutlined, HeartFilled } from '@ant-design/icons';
+import { EyeOutlined, HeartOutlined, CommentOutlined, HeartFilled, CloseOutlined } from '@ant-design/icons';
 import "../../Scss/Detail.scss";
 
 
@@ -50,8 +50,15 @@ function Detail(props) {
             setLikeCount(response.data.liked.length);
         });
     }, []);
-    
 
+
+    const handleDelete = (e) => {
+
+        e.preventDefault();
+        
+        Axios.delete(`/api/post/delete/${props.match.params.id}`)
+            .then(response => console.log(response));
+    }
 
     return (
         <div className="detailContainer">
@@ -59,21 +66,22 @@ function Detail(props) {
                 <div className="detailWrapper_title">
                     {DetailData.category &&
                         <div className="detailColumn">
-                        <div className="detail__category">{categoryOptions[DetailData.category].label}</div>
-                        <div>{DetailData.title}</div>
-                        <div>{createdAt}</div>
-                    </div>}
-                <div className="detailColumn">
-                    <div><EyeOutlined />{DetailData.views}</div>
-                    <div><HeartOutlined /> {LikeCount}</div>
-                    <div><CommentOutlined /> {CommentCount}</div>
-                </div>
+                            <div className="detail__category">{categoryOptions[DetailData.category].label}</div>
+                            <div>{DetailData.title}</div>
+                            <div>{createdAt}</div>
+                        </div>
+                    }
+                        <div className="detailColumn">
+                            <div><EyeOutlined />{DetailData.views}</div>
+                            <div><HeartOutlined /> {LikeCount}</div>
+                            <div><CommentOutlined /> {CommentCount}</div>
+                            <div onClick={handleDelete}><CloseOutlined /></div>
+                        </div>
                 </div>
                 <div className="detailWrapper_description">{DetailData.description}</div>
                 <Like />
             </div>
             <Comment />
-            {/* <Reply /> */}
         </div>
     )
 }

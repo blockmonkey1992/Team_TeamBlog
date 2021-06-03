@@ -62,8 +62,19 @@
             font-size: 14px;
             font-weight: 200;
             margin-top: 4px;
+            position: relative;
             div{
                 margin-left: 10px;
+            }
+            .anticon-close{
+                position: absolute;
+                bottom: 45px; right: -15px;
+                background-color: #8a8a8a5c;
+                color: white;
+                font-size: 14px;
+                &:hover{
+                    cursor: pointer;
+                }
             }
         }
     }
@@ -97,18 +108,32 @@
     .detailWrapper_comment__contents{
         padding: 20px 40px;
         border-bottom: #8a8a8a5c 1px solid;
-
+        position: relative;
         .detailWrapper_comment_creator{
             display: flex;
+            justify-content: space-between;
             margin-bottom: 10px;
-            div:first-child{
-                font-size: 16px;
-                font-weight: 500;
+            div{
+                display: flex;
+                div:first-child{
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+                div:last-child{
+                    font-size: 12px;
+                    margin-left: 7px;
+                    padding-top: 4px;
+                }
             }
-            div:last-child{
-                font-size: 12px;
-                margin-left: 7px;
-                padding-top: 4px;
+            .anticon-close{
+                position: absolute;
+                top: 18px; right: 45px;
+                background-color: #8a8a8a5c;
+                color: white;
+                font-size: 14px;
+                &:hover{
+                    cursor: pointer;
+                }
             }
         }
         .detailWrapper_comment_reply{

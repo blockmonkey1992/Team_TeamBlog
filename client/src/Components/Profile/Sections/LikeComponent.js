@@ -29,7 +29,7 @@ function LikeComponent(props) {
                 LikeData.map((itm, idx) => (
                     <div className="myLike__list">
                         <div className="myLike__title">
-                            <a href={`/detail/${itm.whichPost._id}`} target='blank'>{itm.whichPost.title}</a>
+                            <a href='/' target='blank'>{itm.whichPost.title}</a>
                             <div>{itm.whichPost.createdAt.split('T')[0]}</div>
                         </div>
                         <div className="myLike__descriptions">
