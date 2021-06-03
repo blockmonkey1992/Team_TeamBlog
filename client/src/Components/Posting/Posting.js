@@ -8,15 +8,21 @@ import '../../Scss/Posting.scss';
 
 
 function Posting(props) {
+
+    
     
     const [Title, setTitle] = useState("");
     const [Description, setDescription] = useState("");
     const [Category, setCategory] = useState(0);
     const [Image, setImage] = useState("");
+    const [UserInfo, setUserInfo] = useState([]);
 
     useEffect(() => {
-        //화면 랜더링 됐을때 내가 실행된다.
-        //componentDidMount와 같은 역할을 하는 친구!
+        Axios.get("/api/users/auth")
+            .then(response => {
+                setUserInfo(response.data);
+                console.log(UserInfo);
+            });
     }, [])
 
     const handleTitle = (e) => {
@@ -45,7 +51,7 @@ function Posting(props) {
             "description": Description,
             "category": Number(Category.value),
             "imgUrl" : Image,
-            "creator": "blockmonkey",
+            "creator": UserInfo.name,
         }
 
         Axios.post('/api/post/create', variable)

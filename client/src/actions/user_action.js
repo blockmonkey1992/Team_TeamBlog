@@ -3,7 +3,8 @@ import {
     LOGIN_USER,
     LOGOUT_USER,
     REGISTER_USER,
-    AUTH_USER
+    AUTH_USER,
+    SEARCH
 } from './types';
 
 export function registerUser(bodyData){
@@ -45,3 +46,5 @@ export function authUser(){
         payload: request
     }
 }
+
+

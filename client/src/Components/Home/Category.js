@@ -148,8 +148,6 @@ function Category(props) {
             <button className="closeBtn" onClick={handleCloseBtnClick} value={CloseBtn} style={{display: CloseBtn ? 'none' : 'block'}}>
                 <CloseOutlined style={{marginLeft: '-3.7px'}} />
             </button>
-
-
             
             <div className="buttonWrapper">
                 <Row gutter={[24, 24]}>
