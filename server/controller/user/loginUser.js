@@ -20,7 +20,7 @@ const loginUser = (req, res) => {
                     if(err){
                         return res.status(400).json({ success: false, msg: "쿠키생성실패" });
                     } else {
-                        res.cookie("x_auth", user.token)
+                        res.cookie("x_auth", user.token, { maxAge : 1000 * 60 * 60 * 2 })
                             .status(200)
                             .json({ loginSuccess: true, userId: user._id });
                     }
