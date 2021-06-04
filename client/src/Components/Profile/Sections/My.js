@@ -36,8 +36,14 @@ function My(props) {
             'id' : ID,
         }
 
-        Axios.post(`/api/users/profile/${props.match.params.userId}`, variable)
-            .then(response => console.log(response))
+        if(window.confirm(`닉네임을 ${Name}(으)로 수정하시겠습니까?`) === true){
+            Axios.post(`/api/users/profile/${props.match.params.userId}`, variable)
+            .then(response => {
+                if(response.data.success === true){
+                    window.location.reload();   
+                }
+            })
+        }
     }
 
     

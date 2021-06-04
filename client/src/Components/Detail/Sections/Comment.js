@@ -6,6 +6,7 @@ import Axios from "axios";
 import { CloseOutlined } from '@ant-design/icons';
 
 function Comment(props) {
+
     const [Comments, setComments] = useState([]);
     const [Content, setContent] = useState("");
     const currentUser = useSelector(state => state.user);
@@ -34,13 +35,24 @@ function Comment(props) {
         Axios.post(`/api/comments/create/${props.match.params.id}`, variables)
             .then(response => {
                 if(response.data.success){
-                    alert("댓글작성완료");
                     setContent("");
                     window.location.reload();
                 } else {
                     alert("댓글작성실패");
                 }
             });
+    }
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        const currentComment = e.currentTarget.parentNode.parentNode;
+        const currentComment_id = Comments[currentComment.getAttribute('id')]._id
+
+        console.log(currentComment.getAttribute('id'));
+        console.log(currentComment_id);
+
+        Axios.delete(`/api/comments/delete/${currentComment_id}`)
+            .then(response => console.log(response))
     }
 
     const elems = document.getElementsByClassName('toggle');
@@ -62,20 +74,20 @@ function Comment(props) {
         {Comments.length > 0 && 
             <div className="detailWrapper_comment__column">
                 {Comments.map((item, idx)=>(
-                    <div className='detailWrapper_comment__contents' key={idx}>
+                    <div className='detailWrapper_comment__contents' id={idx} key={idx}>
                         <div className="detailWrapper_comment_creator">
                                 <div>
                                     <div>{item.creator.name}</div>
                                     <div>{item.createdAt.split("T")[0]}</div>    
                                 </div>
-                                <CloseOutlined />
+                                <CloseOutlined onClick={handleDelete} />
                         </div>
                         <div className="detailWrapper_comment_reply">
                             <div>{item.content}</div>
                             <button onClick={handleClick} id={idx}>답글</button>
                         </div>
                         <div className='toggle' id={idx}>
-                            <div className="detailWrapper_comment__column">
+                        <div className="detailWrapper_comment__column">
                                 <textarea 
                                     value={Content}
                                     placeholder="답글을 달아주세요." 
