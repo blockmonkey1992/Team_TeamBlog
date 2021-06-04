@@ -2,12 +2,11 @@ const { User } = require("../../model/User");
 
 
 const updateUser = async (req, res) => {
-    const id = req.params.id
-    const userName = req.user.name
-    console.log(userName);
+    const id = req.user.id
+    const name = req.body.name
+    console.log(name);
     console.log(id);
-    await User.findOneAndUpdate({ _id : id }, {"name" : userName}).exec((err, result) => {
-        console.log(result);
+    await User.findByIdAndUpdate( id , { name: name }).exec((err, result) => {
         if(err){
             res.status(400).json({ success : false , err })
         } else {
