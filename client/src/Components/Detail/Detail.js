@@ -4,8 +4,9 @@ import Axios from "axios";
 
 import Like from "./Sections/Like";
 import Comment from './Sections/Comment';
-import { EyeOutlined, HeartOutlined, CommentOutlined, HeartFilled, CloseOutlined } from '@ant-design/icons';
+import { EyeOutlined, HeartOutlined, CommentOutlined, CloseOutlined, EditOutlined } from '@ant-design/icons';
 import "../../Scss/Detail.scss";
+// import { response } from 'express';
 
 
 function Detail(props) {
@@ -13,7 +14,6 @@ function Detail(props) {
     const [DetailData, setDetailData] = useState([]);
     const [LikeCount, setLikeCount] = useState(0);
     const [CommentCount, setCommentCount] = useState(0);
-    // const [state, setstate] = useState(initialState)
 
     const categoryOptions = [
         { value : 0, label : "HTML/CSS" },
@@ -34,6 +34,7 @@ function Detail(props) {
        
         Axios.get(`/api/post/postDetail/${props.match.params.id}`)
             .then(response => {
+                console.log(response);
                 setDetailData(response.data.post)
             })
 
@@ -57,7 +58,24 @@ function Detail(props) {
         e.preventDefault();
         
         Axios.delete(`/api/post/delete/${props.match.params.id}`)
-            .then(response => console.log(response));
+            .then(response => {
+                if(response.data.success === true){
+                    alert('성공적으로 삭제되었습니다.')
+                    props.history.push('/');
+                }
+            });
+    }
+
+    const handleEdit = (e) => {
+
+        e.preventDefault();
+
+        Axios.post(`/api/post/update/${props.match.params.id}`)
+            .then(response => {
+                if(response.data.success === true){
+                    props.history.push(`/update/${props.match.params.id}`);
+                }
+            });
     }
 
     return (
@@ -76,6 +94,7 @@ function Detail(props) {
                             <div><HeartOutlined /> {LikeCount}</div>
                             <div><CommentOutlined /> {CommentCount}</div>
                             <div onClick={handleDelete}><CloseOutlined /></div>
+                            <div onClick={handleEdit}><EditOutlined /></div>
                         </div>
                 </div>
                 <div className="detailWrapper_description">{DetailData.description}</div>

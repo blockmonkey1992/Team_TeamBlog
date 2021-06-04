@@ -7,19 +7,30 @@ import { FileAddOutlined } from "@ant-design/icons";
 import '../../Scss/Posting.scss';
 
 
-function Posting(props) {
+function ModifyPost(props) {
+
+    console.log(props);
     
     const [Title, setTitle] = useState("");
     const [Description, setDescription] = useState("");
     const [Category, setCategory] = useState(0);
     const [Image, setImage] = useState("");
     const [UserInfo, setUserInfo] = useState([]);
+    const [EditInfo, setEditInfo] = useState([]);
 
     useEffect(() => {
+
         Axios.get("/api/users/auth")
             .then(response => {
+                console.log(response)
                 setUserInfo(response.data);
             });
+
+        Axios.get(`/api/post/postDetail/${props.match.params.id}`)
+            .then(response => {
+                console.log(response);
+                // setEditInfo(response.data.post);
+            })
     }, [])
 
     const handleTitle = (e) => {
@@ -51,14 +62,14 @@ function Posting(props) {
             "creator": UserInfo.name,
         }
 
-        Axios.post(`/api/post/create`, variable)
-            .then(response => {
-                if(response.data.success){
-                    props.history.push("/");
-                } else {
-                    alert("포스팅에 실패하였습니다.");
-                }
-        })
+        // Axios.post(`/api/post/update/${EditInfo.}`, variable)
+        //     .then(response => {
+        //         if(response.data.success){
+        //             props.history.push("/");
+        //         } else {
+        //             alert("포스팅에 실패하였습니다.");
+        //         }
+        // })
     }
 
     const categoryOptions = [
@@ -93,11 +104,11 @@ function Posting(props) {
                 <div className='postingContents__column'>
                     <select className='postingCategory' onChange={handleCategory}>
                         {categoryOptions.map((item, idx) => (
-                            <option value={item.value}>{categoryOptions[idx].label}</option>
+                            <option>{categoryOptions[idx].label}</option>
                         ))}
                     </select>
 
-                    <input className='postingTitle' type="text" placeholder="제목을 입력해주세요." value={Title} onChange={handleTitle} />
+                    <input className='postingTitle' type="text" placeholder="제목을 입력해주세요." onChange={handleTitle} />
 
                     <Dropzone onDrop={imgDropHandler}>
                         {({getRootProps, getInputProps}) => (
@@ -116,7 +127,7 @@ function Posting(props) {
                     <img src={Image} alt="Image"/>
                 </div>
                 
-                <textarea className='postingTextarea' placeholder="내용을 입력하세요." value={Description} onChange={handleDescription}></textarea>
+                <textarea className='postingTextarea' placeholder="내용을 입력하세요." onChange={handleDescription}></textarea>
 
                 <button className='postingBtn' onClick={handleSubmit}>작성</button>
             </div>
@@ -124,4 +135,4 @@ function Posting(props) {
     )
 }
 
-export default withRouter(Posting)
+export default withRouter(ModifyPost)

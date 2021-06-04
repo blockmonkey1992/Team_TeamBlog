@@ -13,6 +13,7 @@ import Profile from './Components/Profile/Profile';
 import Search from './Components/Search/Search';
 // import { Provider } from 'react-redux';
 import Posting from './Components/Posting/Posting';
+import ModifyPost from './Components/Posting/ModifyPost';
 import AuthCheck from "./hoc/auth";
 
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/profile/:user" component={AuthCheck(Profile, true)} />  
         <Route path='/search' component={AuthCheck(Search, null)}/>
         <Route path='/create' component={Posting} />
+        <Route path='/update/:id' component={ModifyPost} />
       </Switch>
     
       <Footer />
