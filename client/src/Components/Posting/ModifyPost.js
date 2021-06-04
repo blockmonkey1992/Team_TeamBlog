@@ -8,15 +8,11 @@ import '../../Scss/Posting.scss';
 
 
 function ModifyPost(props) {
-
-    console.log(props);
-    
-    const [Title, setTitle] = useState("");
-    const [Description, setDescription] = useState("");
-    const [Category, setCategory] = useState(0);
     const [Image, setImage] = useState("");
     const [UserInfo, setUserInfo] = useState([]);
-    const [EditInfo, setEditInfo] = useState([]);
+    const [EditTitle, setEditTitle] = useState('');
+    const [EditDescription, setEditDescription] = useState('');
+    const [EditCategory, setEditCategory] = useState(0);
 
     useEffect(() => {
 
@@ -29,47 +25,54 @@ function ModifyPost(props) {
         Axios.get(`/api/post/postDetail/${props.match.params.id}`)
             .then(response => {
                 console.log(response);
-                // setEditInfo(response.data.post);
+                setEditTitle(response.data.post.title);
+                setEditDescription(response.data.post.description);
+                setEditCategory(response.data.post.category);
             })
     }, [])
 
     const handleTitle = (e) => {
         e.preventDefault();
-        
-        setTitle(e.currentTarget.value);
+        setEditTitle(e.currentTarget.value);
     }
 
     const handleDescription = (e) => {
         e.preventDefault();
-
-        setDescription(e.currentTarget.value);
+        setEditDescription(e.currentTarget.value);
     }
 
     const handleCategory = (e) => {
-        setCategory({ value: e.target.value });
+        setEditCategory({ value: e.target.value, label: e.target.label });
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const variable = {
+            "title": EditTitle,
+            "description": EditDescription,
+            "category": Number(EditCategory.value),
+        }
+
+        Axios.post(`/api/post/update/${props.match.params.id}`, variable)
+            .then(response => {
+                if(response.data.success){
+                    props.history.push(`/detail/${props.match.params.id}`);
+                } else {
+                    alert("수정에 실패하였습니다.");
+                }
+        })
+    }
+
+    const handleCancel = (e) => {
         
         e.preventDefault();
 
-
-        const variable = {
-            "title": Title,
-            "description": Description,
-            "category": Number(Category.value),
-            "imgUrl" : Image,
-            "creator": UserInfo.name,
+        if(window.confirm("작성 중인 글은 저장되지 않습니다. 계속하시겠습니까?") == true){
+            props.history.push(`/detail/${props.match.params.id}`)
+        }else{
+            return false;
         }
-
-        // Axios.post(`/api/post/update/${EditInfo.}`, variable)
-        //     .then(response => {
-        //         if(response.data.success){
-        //             props.history.push("/");
-        //         } else {
-        //             alert("포스팅에 실패하였습니다.");
-        //         }
-        // })
     }
 
     const categoryOptions = [
@@ -102,13 +105,23 @@ function ModifyPost(props) {
         <div className='postingWrapper'>
             <div className='postingContents'>
                 <div className='postingContents__column'>
-                    <select className='postingCategory' onChange={handleCategory}>
+                    <select className='postingCategory' value={EditCategory} onChange={handleCategory}>
                         {categoryOptions.map((item, idx) => (
-                            <option>{categoryOptions[idx].label}</option>
+                            <option value={item.value} >{categoryOptions[idx].label}</option>
                         ))}
+                        {/* <option value={0}>HTML/CSS</option>
+                        <option value={1}>JS</option>
+                        <option value={2}>React</option>
+                        <option value={3}>Node/Express</option>
+                        <option value={4}>MongoDB</option>
+                        <option value={5}>Git/GitHub</option>
+                        <option value={6}>HTTP</option>
+                        <option value={7}>Algorithm</option>
+                        <option value={8}>AWS</option>
+                        <option value={9}>Network</option> */}
                     </select>
 
-                    <input className='postingTitle' type="text" placeholder="제목을 입력해주세요." onChange={handleTitle} />
+                    <input className='postingTitle' type="text" placeholder="제목을 입력해주세요." value={EditTitle} onChange={handleTitle} />
 
                     <Dropzone onDrop={imgDropHandler}>
                         {({getRootProps, getInputProps}) => (
@@ -127,9 +140,12 @@ function ModifyPost(props) {
                     <img src={Image} alt="Image"/>
                 </div>
                 
-                <textarea className='postingTextarea' placeholder="내용을 입력하세요." onChange={handleDescription}></textarea>
+                <textarea className='postingTextarea' placeholder="내용을 입력하세요." value={EditDescription} onChange={handleDescription}></textarea>
 
-                <button className='postingBtn' onClick={handleSubmit}>작성</button>
+                <div className='postingContents_footer'>
+                    <button className='postingBtn' className='cancelBtn' onClick={handleCancel}>취소</button>
+                    <button className='postingBtn' onClick={handleSubmit}>수정</button>
+                </div>
             </div>
         </div>
     )

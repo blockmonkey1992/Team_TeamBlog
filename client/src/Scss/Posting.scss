@@ -64,15 +64,26 @@
         font-size: 14px;
     }
 
-    .postingBtn{
-        width: 110px; height: 38px;
-        margin-top: 15px;
-        background-color: #CA526B;
-        border: none;
-        border-radius: 20px;
-        color: white;
-        &:hover{
-            cursor: pointer;
+
+    .postingContents_footer{
+        display: flex;
+        width: 240px;
+        justify-content: space-between;
+        button{
+            width: 110px; height: 38px;
+            margin-top: 15px;
+            background-color: #CA526B;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+        .cancelBtn{
+            background-color: #8a8a8a5c;
         }
     }
+    
 }

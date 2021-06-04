@@ -67,15 +67,7 @@ function Detail(props) {
     }
 
     const handleEdit = (e) => {
-
-        e.preventDefault();
-
-        Axios.post(`/api/post/update/${props.match.params.id}`)
-            .then(response => {
-                if(response.data.success === true){
-                    props.history.push(`/update/${props.match.params.id}`);
-                }
-            });
+        props.history.push(`/update/${props.match.params.id}`)
     }
 
     return (

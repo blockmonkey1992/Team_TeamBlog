@@ -6,7 +6,8 @@ const updateUser = async (req, res) => {
     const userName = req.user.name
     console.log(userName);
     console.log(id);
-    await User.findByIdAndUpdate({ _id : id }, userName).exec((err, result) => {
+    await User.findOneAndUpdate({ _id : id }, {"name" : userName}).exec((err, result) => {
+        console.log(result);
         if(err){
             res.status(400).json({ success : false , err })
         } else {

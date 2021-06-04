@@ -61,6 +61,18 @@ function Posting(props) {
         })
     }
 
+    const handleCancel = (e) => {
+        
+        e.preventDefault();
+
+        if(window.confirm("작성 중인 글은 저장되지 않습니다. 계속하시겠습니까?") == true){
+            props.history.push(`/detail/${props.match.params.id}`)
+        }else{
+            return false;
+        }
+    }
+
+
     const categoryOptions = [
         { value : 0, label : "HTML/CSS" },
         { value : 1, label : "Js" },
@@ -118,7 +130,11 @@ function Posting(props) {
                 
                 <textarea className='postingTextarea' placeholder="내용을 입력하세요." value={Description} onChange={handleDescription}></textarea>
 
-                <button className='postingBtn' onClick={handleSubmit}>작성</button>
+                <div className='postingContents_footer'>
+                    <button className='postingBtn' className='cancelBtn' onClick={handleCancel}>취소</button>
+                    <button className='postingBtn' onClick={handleSubmit}>작성</button>
+                </div>
+                
             </div>
         </div>
     )

@@ -7,31 +7,52 @@ import '../../../Scss/Profile.scss';
 
 function My(props) {
 
-    console.log(props);
-
-    const [UserInfo, setUserInfo] = useState([]);
+    const [Name, setName] = useState('');
+    const [Email, setEmail] = useState('');
+    const [ID, setID] = useState('');
 
     useEffect(() => {
         Axios.get("/api/users/auth")
             .then(response => {
-                // console.log(response);
-                setUserInfo(response.data);
+                console.log(response);
+                setID(response.data._id);
+                setName(response.data.name);
+                setEmail(response.data.email);
             });
     }, []);
 
-    console.log(UserInfo);
+    const handleName = (e) => {
+        e.preventDefault();
+        setName(e.currentTarget.value);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        console.log(Name, ID);
+
+        const variable = {
+            'name' : Name,
+            'id' : ID,
+        }
+
+        Axios.post(`/api/users/profile/${props.match.params.userId}`, variable)
+            .then(response => console.log(response))
+    }
+
+    
 
     return (
         <div className="myWrapper__container">
             <div className="myMy__title">개인정보 설정</div>
             <div className="myMy__contents">
-            {UserInfo.name && 
+            {Name, Email && 
                 <div className="myMy__inputs">
-                    <input value={UserInfo.name} />
-                    <input value={UserInfo.email} />
+                    <input value={Name} onChange={handleName} />
+                    <input value={Email} disabled />
                 </div>
             }
-                <button>수정</button>
+                <button onClick={handleSubmit}>수정</button>
             </div>
         </div>
     )
