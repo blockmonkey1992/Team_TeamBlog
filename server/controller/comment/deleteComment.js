@@ -3,7 +3,7 @@ const { Comment } = require("../../model/Comment");
 const deleteComment = (req, res) => {
     const commentId = req.params.id;
     const userId = req.user.id;
-    //댓글을 찾는다. _id값과, creator가 현재 로그인한 유저인 것만.
+    //댓글을 찾는다. 프론트에서 보내온 _id값이 일치하고, creator가 현재 로그인한 유저와 일치하는 것만.
     Comment.find({$and:[{ "_id": commentId }, {"creator" : userId}] }).exec((err, result)=> {
         if(result.length === 0){ //만약 결과값이 없다면 (유저가 일치하지 않는 것에 해당함);
             if(err) return res.status(400).send(err);
