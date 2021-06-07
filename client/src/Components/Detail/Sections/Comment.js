@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import { useSelector } from "react-redux";
 import Axios from "axios";
 
-import { CloseOutlined } from '@ant-design/icons';
+import Reply from './Reply';
+import Single from './Single';
 
 function Comment(props) {
 
     const [Comments, setComments] = useState([]);
     const [Content, setContent] = useState("");
-    const currentUser = useSelector(state => state.user);
+    const [UserInfo, setUserInfo] = useState("");
 
     useEffect(() => {
         Axios.get(`/api/comments/${props.match.params.id}`)
             .then(response => {
                 setComments(response.data.result);
+            });
+        
+        Axios.get("/api/users/auth")
+            .then(response => {
+                setUserInfo(response.data);
             });
     }, [Comments.length]);
 
@@ -48,23 +53,15 @@ function Comment(props) {
         const currentComment = e.currentTarget.parentNode.parentNode;
         const currentComment_id = Comments[currentComment.getAttribute('id')]._id
 
-        console.log(currentComment.getAttribute('id'));
-        console.log(currentComment_id);
-
         Axios.delete(`/api/comments/delete/${currentComment_id}`)
-            .then(response => console.log(response))
-    }
-
-    const elems = document.getElementsByClassName('toggle');
-
-    const handleClick = (e) => {
-        let target_id = e.target.id;
-        for( let i = 0; i < elems.length; i+= 1 ){
-            let elems_id = document.getElementById(`${i}`).getAttribute('id')
-            if(target_id === elems_id){
-                elems[i].classList.toggle('toggle_fold');
-            }
-        }
+            .then(response => {
+                if(response.data.success === true){
+                    alert('덧글 삭제가 완료 되었습니다.')
+                    window.location.reload();
+                }else{
+                    alert('덧글을 삭제할 수 없습니다.')
+                }
+            })
     }
 
     return (
@@ -74,33 +71,36 @@ function Comment(props) {
         {Comments.length > 0 && 
             <div className="detailWrapper_comment__column">
                 {Comments.map((item, idx)=>(
-                    <div className='detailWrapper_comment__contents' id={idx} key={idx}>
-                        <div className="detailWrapper_comment_creator">
-                                <div>
-                                    <div>{item.creator.name}</div>
-                                    <div>{item.createdAt.split("T")[0]}</div>    
-                                </div>
-                                <CloseOutlined onClick={handleDelete} />
-                        </div>
-                        <div className="detailWrapper_comment_reply">
-                            <div>{item.content}</div>
-                            <button onClick={handleClick} id={idx}>답글</button>
-                        </div>
-                        <div className='toggle' id={idx}>
-                        <div className="detailWrapper_comment__column">
-                                <textarea 
-                                    value={Content}
-                                    placeholder="답글을 달아주세요." 
-                                    onChange={handleContent}
-                                />
-                                <button onClick={handleSubmit}>작성</button>
-                            </div>
-                        </div>
-                    </div>
+                    <React.Fragment>
+                        <Single 
+                            id={idx}
+                            key={idx}
+                            allComments = {Comments}
+                            refComment = {item.refComment}
+                            creator = {item.creator.name}
+                            createdAt = {item.createdAt.split("T")[0]}
+                            contents = {item.content}
+                            userInfo = {UserInfo}
+                            delete = {handleDelete}
+                            url_id = {props.match.params.id}
+                        />
+                        
+
+                        <Reply 
+                            id = {idx}
+                            allComments = {Comments}
+                            refComment = {item.refComment}
+                            creator = {item.creator.name}
+                            createdAt = {item.createdAt.split("T")[0]}
+                            contents = {item.content}
+                            userInfo = {UserInfo}
+                            delete = {handleDelete}
+                        />
+                    </React.Fragment>
                 ))}
             </div>
         }
-
+        
         <div className="detailWrapper_comment__column">
             <textarea 
                 value={Content} 

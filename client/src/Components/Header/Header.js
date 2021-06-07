@@ -18,7 +18,6 @@ function Header(props) {
 
   const [UserInfo, setUserInfo] = useState([]);
   const [Content, setContent] = useState('');
-  const [SearchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
     Axios.get("/api/users/auth")

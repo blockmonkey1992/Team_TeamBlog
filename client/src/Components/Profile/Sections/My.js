@@ -14,10 +14,10 @@ function My(props) {
     useEffect(() => {
         Axios.get("/api/users/auth")
             .then(response => {
-                console.log(response);
-                setID(response.data._id);
-                setName(response.data.name);
-                setEmail(response.data.email);
+                console.log(response)
+                setID(response.data._id)
+                setName(response.data.name)
+                setEmail(response.data.email)
             });
     }, []);
 

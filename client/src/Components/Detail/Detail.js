@@ -34,7 +34,7 @@ function Detail(props) {
        
         Axios.get(`/api/post/postDetail/${props.match.params.id}`)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 setDetailData(response.data.post)
             })
 
@@ -42,6 +42,7 @@ function Detail(props) {
         Axios.get(`/api/comments/${props.match.params.id}`)
             .then(response => {
                 //댓글 띄우고 처리내용?
+                // console.log(response);
                 setCommentCount(response.data.result.length);
             });
         
