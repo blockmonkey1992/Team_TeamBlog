@@ -45,7 +45,13 @@ function Register(props) {
           password : Pwd,
         } 
         dispatch(registerUser(dataToSubmit))
-          .then(response => console.log(response));
+          .then(response => {
+            if(response.payload.success){
+              console.log('회원갑 성공');
+            } else {
+              console.log('회원갑 실패');
+            }
+          });
       }
     };
 
