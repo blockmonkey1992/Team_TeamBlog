@@ -14,6 +14,7 @@ function Detail(props) {
     const [DetailData, setDetailData] = useState([]);
     const [LikeCount, setLikeCount] = useState(0);
     const [CommentCount, setCommentCount] = useState(0);
+    const [Comments, setComments] = useState([]);
 
     const categoryOptions = [
         { value : 0, label : "HTML/CSS" },
@@ -42,8 +43,11 @@ function Detail(props) {
         Axios.get(`/api/comments/${props.match.params.id}`)
             .then(response => {
                 //댓글 띄우고 처리내용?
-                // console.log(response);
-                setCommentCount(response.data.result.length);
+                if(response.data.success){
+                    console.log(response.data.result);
+                    setCommentCount(response.data.result.length);
+                    setComments(response.data.result);
+                }
             });
         
         //좋아요 갯수 API
@@ -93,7 +97,7 @@ function Detail(props) {
                 <div className="detailWrapper_description">{DetailData.description}</div>
                 <Like />
             </div>
-            <Comment />
+            <Comment commentsList={Comments} />
         </div>
     )
 }

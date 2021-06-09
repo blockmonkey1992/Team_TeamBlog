@@ -5,9 +5,8 @@ import { CloseOutlined } from '@ant-design/icons';
 
 function Single(props) {
 
-    console.log(props)
-
-    const [ReplyContent, setReplyContent] = useState("");
+    const [ReplyContent, setReplyContent] = useState("");   
+    const [Toggle, setToggle] = useState(false); 
 
     const handleReplyContent = (e) => {
         setReplyContent(e.currentTarget.value);
@@ -19,8 +18,7 @@ function Single(props) {
             return ;
         };
 
-        const currentComment = e.currentTarget.parentNode.parentNode.parentNode;
-        const currentComment_id = props.allComments[currentComment.getAttribute('id')]._id
+        const currentComment_id = props.comment._id
 
         const variables = {
             refComment : currentComment_id,
@@ -29,8 +27,11 @@ function Single(props) {
 
         Axios.post(`/api/comments/createReply/${props.url_id}`, variables)
             .then(response => {
+                console.log(response)
                 if(response.data.success){
+                    // props.refreshFunction(response.data.result);
                     setReplyContent("");
+                    setToggle(false);
                     window.location.reload();
                 } else {
                     alert("댓글작성실패");
@@ -38,36 +39,28 @@ function Single(props) {
             });
     }
 
-    const elems = document.getElementsByClassName('toggle');
-
-    const handleClick = (e) => {
-        let target_id = e.target.parentNode.parentNode.getAttribute('id');
-
-        for( let i = 0; i < elems.length; i+= 1 ){
-            let elems_id = document.getElementById(`${i}`).getAttribute('id')
-            if(target_id === elems_id){
-                elems[i].classList.toggle('toggle_fold');
-            }
-        }
+    const handleToggle = (e) => {
+        setToggle(!Toggle);
     }
 
     return (
         <React.Fragment>
-            {!props.refComment ?
             <div className='detailWrapper_comment__contents' id={props.id}>
                 <div className="detailWrapper_comment_creator">
                         <div>
-                            <div>{props.creator}</div>
-                            <div>{props.createdAt}</div>    
+                            <div>{props.comment.creator.name}</div>
+                            <div>{props.comment.createdAt.split("T")[0]}</div>    
                         </div>
-                        {props.userInfo.name === props.creator ?
-                        <CloseOutlined onClick={props.delete} /> : <div></div>}
+                        {props.userInfo.name === props.comment.creator.name ?
+                        <CloseOutlined onClick={props.delete} /> : null}
                 </div>
                 <div className="detailWrapper_comment_reply">
-                    <div>{props.contents}</div>
-                    <button onClick={handleClick} >답글</button>
+                    <div>{props.comment.content}</div>
+                    <button onClick={handleToggle} >답글</button>
                 </div>
-                <div className='toggle' id={props.id}>
+                
+            {Toggle &&
+                <div>
                     <div className="detailWrapper_comment__column">
                         <textarea
                             value = {ReplyContent}
@@ -77,7 +70,8 @@ function Single(props) {
                         <button onClick={handleReplySubmit} >작성</button>
                     </div>
                 </div>
-            </div> : null}
+            }
+            </div>
         </React.Fragment>
     )
 }

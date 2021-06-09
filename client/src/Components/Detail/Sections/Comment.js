@@ -7,21 +7,15 @@ import Single from './Single';
 
 function Comment(props) {
 
-    const [Comments, setComments] = useState([]);
     const [Content, setContent] = useState("");
     const [UserInfo, setUserInfo] = useState("");
 
     useEffect(() => {
-        Axios.get(`/api/comments/${props.match.params.id}`)
-            .then(response => {
-                setComments(response.data.result);
-            });
-        
         Axios.get("/api/users/auth")
             .then(response => {
                 setUserInfo(response.data);
             });
-    }, [Comments.length]);
+    }, []);
 
     const handleContent = (e) => {
         setContent(e.currentTarget.value);
@@ -41,6 +35,7 @@ function Comment(props) {
             .then(response => {
                 if(response.data.success){
                     setContent("");
+                    // props.refreshFunction(response.data.success);
                     window.location.reload();
                 } else {
                     alert("댓글작성실패");
@@ -51,7 +46,9 @@ function Comment(props) {
     const handleDelete = (e) => {
         e.preventDefault();
         const currentComment = e.currentTarget.parentNode.parentNode;
-        const currentComment_id = Comments[currentComment.getAttribute('id')]._id
+        const currentComment_id = props.commentsList[currentComment.getAttribute('id')]._id
+
+        console.log(currentComment)
 
         Axios.delete(`/api/comments/delete/${currentComment_id}`)
             .then(response => {
@@ -68,39 +65,32 @@ function Comment(props) {
  
     <div className="detailWrapper_comment">
 
-        {Comments.length > 0 && 
-            <div className="detailWrapper_comment__column">
-                {Comments.map((item, idx)=>(
+        {props.commentsList.length > 0 && props.commentsList.map((itm, idx) => (
+            (!itm.refComment &&
+                <div className="detailWrapper_comment__column">
                     <React.Fragment>
                         <Single 
-                            id={idx}
                             key={idx}
-                            allComments = {Comments}
-                            refComment = {item.refComment}
-                            creator = {item.creator.name}
-                            createdAt = {item.createdAt.split("T")[0]}
-                            contents = {item.content}
+                            comment = {itm}
+                            delete = {handleDelete}
+                            id = {idx}
+                            url_id = {props.match.params.id}
+                            userInfo = {UserInfo}
+                            refreshFunction = {props.refreshFunction}
+                        />
+                        <Reply
+                            commentsList={props.commentsList}
+                            parentCommentId = {itm._id}
                             userInfo = {UserInfo}
                             delete = {handleDelete}
+                            id = {idx}
                             url_id = {props.match.params.id}
                         />
-                        
-
-                        <Reply 
-                            id = {idx}
-                            allComments = {Comments}
-                            refComment = {item.refComment}
-                            creator = {item.creator.name}
-                            createdAt = {item.createdAt.split("T")[0]}
-                            contents = {item.content}
-                            userInfo = {UserInfo}
-                            delete = {handleDelete}
-                        />
                     </React.Fragment>
-                ))}
-            </div>
-        }
-        
+                </div>
+            )
+        ))}
+            
         <div className="detailWrapper_comment__column">
             <textarea 
                 value={Content} 
@@ -110,7 +100,6 @@ function Comment(props) {
             <button onClick={handleSubmit}>작성</button>
         </div>
     </div>
-
     )
 }
 
