@@ -64,7 +64,7 @@ function Contact() {
                                 <p>오류사항이나 문의 사항, 혹은 궁금한 점이 있다면 오픈 카카오톡을 통해 남겨주세요.</p>    
                             </div>
                             <div className='contact-OpenTalk__link'>
-                                <a href="https://open.kakao.com/o/gUFV5sgd" target="_blank">간편하게 링크로 이동하기 →</a>
+                                <a href="https://open.kakao.com/o/gUFV5sgd" target="_blank" rel="noopener noreferrer">간편하게 링크로 이동하기 →</a>
                             </div>
                         </div>
                         

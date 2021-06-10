@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Axios from "axios";
 import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 
 function Like(props){
-    const dispatch = useDispatch()
     const [LikeCount, setLikeCount] = useState(0);
     const [LikeActionState, setLikeActionState] = useState(false);
     let user = useSelector(state => state.user);

@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import Axios from "axios";
-
 import { CloseOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 
 function Reply(props) {
-
-    console.log(props)
 
     const [ChildCommentNum, setChildCommentNum] = useState(0);
 

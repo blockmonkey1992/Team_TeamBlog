@@ -15,7 +15,11 @@ function LandingPage(props) {
     const [Data, setData] = useState([]);
     const [Skip, setSkip] = useState(0);
     const [Limit, setLimit] = useState(8);
+    const [CategoryValue, setCategoryValue] = useState(100);
 
+    const handleCategory = (num) => {
+        setCategoryValue(num)
+    }
 
     useEffect(() => {
 
@@ -26,12 +30,37 @@ function LandingPage(props) {
 
         getHomes(body);
 
+    
+        Axios.get(`/api/post/category/${CategoryValue}`)
+            .then( response => {
+                console.log(response)
+                // if(response.data.success){
+                //    getHomes(body)
+                // }else if(response.data.result.length > 0){
+                //     setData(response.data.result)
+                // }
+                if(response.data.result.length > 0){
+                    setData(response.data.result)
+                }else{
+                    getHomes(body)
+                }
+            } )
+
+    }, [CategoryValue])
+
+    useEffect(() => {
+
+        
+        
     }, [])
+
+    // response.data.result(ㅂㅐ열).category
 
     const getHomes = (body) => {
         Axios.post('/api/post/postAll', body)
         .then(response => {
             if(response.data.success){
+                // console.log(response)
                 if(body.loadMore){
                     setData([...Data, ...response.data.result]);
                 } else {
@@ -56,15 +85,30 @@ function LandingPage(props) {
         getHomes(body);
         setSkip(skip);
     }
- 
+
+    const renderHomes = Data.map((item, idx) => {
+        return <Col key={idx} xl = {6} lg={8} md={12} xs={24}>
+                    <Home
+                        id={item._id}
+                        title={item.title}
+                        views={item.views}
+                        creator={item.creator}
+                        createdAt={item.createdAt}
+                        description={item.description}
+                        category={item.category}
+                        imgSrc={item.postImg}
+                    />
+                </Col>
+    })
 
     return (
         <div>
             <LandingCarousel />
-            <Category />
+            <Category categoryValue = {CategoryValue} click={handleCategory} />
             {Data && 
-            <Row gutter={[24, 24]} style={{margin: "0px 30px"}}>
-                    {Data.map((item, idx)=> (
+                <Row gutter={[24, 24]} style={{margin: "0px 30px"}}>
+                    {renderHomes}
+                    {/* {Data.map((item, idx)=> (
                         <Col key={idx} xl = {6} lg={8} md={12} xs={24}>
                             <Home
                                 id={item._id}
@@ -77,7 +121,7 @@ function LandingPage(props) {
                                 imgSrc={item.postImg}
                             />
                         </Col>
-                    ))}
+                    ))} */}
                 </Row>}
             <Btn>
                 <button onClick={loadMoreHandler}><CaretDownOutlined /></button>

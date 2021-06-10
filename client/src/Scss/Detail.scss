@@ -190,6 +190,9 @@
             justify-content: center;
             &:hover{
                 cursor: pointer;
+                background-color: #CA526B;
+                color: white;
+                transition: all 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
             }
         }
     }

@@ -9,19 +9,11 @@ import '../../Scss/Posting.scss';
 
 function ModifyPost(props) {
     const [Image, setImage] = useState("");
-    const [UserInfo, setUserInfo] = useState([]);
     const [EditTitle, setEditTitle] = useState('');
     const [EditDescription, setEditDescription] = useState('');
     const [EditCategory, setEditCategory] = useState(0);
 
     useEffect(() => {
-
-        Axios.get("/api/users/auth")
-            .then(response => {
-                console.log(response)
-                setUserInfo(response.data);
-            });
-
         Axios.get(`/api/post/postDetail/${props.match.params.id}`)
             .then(response => {
                 console.log(response);

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { registerUser } from "../../actions/user_action";
 
 
@@ -9,7 +8,6 @@ import '../../Scss/Register.scss';
 
 function Register(props) {
 
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const [Name, setName] = useState("")
@@ -47,9 +45,10 @@ function Register(props) {
         dispatch(registerUser(dataToSubmit))
           .then(response => {
             if(response.payload.success){
-              console.log('회원갑 성공');
+              alert('회원가입에 성공하였습니다.');
+              props.history.push('/');
             } else {
-              console.log('회원갑 실패');
+              alert('회원가입에 실패하였습니다.');
             }
           });
       }

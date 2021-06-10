@@ -6,10 +6,6 @@ import '../../Scss/Category.scss';
 
 function Category(props) {
 
-    // useEffect(() => {
-    //     console.log(props);
-    // }, [])
-
     const [HtmlCssCategory, setHtmlCssCategory] = useState(true);
     const [JsCategory, setJsCategory] = useState(true);
     const [ReactCategory, setReactCategory] = useState(true);
@@ -19,6 +15,7 @@ function Category(props) {
     const [HttpCategory, setHttp] = useState(true);
     const [AlgorithmCategory, setAlgorithm] = useState(true);
     const [AwsCategory, setAws] = useState(true);
+    const [NetWorkCategory, setNetWork] = useState(true);
     const [CloseBtn, setCloseBtn] = useState(true);
 
     const handleHtmlBtnClick = () => {
@@ -31,7 +28,9 @@ function Category(props) {
         setHttp(false);
         setAlgorithm(false);
         setAws(false);
+        setNetWork(false);
         setCloseBtn(false);
+        props.click(0);
     }
     const handleJsBtnClick = () => {
         setHtmlCssCategory(false);
@@ -43,7 +42,9 @@ function Category(props) {
         setHttp(false);
         setAlgorithm(false);
         setAws(false);
+        setNetWork(false);
         setCloseBtn(false);
+        props.click(1);
     }
     const handleReactBtnClick = () => {
         setHtmlCssCategory(false);
@@ -55,7 +56,9 @@ function Category(props) {
         setHttp(false);
         setAlgorithm(false);
         setAws(false);
+        setNetWork(false);
         setCloseBtn(false);
+        props.click(2);
     }
     const handleNodeBtnClick = () => {
         setHtmlCssCategory(false);
@@ -67,7 +70,9 @@ function Category(props) {
         setHttp(false);
         setAlgorithm(false);
         setAws(false);
+        setNetWork(false);
         setCloseBtn(false);
+        props.click(3);
     }
     const handleMongoBtnClick = () => {
         setHtmlCssCategory(false);
@@ -79,7 +84,9 @@ function Category(props) {
         setHttp(false);
         setAlgorithm(false);
         setAws(false);
+        setNetWork(false);
         setCloseBtn(false);
+        props.click(4);
     }
     const handleGitBtnClick = () => {
         setHtmlCssCategory(false);
@@ -91,7 +98,9 @@ function Category(props) {
         setHttp(false);
         setAlgorithm(false);
         setAws(false);
+        setNetWork(false);
         setCloseBtn(false);
+        props.click(5);
     }
     const handleHttpBtnClick = () => {
         setHtmlCssCategory(false);
@@ -103,7 +112,9 @@ function Category(props) {
         setHttp(true);
         setAlgorithm(false);
         setAws(false);
+        setNetWork(false);
         setCloseBtn(false);
+        props.click(6);
     }
     const handleAlgorithmBtnClick = () => {
         setHtmlCssCategory(false);
@@ -115,7 +126,9 @@ function Category(props) {
         setHttp(false);
         setAlgorithm(true);
         setAws(false);
+        setNetWork(false);
         setCloseBtn(false);
+        props.click(7);
     }
     const handleAwsBtnClick = () => {
         setHtmlCssCategory(false);
@@ -127,7 +140,23 @@ function Category(props) {
         setHttp(false);
         setAlgorithm(false);
         setAws(true);
+        setNetWork(false);
         setCloseBtn(false);
+        props.click(8);
+    }
+    const handleNetworkBtnClick = () => {
+        setHtmlCssCategory(false);
+        setJsCategory(false);
+        setReactCategory(false);
+        setNodeExpressCategory(false);
+        setMongodbCategory(false);
+        setGitCategory(false);
+        setHttp(false);
+        setAlgorithm(false);
+        setAws(false);
+        setNetWork(true);
+        setCloseBtn(false);
+        props.click(9);
     }
     const handleCloseBtnClick = () => {
         setHtmlCssCategory(true);
@@ -139,7 +168,9 @@ function Category(props) {
         setHttp(true);
         setAlgorithm(true);
         setAws(true);
+        setNetWork(true);
         setCloseBtn(true);
+        props.click(100);
     }
 
     return (
@@ -177,6 +208,9 @@ function Category(props) {
                     </Col>
                     <Col lg={4} md={8}>
                         <CategoryBtn onClick={handleAwsBtnClick} value={AwsCategory} opacity={AwsCategory ? 1 : 0.4}>AWS</CategoryBtn>
+                    </Col>
+                    <Col lg={4} md={8}>
+                        <CategoryBtn onClick={handleNetworkBtnClick} value={NetWorkCategory} opacity={NetWorkCategory ? 1 : 0.3}>NetWork</CategoryBtn>
                     </Col>
                 </Row>
             </div>

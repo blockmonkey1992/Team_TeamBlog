@@ -7,6 +7,8 @@ import Single from './Single';
 
 function Comment(props) {
 
+    console.log(props)
+
     const [Content, setContent] = useState("");
     const [UserInfo, setUserInfo] = useState("");
 
@@ -38,7 +40,7 @@ function Comment(props) {
                     // props.refreshFunction(response.data.success);
                     window.location.reload();
                 } else {
-                    alert("댓글작성실패");
+                    alert("로그인 후 덧글을 작성해주세요.");
                 }
             });
     }
@@ -76,7 +78,6 @@ function Comment(props) {
                             id = {idx}
                             url_id = {props.match.params.id}
                             userInfo = {UserInfo}
-                            refreshFunction = {props.refreshFunction}
                         />
                         <Reply
                             commentsList={props.commentsList}

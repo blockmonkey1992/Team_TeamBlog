@@ -44,7 +44,6 @@ function Detail(props) {
             .then(response => {
                 //댓글 띄우고 처리내용?
                 if(response.data.success){
-                    console.log(response.data.result);
                     setCommentCount(response.data.result.length);
                     setComments(response.data.result);
                 }

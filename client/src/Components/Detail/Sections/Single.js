@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Axios from "axios";
 
 import { CloseOutlined } from '@ant-design/icons';
+import styled from 'styled-components';
 
 function Single(props) {
 
@@ -29,7 +30,6 @@ function Single(props) {
             .then(response => {
                 console.log(response)
                 if(response.data.success){
-                    // props.refreshFunction(response.data.result);
                     setReplyContent("");
                     setToggle(false);
                     window.location.reload();
@@ -45,6 +45,7 @@ function Single(props) {
 
     return (
         <React.Fragment>
+            {
             <div className='detailWrapper_comment__contents' id={props.id}>
                 <div className="detailWrapper_comment_creator">
                         <div>
@@ -60,20 +61,22 @@ function Single(props) {
                 </div>
                 
             {Toggle &&
-                <div>
-                    <div className="detailWrapper_comment__column">
-                        <textarea
-                            value = {ReplyContent}
-                            placeholder="답글을 달아주세요."
-                            onChange = {handleReplyContent}
-                        />
-                        <button onClick={handleReplySubmit} >작성</button>
-                    </div>
-                </div>
+                <ReplyBtn className="detailWrapper_comment__column">
+                    <textarea
+                        value = {ReplyContent}
+                        placeholder="답글을 달아주세요."
+                        onChange = {handleReplyContent}
+                    />
+                    <button onClick={handleReplySubmit} >작성</button>
+                </ReplyBtn>
             }
-            </div>
+            </div>}
         </React.Fragment>
     )
 }
 
 export default Single
+
+const ReplyBtn = styled.div`
+    margin-bottom: -15px;
+`
