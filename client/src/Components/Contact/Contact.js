@@ -24,7 +24,7 @@ function Contact() {
         axios.post("/api/contact/emailsend", variables)
             .then(response => {
                 if(response.data.success){
-                    alert(`From님의 메일이 정상적으로 전송되었습니다 ✅`);
+                    alert(`메일이 정상적으로 전송되었습니다 ✅`);
                 } else {
                     alert(`메일전송실패 카카오톡 채팅방을 이용해주세요 😭`);
                 }

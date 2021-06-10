@@ -30,9 +30,10 @@ function Register(props) {
 
       Axios.post('/api/users/checkname', nameCheck)
         .then(response => {
-          console.log(response)
           if(response.data.result.length > 0){
             setCheckName("이미 사용중인 닉네임입니다.");
+          }else{
+            setCheckName("");
           }
         })
 
@@ -40,6 +41,8 @@ function Register(props) {
        .then(response => {
           if(response.data.result.length > 0){
             setCheckEmail("이미 사용중인 이메일입니다.")
+          }else{
+            setCheckName("");
           }
         })
       
@@ -99,21 +102,13 @@ function Register(props) {
                   </div>
                   <div className="registerWrapper_column">
                       <div>Password</div>
-                      <input type="password" 
-                              minLength="8" 
-                              required 
-                              placeholder="비밀번호는 8자~30자 이내로 작성해야 합니다." 
-                              value={Pwd} 
-                              onChange={pwdHandler}/>
+                      <input type="password" minLength="8" required placeholder="비밀번호는 8자~30자 이내로 작성해야 합니다." value={Pwd} onChange={pwdHandler}/>
+                      {Pwd.length < 8 ? <div>비밀번호는 8글자 이상이어야 합니다!</div> : null}
                   </div>
                   <div className="registerWrapper_column">
                       <div>Verify Password</div>
-                      <input type="password" 
-                              minLength="8" 
-                              required 
-                              placeholder="비밀번호 확인을 위해 다시 입력해주세요." 
-                              value={VerifyPwd} 
-                              onChange={VerifyPwdHandler}/>
+                      <input type="password" minLength="8" required placeholder="비밀번호 확인을 위해 다시 입력해주세요." value={VerifyPwd} onChange={VerifyPwdHandler}/>
+                      {Pwd !== VerifyPwd ? <div>비밀번호가 일치하지 않습니다!</div> : null}
                   </div>
               </div>
           </div>
