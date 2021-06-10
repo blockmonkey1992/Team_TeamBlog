@@ -18,7 +18,7 @@ router.get("/search", searchPost);
 //글 목록 및 상세 페이지
 router.get("/postDetail/:id", postDetail);
 router.post("/postAll", postAll);
-router.get("/category", postCategory);
+router.get("/category/:id", postCategory);
 
 //글 제어
 router.post("/uploadImg", uploadImg.single('postImg'), upImg );
