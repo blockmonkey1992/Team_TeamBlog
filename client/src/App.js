@@ -1,18 +1,17 @@
 import './App.css';
-import {Route, Switch, } from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 import Header from './Components/Header/Header';
 import LandingPage from './Components/LandingPage/LandingPage';
 import Contact from "./Components/Contact/Contact"
 import Introduce from './Components/Introduce/Introduce';
 import Portfolio from './Components/Portfolio/Portfolio';
-import Register from './Components/Register/Register';
 import Footer from "./Components/Footer/Footer";
 import Detail from "./Components/Detail/Detail";
 import Profile from './Components/Profile/Profile';
 import Search from './Components/Search/Search';
-// import { Provider } from 'react-redux';
 import Posting from './Components/Posting/Posting';
+import Register from "./Components/Register/register";
 import ModifyPost from './Components/Posting/ModifyPost';
 import AuthCheck from "./hoc/auth";
 
@@ -31,8 +30,8 @@ function App() {
         <Route path='/register' component={AuthCheck(Register, false)}/>
         <Route path="/profile/:user" component={AuthCheck(Profile, true)} />  
         <Route path='/search' component={AuthCheck(Search, null)}/>
-        <Route path='/create' component={Posting} />
-        <Route path='/update/:id' component={ModifyPost} />
+        <Route path='/create' component={AuthCheck(Posting, true)} />
+        <Route path='/update/:id' component={AuthCheck(ModifyPost, true)} />
       </Switch>
     
       <Footer />

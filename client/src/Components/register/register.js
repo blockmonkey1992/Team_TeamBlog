@@ -120,4 +120,4 @@ function Register(props) {
     )
 }
 
-export default Register
+export default Register;
