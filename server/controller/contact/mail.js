@@ -1,11 +1,11 @@
 const nodemailer = require("nodemailer");
 
+//NodeMailer를 활용한 메일전송; (프론트에서 from(발신자 메일주소), 메일내용 두가지를 요구함. [from , description]);
 const mail = (req, res) => {
     const from = req.body.from;
     const description = req.body.description;
     const date = new Date;
     
-
     const transporter = nodemailer.createTransport({
         service: "gmail",
         host: "smtp.gmail.com",

@@ -10,6 +10,7 @@ const { userLiked } = require("../controller/user/like");
 const { userComment } = require("../controller/user/comment");
 const { overlapEmailCheck, overlapNameCheck } = require("../controller/user/overlapCheck");
 
+//회원관련 API (auth, 로그인 & 아웃, 회원가입, 아이디 & 닉네임 중복확인)
 router.get("/auth", auth, authUser);
 router.get("/logout", auth, logoutUser);
 router.post("/login", loginUser);
@@ -17,13 +18,11 @@ router.post("/register", registerUser);
 router.post("/checkemail", overlapEmailCheck);
 router.post("/checkname", overlapNameCheck);
 
+//회원정보 관리 API (회원정보 수정, updateUser가 두개???뭐니이건, 민서님?);
 router.post("/profile/:user", auth, updateUser);
 router.get("/profile/:user", auth, updatedUser);
-router.get("/profile/like/:user",auth, userLiked);
+router.get("/profile/like/:user", auth, userLiked);
 router.get("/profile/comment/:user", auth, userComment);
-
-
-
 
 
 module.exports = router;

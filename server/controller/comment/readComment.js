@@ -1,5 +1,6 @@
 const { Comment } = require("../../model/Comment");
 
+//댓글 읽기 API;
 const readComment = (req, res) => {
     const postId = req.params.id;
     Comment.find({ postId: postId }).populate("creator").exec((err, result)=> {

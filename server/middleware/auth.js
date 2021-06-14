@@ -1,5 +1,6 @@
 const { User } = require("../model/User");
 
+//회원 확인;
 const auth = (req, res, next) => {
     const token = req.cookies.x_auth;
     //쿠키에서 토큰을 가져와 복호화해서 

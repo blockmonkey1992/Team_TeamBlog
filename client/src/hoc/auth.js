@@ -2,17 +2,15 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authUser } from "../actions/user_action";
 
-{/* option = null(아무나), true(로그인유저만), false(손님만); */}
+// null(아무나), true(로그인유저), false(로그인하지않은 유저)
+// admin유저의 경우 admin을 true로 전달해주면 된다. 평시에는 null
 export default function(SpecificComponent, option, admin=null){
     function AuthCheck(props){
         const dispatch = useDispatch();
         let user = useSelector(state => state.user);
-        // console.log(user);
         //Node의 Auth API로 리퀘스트를 보내 현재상태 수신.
         useEffect(() => {
-            // console.log(user);
             dispatch(authUser()).then(response => {
-                // console.log(response);
                 if(!response.payload.is_login){
                     //비로그인 유저
                     if(option){

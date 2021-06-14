@@ -35,6 +35,8 @@ const userSchema = mongoose.Schema({
     token: String,
 }, { timestamps: true });
 
+
+//Pre를 사용해 save 동작 전에 Bcrypt로 비밀번호 암호화 수행;
 userSchema.pre("save", function(next){
     let user = this;
 
@@ -56,6 +58,7 @@ userSchema.pre("save", function(next){
 });
 
 
+//비밀번호대조;
 userSchema.methods.comparePassword = function(plainPassword, cb){
     bcrypt.compare(plainPassword, this.password, function(err, isMatch){
         if(err){
@@ -66,6 +69,7 @@ userSchema.methods.comparePassword = function(plainPassword, cb){
     })
 };
 
+//토큰 생성;
 userSchema.methods.generateToken = function(cb){
     var user = this;
     //JWT를 활용해 (user의 _id값 + secret Key를 합쳐 토큰을 생성한다.)
@@ -80,9 +84,9 @@ userSchema.methods.generateToken = function(cb){
     })
 }
 
+//토큰 비교;
 userSchema.statics.compareToken = function(token, cb){
     var user = this;
-
     jwt.verify(token, process.env.JWT_SECRET_KEY, function(err, decodedId){
         user.findOne({ "_id": decodedId, "token": token }, function(err, user){
             if(err){

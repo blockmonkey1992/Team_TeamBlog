@@ -1,5 +1,6 @@
 const { Comment } = require("../../model/Comment");
 
+//댓글 삭제 API
 const deleteComment = (req, res) => {
     const commentId = req.params.id;
     const userId = req.user.id;
