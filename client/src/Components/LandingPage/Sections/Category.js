@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+
+import '../../../Scss/Category.scss';
 import { CloseOutlined } from '@ant-design/icons';
 import { Row , Col } from 'antd';
 import styled from "styled-components";
-import '../../Scss/Category.scss';
 
 function Category(props) {
 
+    //초기에는 카테고리를 분류하지 않고 모두 보여주기 위해 true 값을 디폴트로 지정
     const [HtmlCssCategory, setHtmlCssCategory] = useState(true);
     const [JsCategory, setJsCategory] = useState(true);
     const [ReactCategory, setReactCategory] = useState(true);
@@ -18,6 +20,9 @@ function Category(props) {
     const [NetWorkCategory, setNetWork] = useState(true);
     const [CloseBtn, setCloseBtn] = useState(true);
 
+    
+    //카테고리 버튼을 클릭했을 때 해당하는 카테고리는 제외하고 모두 false값으로 변경한 뒤,
+    //props로 해당 카테고리 번호값을 넘겨주기
     const handleHtmlBtnClick = () => {
         setHtmlCssCategory(true);
         setJsCategory(false);
@@ -158,6 +163,9 @@ function Category(props) {
         setCloseBtn(false);
         props.click(9);
     }
+
+    // 닫기 버튼을 누르면 모든 값이 다시 true로 돌아오고,
+    // 카테고리 번호값도 initialState값으로 되돌려줌.
     const handleCloseBtnClick = () => {
         setHtmlCssCategory(true);
         setJsCategory(true);
@@ -174,7 +182,6 @@ function Category(props) {
     }
 
     return (
-        //767px sm
         <div className="categoryWrapper">
             <button className="closeBtn" onClick={handleCloseBtnClick} value={CloseBtn} style={{display: CloseBtn ? 'none' : 'block'}}>
                 <CloseOutlined style={{marginLeft: '-3.7px'}} />
@@ -182,6 +189,7 @@ function Category(props) {
             
             <div className="buttonWrapper">
                 <Row gutter={[24, 24]}>
+                    {/* 삼항연산자를 이용하여 해당하지 않는 카테고리 버튼의 투명도를 props를 이용하여 조절함 */}
                     <Col lg={4} md={6} sm={8}>
                         <CategoryBtn onClick={handleHtmlBtnClick} value={HtmlCssCategory} opacity={HtmlCssCategory ? 1 : 0.3}>HTML/CSS</CategoryBtn>
                     </Col>
@@ -223,5 +231,4 @@ export default Category;
 
 const CategoryBtn = styled.button`
     opacity: ${props => props.opacity};
-    /* box-shadow:0 0 20px 0 rgba(0,0,0,.35); */
 `;

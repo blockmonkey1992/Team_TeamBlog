@@ -6,7 +6,7 @@ function Portfolio() {
     return (
         <div className='portfolioWrapper'>
             <div className='portfolio_content'>
-                <div className='portfolio__Img'><img /></div>
+                <div className='portfolio__Img'><img alt='' /></div>
                 <div className='portfolio_content__Wrapper'>
                     <div className='portfolio_content__Title'>
                         <div>Team Blog</div>
@@ -24,7 +24,7 @@ function Portfolio() {
                 </div>
             </div>
             <div className='portfolio_content'>
-                <div className='portfolio__Img'><img /></div>
+                <div className='portfolio__Img'><img alt='' /></div>
                 <div className='portfolio_content__Wrapper'>
                     <div className='portfolio_content__Title'>
                         <div>Team Blog</div>
@@ -42,7 +42,7 @@ function Portfolio() {
                 </div>
             </div>
             <div className='portfolio_content'>
-                <div className='portfolio__Img'><img /></div>
+                <div className='portfolio__Img'><img alt='' /></div>
                 <div className='portfolio_content__Wrapper'>
                     <div className='portfolio_content__Title'>
                         <div>Team Blog</div>

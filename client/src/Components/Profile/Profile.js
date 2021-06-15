@@ -11,6 +11,7 @@ import "../../Scss/Profile.scss";
 function Profile(props) {
     return (
         <div className="register_my__container">
+            {/* props로 받아온 유저정보를 화면에 렌더링함 */}
             {props.user.userData && 
                 <div className="register_my__wrapper">
                     <div className="register_my__wrapper-title"><p>{props.user.userData.name}</p></div>
@@ -22,8 +23,8 @@ function Profile(props) {
                         />
                         <Switch>
                             <Route exact path="/profile/:userId" component={My} />
-                            <Route exact path="/profile/like/:userId" component={Like} />
-                            <Route exact path="/profile/comment/:userId" component={Comment} />
+                            <Route path="/profile/like/:userId" component={Like} />
+                            <Route path="/profile/comment/:userId" component={Comment} />
                         </Switch>
                     </div>
                 </div>

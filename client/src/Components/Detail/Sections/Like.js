@@ -14,7 +14,7 @@ function Like(props){
             Axios.get(`/api/like/${props.match.params.id}`)
             .then(response => {
                 setLikeCount(response.data.liked.length);
-                response.data.liked.map((item, idx)=> {
+                response.data.liked.forEach((item, idx)=> {
                     if(user.userData._id === item.likedUser){
                         setLikeActionState(true);
                     } else {
@@ -25,7 +25,7 @@ function Like(props){
         } else {
             return ;
         }
-    }, [user.userData]);
+    }, [user.userData, props]);
 
     const likeBtnHandler = (e) => {
         e.preventDefault();
@@ -46,10 +46,13 @@ function Like(props){
         <div>
             <div className="detailWrapper_like">
                 {LikeActionState ?
-                    <HeartFilled onClick={likeBtnHandler} /> :
-                    <HeartOutlined onClick={likeBtnHandler} />
+                    <HeartFilled onClick={likeBtnHandler} style={{color : '#CA526B' }} /> :
+                    <HeartOutlined onClick={likeBtnHandler} style={{opacity : '0.7' }} />
                 }
-                <span>{LikeCount}</span>
+                {LikeActionState ?
+                    <span style={{color : '#CA526B' }}>{LikeCount}</span> :
+                    <span style={{opacity : '0.7' }}>{LikeCount}</span>
+                }
             </div>  
         </div>
     )

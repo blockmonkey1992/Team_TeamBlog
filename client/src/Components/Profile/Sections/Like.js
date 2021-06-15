@@ -1,11 +1,8 @@
 import React from 'react';
-import LikeComponent from './LikeComponent';
-import NoLike from './NoLike';
 
+import LikeComponent from './LikeComponent';
 
 function Like(props) {
-
-    console.log(props)
 
     return (
         <div className="myWrapper__container">

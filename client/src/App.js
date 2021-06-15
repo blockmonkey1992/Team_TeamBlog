@@ -1,5 +1,5 @@
 import './App.css';
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Header from './Components/Header/Header';
 import LandingPage from './Components/LandingPage/LandingPage';
@@ -11,7 +11,7 @@ import Detail from "./Components/Detail/Detail";
 import Profile from './Components/Profile/Profile';
 import Search from './Components/Search/Search';
 import Posting from './Components/Posting/Posting';
-import Register from "./Components/Register/register";
+import Register from "./Components/Register/Register";
 import ModifyPost from './Components/Posting/ModifyPost';
 import AuthCheck from "./hoc/auth";
 
@@ -21,6 +21,7 @@ function App() {
     <div className="App">
       <Header />
 
+      {/* Switch는 조건에 맞는 component를 하나만 렌더링 시켜주는 역할을 한다. */}
       <Switch>
         <Route exact path='/' component={AuthCheck(LandingPage, null)}/>
         <Route path='/introduce' component={AuthCheck(Introduce, null)}/>

@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
+
 import '../../Scss/Footer.scss';
 
 function Footer() {
-
-    // const year = new Date();
 
     return (
         <div className="footerWrapper">

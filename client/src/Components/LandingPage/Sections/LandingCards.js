@@ -1,16 +1,17 @@
 import React from 'react';
 
-import "../../Scss/Home.scss";
+import '../../../Scss/LandingCards.scss';
 import { EyeOutlined } from '@ant-design/icons';
 
-function Home(props) {
+function LandingCards(props) {
 
+    //props로 받아온 Cards 정보를 뿌리기
     return (
         <a href={`/detail/${props.id}`}>
             <div className="homeCard">
                 <div className="homeCard_column">
                     <div className="homeCard_ImgContainer">
-                        <img src={props.imgSrc} />
+                        <img src={props.imgSrc} alt='/' />
                     </div>
                 </div>
                 <div className="homeCard_column">
@@ -30,4 +31,4 @@ function Home(props) {
     )
 }
 
-export default Home
+export default LandingCards

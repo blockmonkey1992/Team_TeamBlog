@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'antd';
+import { Modal } from 'antd';
 
 import '../../Scss/Introduce.scss';
 
@@ -32,12 +32,12 @@ function Introduce() {
         <div className='introduceWrapper'>
             <div className='introduce__Person'>
                 <div className='introduce_Profile' onClick={showModal3}>
-                    <img />
+                    <img alt='' />
                 </div>
                 <div className='introduce_Name'>BlockMonkey</div>
                 <div className='introduce_Intro'>MERNstack Developer</div>
                 <Modal className='introduce__Modal' visible={ModalVisible3}  onCancel={handleCancel} >
-                    <div className='introduce__Modal__Profile'><img /></div>
+                    <div className='introduce__Modal__Profile'><img alt='' /></div>
                     <div className='introduce__Modal__Contents'>
                         <div className='introduce__Modal__Name'>BlockMonkey</div>
                         <div className='introduce__Modal__Date'>1992.08.31</div>
@@ -54,12 +54,12 @@ function Introduce() {
             </div>
             <div className='introduce__Person'>
                 <div className='introduce_Profile' onClick={showModal2}>
-                    <img />
+                    <img alt='' />
                 </div>
                 <div className='introduce_Name'>Kkevi Do</div>
                 <div className='introduce_Intro'>Front-End Developer & Designer</div>
                 <Modal className='introduce__Modal' visible={ModalVisible2} onCancel={handleCancel} >
-                    <div className='introduce__Modal__Profile'><img /></div>
+                    <div className='introduce__Modal__Profile'><img alt='' /></div>
                     <div className='introduce__Modal__Contents'>
                         <div className='introduce__Modal__Name'>Kkevi Do</div>
                         <div className='introduce__Modal__Date'>1998.06.27</div>
@@ -73,12 +73,12 @@ function Introduce() {
             </div>
             <div className='introduce__Person'>
                 <div className='introduce_Profile' onClick={showModal}>
-                    <img />
+                    <img alt='' />
                 </div>
                 <div className='introduce_Name'>MinSeo</div>
                 <div className='introduce_Intro'>Node JS Back-End Developer</div>
                 <Modal className='introduce__Modal' visible={ModalVisible} onCancel={handleCancel} >
-                    <div className='introduce__Modal__Profile'><img /></div>
+                    <div className='introduce__Modal__Profile'><img alt='' /></div>
                     <div className='introduce__Modal__Contents'>
                         <div className='introduce__Modal__Name'>MinSeo</div>
                         <div className='introduce__Modal__Date'>1998.06.24</div>

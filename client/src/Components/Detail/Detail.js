@@ -4,9 +4,9 @@ import Axios from "axios";
 
 import Like from "./Sections/Like";
 import Comment from './Sections/Comment';
+
 import { EyeOutlined, HeartOutlined, CommentOutlined, CloseOutlined, EditOutlined } from '@ant-design/icons';
 import "../../Scss/Detail.scss";
-// import { response } from 'express';
 
 
 function Detail(props) {
@@ -15,7 +15,11 @@ function Detail(props) {
     const [LikeCount, setLikeCount] = useState(0);
     const [CommentCount, setCommentCount] = useState(0);
     const [Comments, setComments] = useState([]);
+    const [Admin, setAdmin] = useState(false);
+    
+    const createdAt = (DetailData.createdAt || '').split("T")[0];
 
+    //데이터베이스에서 가져온 글들의 카테고리 값을 해석할 배열을 만듦
     const categoryOptions = [
         { value : 0, label : "HTML/CSS" },
         { value : 1, label : "Js" },
@@ -29,13 +33,11 @@ function Detail(props) {
         { value : 9, label : "Network" },
     ];
 
-    const createdAt = (DetailData.createdAt || '').split("T")[0];
-
     useEffect(() => {
-       
+
+        //데이터베이스에서 모든 게시글들을 불러오기
         Axios.get(`/api/post/postDetail/${props.match.params.id}`)
             .then(response => {
-                // console.log(response);
                 setDetailData(response.data.post)
             })
 
@@ -51,14 +53,21 @@ function Detail(props) {
         
         //좋아요 갯수 API
         Axios.get(`/api/like/${props.match.params.id}`)
-        .then(response => {
-            setLikeCount(response.data.liked.length);
-        });
-    }, []);
+            .then(response => {
+                setLikeCount(response.data.liked.length);
+            });
+
+        //유저정보를 가져오는 API
+        Axios.get("/api/users/auth")
+            .then(response => {
+                setAdmin(response.data.isAdmin);
+            });
+
+    }, [props]);
 
 
+    //게시글을 삭제하는 API
     const handleDelete = (e) => {
-
         e.preventDefault();
         
         Axios.delete(`/api/post/delete/${props.match.params.id}`)
@@ -70,6 +79,7 @@ function Detail(props) {
             });
     }
 
+    //게시글을 수정하는 링크
     const handleEdit = (e) => {
         props.history.push(`/update/${props.match.params.id}`)
     }
@@ -89,13 +99,19 @@ function Detail(props) {
                             <div><EyeOutlined />{DetailData.views}</div>
                             <div><HeartOutlined /> {LikeCount}</div>
                             <div><CommentOutlined /> {CommentCount}</div>
-                            <div onClick={handleDelete}><CloseOutlined /></div>
-                            <div onClick={handleEdit}><EditOutlined /></div>
+                            {!Admin ? null
+                            :<div>
+                                <div onClick={handleDelete}><CloseOutlined /></div>
+                                <div onClick={handleEdit}><EditOutlined /></div>
+                            </div>
+                            }
                         </div>
                 </div>
                 <div className="detailWrapper_description">{DetailData.description}</div>
                 <Like />
             </div>
+            
+            {/* 모든 덧글을 출력한 배열을 props로 넘겨줌 */}
             <Comment commentsList={Comments} />
         </div>
     )

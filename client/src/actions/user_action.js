@@ -4,7 +4,6 @@ import {
     LOGOUT_USER,
     REGISTER_USER,
     AUTH_USER,
-    SEARCH
 } from './types';
 
 export function registerUser(bodyData){

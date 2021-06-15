@@ -29,9 +29,6 @@ function LandingCarousel() {
                 <div>
                   <h3 style={contentStyle}>Minseo</h3>
                 </div>
-                <div>
-                  <h3 style={contentStyle}>Yohan</h3>
-                </div>
               </Carousel>
         </div>
     )

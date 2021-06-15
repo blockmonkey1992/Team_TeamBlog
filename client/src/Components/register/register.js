@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from "../../actions/user_action";
@@ -18,16 +17,18 @@ function Register(props) {
     const [Pwd, setPwd] = useState("");
     const [VerifyPwd, setVerifyPwd] = useState("")
 
+
+    //사용자가 입력한 닉네임과 이메일값이 이미 회원가입되어있는 유저와 중복되는 검사
     useEffect(() => {
 
       let nameCheck = {
         name : Name,
       }
-
       let emailCheck = {
         email : Email,
       }
 
+      //닉네임 중복 체크 API
       Axios.post('/api/users/checkname', nameCheck)
         .then(response => {
           if(response.data.result.length > 0){
@@ -37,6 +38,7 @@ function Register(props) {
           }
         })
 
+      //이메일 중복 체크 API
       Axios.post('/api/users/checkemail', emailCheck)
        .then(response => {
           if(response.data.result.length > 0){
@@ -48,6 +50,7 @@ function Register(props) {
       
     }, [Email, Name])
 
+    
     const emailHandler = (e) => {
       setEmail(e.currentTarget.value);
     }
@@ -60,6 +63,8 @@ function Register(props) {
     const VerifyPwdHandler = (e) => {
       setVerifyPwd(e.currentTarget.value);
     }
+
+
     const submitHandler = (e) => {
       e.preventDefault();
       if(Pwd !== VerifyPwd ){

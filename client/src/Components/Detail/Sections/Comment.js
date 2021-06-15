@@ -7,11 +7,10 @@ import Single from './Single';
 
 function Comment(props) {
 
-    console.log(props)
-
     const [Content, setContent] = useState("");
     const [UserInfo, setUserInfo] = useState("");
 
+    //유저정보를 가져오는 API
     useEffect(() => {
         Axios.get("/api/users/auth")
             .then(response => {
@@ -19,11 +18,14 @@ function Comment(props) {
             });
     }, []);
 
+    //실시간으로 input값을 감지
     const handleContent = (e) => {
         setContent(e.currentTarget.value);
     }
 
-    const handleSubmit = (e) => {
+    //덧글 작성 API
+    const handleSubmit = () => {
+
         if(Content.length < 3){
             alert("댓글은 3글자 이상 작성해주세요.");
             return ;
@@ -37,7 +39,6 @@ function Comment(props) {
             .then(response => {
                 if(response.data.success){
                     setContent("");
-                    // props.refreshFunction(response.data.success);
                     window.location.reload();
                 } else {
                     alert("로그인 후 덧글을 작성해주세요.");
@@ -45,12 +46,14 @@ function Comment(props) {
             });
     }
 
+    //덧글 삭제 API
     const handleDelete = (e) => {
         e.preventDefault();
+
+        //사용자가 클릭한 덧글을 가져오고
+        //사용자가 클릭한 덧글의 id값을 이용하여 모든 덧글 리스트 중 클릭한 덧글의 _id값을 가져옴
         const currentComment = e.currentTarget.parentNode.parentNode;
         const currentComment_id = props.commentsList[currentComment.getAttribute('id')]._id
-
-        console.log(currentComment)
 
         Axios.delete(`/api/comments/delete/${currentComment_id}`)
             .then(response => {
@@ -68,6 +71,9 @@ function Comment(props) {
     <div className="detailWrapper_comment">
 
         {props.commentsList.length > 0 && props.commentsList.map((itm, idx) => (
+            
+            //먼저 답글이 없는 일반 덧글과 답글이 있는 덧글을 구분하고,
+            //답글이 없는 일반 덧글만 출력하여 중복을 삭제한다.
             (!itm.refComment &&
                 <div className="detailWrapper_comment__column">
                     <React.Fragment>

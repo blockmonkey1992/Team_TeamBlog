@@ -1,16 +1,16 @@
-.homeLink{
-    color: #2D3133;
-    &:hover{
-        color: #CA526B;
-    }
-}
-
 .homeCard{
     background-color: white;
     height: 250px;
     border: 1px solid black;
     border-radius: 20px;
     margin: 0px 0px 30px;
+    color: #2D3133;
+    &:hover{
+        .homeCard__title{
+            color: #CA526B;
+            transition: all 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+        }
+    }
 }
 
 .homeCard_column:first-child{

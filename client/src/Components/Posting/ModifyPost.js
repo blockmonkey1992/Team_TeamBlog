@@ -1,8 +1,8 @@
-import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
-import axios from 'axios';
+import Axios from 'axios';
+
 import { FileAddOutlined } from "@ant-design/icons";
 import '../../Scss/Posting.scss';
 
@@ -13,6 +13,7 @@ function ModifyPost(props) {
     const [EditDescription, setEditDescription] = useState('');
     const [EditCategory, setEditCategory] = useState(0);
 
+    //수정하려고 하는 해당 게시글을 불러오는 API
     useEffect(() => {
         Axios.get(`/api/post/postDetail/${props.match.params.id}`)
             .then(response => {
@@ -21,7 +22,7 @@ function ModifyPost(props) {
                 setEditDescription(response.data.post.description);
                 setEditCategory(response.data.post.category);
             })
-    }, [])
+    }, [props])
 
     const handleTitle = (e) => {
         e.preventDefault();
@@ -60,7 +61,7 @@ function ModifyPost(props) {
         
         e.preventDefault();
 
-        if(window.confirm("작성 중인 글은 저장되지 않습니다. 계속하시겠습니까?") == true){
+        if(window.confirm("작성 중인 글은 저장되지 않습니다. 계속하시겠습니까?") === true){
             props.history.push(`/detail/${props.match.params.id}`)
         }else{
             return false;
@@ -87,7 +88,7 @@ function ModifyPost(props) {
         };
         formData.append("postImg", file[0])
 
-        axios.post("/api/post/uploadImg", formData, config)
+        Axios.post("/api/post/uploadImg", formData, config)
             .then(response => {
                 setImage(response.data.img);
             });
@@ -101,16 +102,6 @@ function ModifyPost(props) {
                         {categoryOptions.map((item, idx) => (
                             <option value={item.value} >{categoryOptions[idx].label}</option>
                         ))}
-                        {/* <option value={0}>HTML/CSS</option>
-                        <option value={1}>JS</option>
-                        <option value={2}>React</option>
-                        <option value={3}>Node/Express</option>
-                        <option value={4}>MongoDB</option>
-                        <option value={5}>Git/GitHub</option>
-                        <option value={6}>HTTP</option>
-                        <option value={7}>Algorithm</option>
-                        <option value={8}>AWS</option>
-                        <option value={9}>Network</option> */}
                     </select>
 
                     <input className='postingTitle' type="text" placeholder="제목을 입력해주세요." value={EditTitle} onChange={handleTitle} />
@@ -129,13 +120,13 @@ function ModifyPost(props) {
 
                 {/* 드랍존에 넣으면 옆에 이미지가 출력되기 위한 이미지태그. */}
                 <div className='postingImg_Container'>
-                    <img src={Image} alt="Image"/>
+                    <img src={Image} alt=""/>
                 </div>
                 
                 <textarea className='postingTextarea' placeholder="내용을 입력하세요." value={EditDescription} onChange={handleDescription}></textarea>
 
                 <div className='postingContents_footer'>
-                    <button className='postingBtn' className='cancelBtn' onClick={handleCancel}>취소</button>
+                    <button className='postingBtn cancelBtn' onClick={handleCancel}>취소</button>
                     <button className='postingBtn' onClick={handleSubmit}>수정</button>
                 </div>
             </div>
