@@ -8,12 +8,12 @@ import styled from 'styled-components';
 
 function Search() {
 
-    //redux에 저장되어있는 검색값을 가져오기
+    //redux에 저장되어있는 검색값을 가져오기 (Kkevi Do)
     const searched = useSelector(state => state.post);
 
     return (
         <SearchedResult>
-            {/* 삼항연산자를 이용하여 검색결과를 보여주기 */}
+            {/* 삼항연산자를 이용하여 검색결과를 보여주기 (Kkevi Do) */}
             {searched.searchedPost && searched.searchedPost ?
                 <Row gutter={[24, 24]} style={{margin: "0px 30px"}}>
                 {searched.searchedPost.map((item, idx)=> (

@@ -31,12 +31,12 @@ function Header(props) {
       });
   }, []);
 
-  // 검색창의 쓰여진 내용 실시간으로 감지하기
+  // 검색창의 쓰여진 내용 실시간으로 감지하기 (Kkevi Do)
   const handleContent = (e) => {
     setContent(e.currentTarget.value);
   }
 
-  //검색내용을 redux에 저장하고, 해당 검색페이지로 넘어가기
+  //검색내용을 redux에 저장하고, 해당 검색페이지로 넘어가기 (Kkevi Do)
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(searchPost(Content))
@@ -67,7 +67,7 @@ function Header(props) {
                 </div>
               }
 
-              {/* Link를 이용하여 유저정보를 해당 My 페이지의 props값으로 넘겨주기 */}
+              {/* Link를 이용하여 유저정보를 해당 My 페이지의 props값으로 넘겨주기 (Kkevi Do) */}
               <Link to={{
                 pathname: `/profile/${UserInfo._id}`,
                 state : UserInfo,

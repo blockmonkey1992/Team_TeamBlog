@@ -5,7 +5,7 @@ import { EyeOutlined } from '@ant-design/icons';
 
 function LandingCards(props) {
 
-    //props로 받아온 Cards 정보를 뿌리기
+    //props로 받아온 Cards 정보를 뿌리기 (Kkevi Do)
     return (
         <a href={`/detail/${props.id}`}>
             <div className="homeCard">

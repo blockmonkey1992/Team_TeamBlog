@@ -11,7 +11,7 @@ import "../../Scss/Profile.scss";
 function Profile(props) {
     return (
         <div className="register_my__container">
-            {/* props로 받아온 유저정보를 화면에 렌더링함 */}
+            {/* props로 받아온 유저정보를 화면에 렌더링함 (Kkevi Do) */}
             {props.user.userData && 
                 <div className="register_my__wrapper">
                     <div className="register_my__wrapper-title"><p>{props.user.userData.name}</p></div>

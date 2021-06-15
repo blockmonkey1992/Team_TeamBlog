@@ -19,7 +19,7 @@ function Detail(props) {
     
     const createdAt = (DetailData.createdAt || '').split("T")[0];
 
-    //데이터베이스에서 가져온 글들의 카테고리 값을 해석할 배열을 만듦
+    //데이터베이스에서 가져온 글들의 카테고리 값을 해석할 배열을 만듦 (Kkevi Do)
     const categoryOptions = [
         { value : 0, label : "HTML/CSS" },
         { value : 1, label : "Js" },
@@ -35,7 +35,7 @@ function Detail(props) {
 
     useEffect(() => {
 
-        //데이터베이스에서 모든 게시글들을 불러오기
+        //데이터베이스에서 모든 게시글들을 불러오기 (Kkevi Do)
         Axios.get(`/api/post/postDetail/${props.match.params.id}`)
             .then(response => {
                 setDetailData(response.data.post)
@@ -59,7 +59,7 @@ function Detail(props) {
                 setLikeCount(response.data.liked.length);
             });
 
-        //유저정보를 가져오는 API
+        //유저정보를 가져오는 API (Kkevi Do)
         Axios.get("/api/users/auth")
             .then(response => {
                 setAdmin(response.data.isAdmin);
@@ -68,7 +68,7 @@ function Detail(props) {
     }, [props]);
 
 
-    //게시글을 삭제하는 API
+    //게시글을 삭제하는 API (Kkevi Do)
     const handleDelete = (e) => {
         e.preventDefault();
         
@@ -81,7 +81,7 @@ function Detail(props) {
             });
     }
 
-    //게시글을 수정하는 링크
+    //게시글을 수정하는 링크 (Kkevi Do)
     const handleEdit = (e) => {
         props.history.push(`/update/${props.match.params.id}`)
     }
@@ -113,7 +113,7 @@ function Detail(props) {
                 <Like />
             </div>
             
-            {/* 모든 덧글을 출력한 배열을 props로 넘겨줌 */}
+            {/* 모든 덧글을 출력한 배열을 props로 넘겨줌 (Kkevi Do) */}
             <Comment commentsList={Comments} />
         </div>
     )

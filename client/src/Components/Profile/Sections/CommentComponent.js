@@ -7,7 +7,7 @@ function CommentComponent(props) {
     const history = useHistory();
     const [CommentData, setCommentData] = useState([]);
 
-    //Axios를 이용하여 작성한 덧글 값들을 가져오기
+    //Axios를 이용하여 작성한 덧글 값들을 가져오기 (Kkevi Do)
     useEffect(() => {
         Axios.get(`/api/users/profile/comment/${history.location.pathname.split('/')[3]}`)
             .then(response => {

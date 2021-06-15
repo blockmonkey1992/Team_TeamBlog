@@ -13,7 +13,8 @@ function ModifyPost(props) {
     const [EditDescription, setEditDescription] = useState('');
     const [EditCategory, setEditCategory] = useState(0);
 
-    //수정하려고 하는 해당 게시글을 불러오는 API
+    //수정 하고자 하는 해당 게시글을 불러오는 API
+    //(Kkevi Do)
     useEffect(() => {
         Axios.get(`/api/post/postDetail/${props.match.params.id}`)
             .then(response => {
@@ -24,23 +25,28 @@ function ModifyPost(props) {
             })
     }, [props])
 
+    //실시간으로 input 내용을 감지 (Kkevi Do)
     const handleTitle = (e) => {
         e.preventDefault();
         setEditTitle(e.currentTarget.value);
     }
 
+    //실시간으로 input 내용을 감지 (Kkevi Do)
     const handleDescription = (e) => {
         e.preventDefault();
         setEditDescription(e.currentTarget.value);
     }
 
+    //실시간으로 input 내용을 감지 (Kkevi Do)
     const handleCategory = (e) => {
         setEditCategory({ value: e.target.value, label: e.target.label });
     }
 
+    //글수정 API (Kkevi Do)
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        //작성한 글 정보들(제목, 내용, 카테고리, 작성자 등등)을 전송해주는 자료 (Kkevi Do)
         const variable = {
             "title": EditTitle,
             "description": EditDescription,
@@ -57,8 +63,8 @@ function ModifyPost(props) {
         })
     }
 
+    //글 작성을 취소할 시 확인문구
     const handleCancel = (e) => {
-        
         e.preventDefault();
 
         if(window.confirm("작성 중인 글은 저장되지 않습니다. 계속하시겠습니까?") === true){
@@ -126,7 +132,7 @@ function ModifyPost(props) {
                 (Blockmonkey); */}
                 
                 <div className='postingImg_Container'>
-                    <img src={Image} alt="droped Image"/>
+                    <img src={Image} alt=""/>
                 </div>
                 
                 <textarea className='postingTextarea' placeholder="내용을 입력하세요." value={EditDescription} onChange={handleDescription}></textarea>
