@@ -10,7 +10,7 @@ const { userLiked } = require("../controller/user/like");
 const { userComment } = require("../controller/user/comment");
 const { overlapEmailCheck, overlapNameCheck } = require("../controller/user/overlapCheck");
 
-//회원관련 API (auth, 로그인 & 아웃, 회원가입, 아이디 & 닉네임 중복확인)
+//회원관련 API (auth, 로그인 & 아웃, 회원가입, 아이디 & 닉네임 중복확인) (Blockmonkey);
 router.get("/auth", auth, authUser);
 router.get("/logout", auth, logoutUser);
 router.post("/login", loginUser);

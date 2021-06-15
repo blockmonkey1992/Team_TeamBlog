@@ -1,5 +1,6 @@
 const { User } = require("../../model/User");
 
+//유저 로그인 API (Blockmonkey);
 const loginUser = (req, res) => {
     const requestedUserEmail = req.body.email;
     const requestedUserPlainPassword = req.body.password;

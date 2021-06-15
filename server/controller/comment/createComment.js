@@ -1,6 +1,6 @@
 const { Comment } = require("../../model/Comment");
 
-//댓글 생성 API
+//댓글 생성 API (Blockmonkey);
 const createComment = (req, res) => {
     const creator = req.user._id;
     const postId = req.params.id;
@@ -15,7 +15,8 @@ const createComment = (req, res) => {
     }
 };
 
-//댓글의 답글 생성 API
+//댓글의 답글 생성 API (Blockmonkey);
+//댓글과 답글의 관계 : refComment(부모 코멘트 id)가 없으며 답글은 refComment(부모 코멘트 id)값이 존재함으로 구분.
 const replyComment = (req, res) => {
     const creator = req.user._id;
     const postId = req.params.id;

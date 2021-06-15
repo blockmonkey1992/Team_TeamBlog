@@ -1,6 +1,6 @@
 const { Like } = require("../../model/Like");
 
-//Like(좋아요) 정보 가져오기 API
+//Like(좋아요) 정보 가져오기 API (Blockmonkey);
 const getLikeController = (req, res) => {
     const currentPostId = req.params.id || req.body.whichPost;
     Like.find(({ "whichPost" : currentPostId }))
@@ -11,7 +11,7 @@ const getLikeController = (req, res) => {
 };
 
 
-//Like(좋아요) 액션 API
+//Like(좋아요) 액션 API (Blockmonkey);
 const likeController = (req, res) => {
     //좋아요 클릭하면, 해당 글 DB에 내 좋아요 데이터가 존재하는지 확인한다.
     const currentUserId = req.user._id;

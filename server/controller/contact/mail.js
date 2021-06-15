@@ -1,5 +1,7 @@
 const nodemailer = require("nodemailer");
 
+
+//Blockmonkey
 //NodeMailer를 활용한 메일전송; (프론트에서 from(발신자 메일주소), 메일내용 두가지를 요구함. [from , description]);
 const mail = (req, res) => {
     const from = req.body.from;

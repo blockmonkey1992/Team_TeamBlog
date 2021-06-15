@@ -9,7 +9,7 @@ const { auth } = require("../middleware/auth");
 const { searchPost }  = require("../controller/post/searchPost");
 const {uploadImg, awsDeleteImg}  = require("../middleware/image"); 
 
-//글 검색
+//글 검색 (Blockmonkey);
 router.get("/search", searchPost);
 
 //글 목록 및 상세 페이지

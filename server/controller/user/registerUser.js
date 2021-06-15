@@ -1,5 +1,6 @@
 const { User } = require("../../model/User");
 
+//회원등록(가입) API (Blockmonkey);
 const registerUser = (req, res) => {
     //email, name, password 세개가 필수값
     const user = new User(req.body);

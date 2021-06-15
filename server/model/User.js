@@ -36,7 +36,7 @@ const userSchema = mongoose.Schema({
 }, { timestamps: true });
 
 
-//Pre를 사용해 save 동작 전에 Bcrypt로 비밀번호 암호화 수행;
+//Pre를 사용해 save 동작 전에 Bcrypt로 비밀번호 암호화 수행; (Blockmonkey);
 userSchema.pre("save", function(next){
     let user = this;
 
@@ -69,7 +69,7 @@ userSchema.methods.comparePassword = function(plainPassword, cb){
     })
 };
 
-//토큰 생성;
+//토큰 생성; (Blockmonkey);
 userSchema.methods.generateToken = function(cb){
     var user = this;
     //JWT를 활용해 (user의 _id값 + secret Key를 합쳐 토큰을 생성한다.)
@@ -84,7 +84,7 @@ userSchema.methods.generateToken = function(cb){
     })
 }
 
-//토큰 비교;
+//토큰 비교; (Blockmonkey);
 userSchema.statics.compareToken = function(token, cb){
     var user = this;
     jwt.verify(token, process.env.JWT_SECRET_KEY, function(err, decodedId){

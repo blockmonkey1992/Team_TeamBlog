@@ -1,5 +1,6 @@
 const { User } = require("../../model/User");
 
+//이메일 중복확인 API (Blockmonkey)
 const overlapEmailCheck = (req, res) => {
     const requestedEmail = req.body.email;
 
@@ -9,6 +10,7 @@ const overlapEmailCheck = (req, res) => {
     })
 };
 
+//이름 중복확인 API (Blockmonkey)
 const overlapNameCheck = (req, res) => {
     const requestedName = req.body.name;
 
