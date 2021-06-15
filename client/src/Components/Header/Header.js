@@ -11,11 +11,13 @@ import '../../Scss/Header.scss';
 import { SearchOutlined } from '@ant-design/icons';
 
 
+
+//(Blockmonkey);
 function Header(props) {
-  
-  const user = useSelector(state => state.user);
   const dispatch = useDispatch();
   const history = useHistory();
+  //user 정보를 REDUX의 상태값에서 불러온다.
+  const user = useSelector(state => state.user);
 
   const [UserInfo, setUserInfo] = useState([]);
   const [Content, setContent] = useState('');
@@ -57,6 +59,7 @@ function Header(props) {
                 </form>
             </div>
             
+            {/* redux 상태값 user를 탐색 후, is_login 항목이 존재하는가에 따라 로그아웃 버튼 혹은 로그인 버튼을 출력하도록 함 (Blockmonkey) */}
             <div className='headerTail'>
               {user.userData &&
                 <div>

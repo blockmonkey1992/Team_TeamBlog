@@ -23,6 +23,9 @@ function App() {
 
       {/* Switch는 조건에 맞는 component를 하나만 렌더링 시켜주는 역할을 한다. */}
       <Switch>
+        {/* AuthCheck을 통해 유저의 권한을 확인한다. (null<아무나>, false<비로그인유저만>, true<로그인유저만>) */}
+        {/* 단, 세번째 인자 true는 admin 유저만 사용가능 한 것. */}
+        {/* (Blockmonkey) */}
         <Route exact path='/' component={AuthCheck(LandingPage, null)}/>
         <Route path='/introduce' component={AuthCheck(Introduce, null)}/>
         <Route path='/portfolio' component={AuthCheck(Portfolio, null)}/>
@@ -31,8 +34,8 @@ function App() {
         <Route path='/register' component={AuthCheck(Register, false)}/>
         <Route path="/profile/:user" component={AuthCheck(Profile, true)} />  
         <Route path='/search' component={AuthCheck(Search, null)}/>
-        <Route path='/create' component={AuthCheck(Posting, true)} />
-        <Route path='/update/:id' component={AuthCheck(ModifyPost, true)} />
+        <Route path='/create' component={AuthCheck(Posting, true, true)} />
+        <Route path='/update/:id' component={AuthCheck(ModifyPost, true, true)} />
       </Switch>
     
       <Footer />

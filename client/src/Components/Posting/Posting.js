@@ -87,6 +87,10 @@ function Posting(props) {
         { value : 9, label : "Network" },
     ]
 
+    //React-Dropzone을 활용해 이미지를 끌어 올릴 수 있도록 함. (Blockmonkey);
+    //header 설정을 multipart/form-data로 함으로써 이미지 데이터임을 표시하고, (Blockmonkey);
+    //Dropzone에 Form데이터를 생성해, 이미지는 1개만 올릴 수 있도록 올린 파일의 [0]번째 값만을 추가함. (Blockmonkey);
+    //그렇게 저장한 이미지를 백엔드의 이미지 업로드 API로 전송하면 S3버킷에 올리는 작업을 함. (Blockmonkey);
     const imgDropHandler = (file) => {
         let formData = new FormData();
         const config = {
@@ -124,7 +128,7 @@ function Posting(props) {
                     </Dropzone>
                 </div>
 
-                {/* 드랍존에 넣으면 옆에 이미지가 출력되기 위한 이미지태그. */}
+                {/* 드랍존에 넣으면 옆에 이미지가 출력되기 위한 이미지태그. (Blockmoneky) */}
                 <div className='postingImg_Container'>
                     <img src={Image} alt=""/>
                 </div>

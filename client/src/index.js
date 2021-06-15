@@ -14,6 +14,7 @@ import rootReducer from './reducers/ConfigStore';
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
 ReactDOM.render(
+  // 크롬 확장프로그램인 redux dev tool을 이용하기 위해 설정함 & redux store 기본설정 (Blockmonkey)
   <Provider
     store = {createStoreWithMiddleware(rootReducer,
         window.__REDUX_DEVTOOLS_EXTENSION__&&

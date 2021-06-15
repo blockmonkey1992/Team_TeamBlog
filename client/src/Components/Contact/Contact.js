@@ -3,7 +3,11 @@ import axios from "axios";
 import '../../Scss/Contact.scss';
 import kakaoQR from "../../kakaoQR.PNG";
 
+//Nodemailer를 활용해 이메일 전송서비스 페이지
+//(Blockmonkey)
+
 function Contact() {
+    //Nodemailer의 최소정보로, 누가 보냈는지(발신자), 글 내용 두가지 요건이 필요하다. 따라서 두개의 스테이트 값을 설정.
     const [From, setFrom] = useState("");
     const [Description, setDescription] = useState("");
 
@@ -16,6 +20,9 @@ function Contact() {
         setDescription(e.currentTarget.value);
     };
 
+    //nodemailer로 Axios를 통해 신호를 보낸다.
+    //from 상태값을 From에 넣고, description에 Description 상태값을 넣어
+    //정보 두가지를 포함해 보내면 나머지는 nodejs에서 처리하면 된다.
     const nodeMailerSubmitHandler = (e) => {
         let variables = {
             from : From,
@@ -52,6 +59,8 @@ function Contact() {
                     </div>
                 </div>
                 
+                {/* 카카오톡방 참여 서비스 */}
+                {/* QR코드 이미지는 현재 리액트 src 폴더에 함께 포함시켰으나, 추후 S3로 이동시켜야함 (Blockmonkey) */}
                 <div className='contact-OpenTalkWrapper'>
                     <div className='contact-OpenTalk'>Kakao Talk</div>
                     <div className='contact-OpenTalk__contents'>

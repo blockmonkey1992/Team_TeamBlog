@@ -6,29 +6,32 @@ import { EyeInvisibleOutlined, EyeTwoTone} from '@ant-design/icons';
 import '../../Scss/Login.scss';
 
 
+//Blockmonkey;
 function Login() {
 
   const dispatch = useDispatch();
   const [UserEmail, setUserEmail] = useState("");
   const [UserPassword, setUserPassWord] = useState("");
 
-  const UserEmailHandler = (e) => {
+  const userEmailHandler = (e) => {
     setUserEmail(e.currentTarget.value);
   }
 
-  const UserpwdHandler = (e) => {
+  const userPwdHandler = (e) => {
     setUserPassWord(e.currentTarget.value);
   }
 
-  const submitHandler = (e) => {
+  //사용자가 로그인 버튼을 눌렀을 시, 실행할 함수.
+  const loginSubmitHandler = (e) => {
     e.preventDefault();
 
-    let data = {
+    //ㅂ
+    let variables = {
       email : UserEmail,
       password : UserPassword,
     }
 
-    dispatch(loginUser(data))
+    dispatch(loginUser(variables))
       .then(response => {
         if(response.payload.loginSuccess){
           //로그인 성공시 할 일,
@@ -40,58 +43,61 @@ function Login() {
       });
   }
 
+  //모달창 컨트롤 함수.
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
+  const okBtnHandler = () => {
     setIsModalVisible(false);
   };
 
-  const handleCancel = () => {
+  const cancleBtnHandler = () => {
     setIsModalVisible(false);
   };
   
-    return (
-      <div className="loginWrapper">
+  return (
+    <React.Fragment>
+
         <div type="primary" onClick={showModal}>
           로그인
         </div>
       
-        <Modal title="Login to Ninja Coders" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} >
-          <form onSubmit={submitHandler}>
-            <div className="ant-modal-input_group">
-              <Input
-                type="email"
-                placeholder="E-mail"
-                value={UserEmail}
-                onChange={UserEmailHandler}
-                id="modal-input-email" />
-              <Input.Password
-                type="password"
-                placeholder="password"
-                value={UserPassword}
-                onChange={UserpwdHandler}
-                id="modal-input-pw"
-                iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
-            </div>
-            
-            <div class="ant-modal-footer" onClick={handleOk}>
-              <button type="submit" id="loginBtn" >
-                <span>LOGIN</span>
-              </button>
-              <div className="ant-modal-footer__column">
-                <a href="/register">
-                  Register in
-                </a>
+      <Modal title="Login to Ninja Coders" visible={isModalVisible} onOk={okBtnHandler} onCancel={cancleBtnHandler} >
+        <form onSubmit={loginSubmitHandler}>
+          <div className="ant-modal-input_group">
+            <Input
+              type="email"
+              placeholder="E-mail"
+              value={UserEmail}
+              onChange={userEmailHandler}
+              id="modal-input-email" />
+            <Input.Password
+              type="password"
+              placeholder="password"
+              value={UserPassword}
+              onChange={userPwdHandler}
+              id="modal-input-pw"
+              iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
+          </div>
+          
+          <div class="ant-modal-footer" onClick={okBtnHandler}>
+            <button type="submit" id="loginBtn" >
+              <span>LOGIN</span>
+            </button>
+            <div className="ant-modal-footer__column">
+              <a href="/register">
+                Register in
+              </a>
             </div>
           </div>        
-          </form>
-        </Modal>
-      </div>
+        </form>
+      </Modal>
+
+    </React.Fragment>
     )
 }
 
-export default Login
+export default Login;

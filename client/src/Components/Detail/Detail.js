@@ -41,17 +41,19 @@ function Detail(props) {
                 setDetailData(response.data.post)
             })
 
-        //댓글띄우는 API
+        //댓글띄우는 API (Blockmonkey)
+        //댓글 갯수 상태값과, 댓글 정보를 Comments 상태값에 저장해 화면에 출력할 것 (Blockmonkey);
         Axios.get(`/api/comments/${props.match.params.id}`)
             .then(response => {
-                //댓글 띄우고 처리내용?
                 if(response.data.success){
                     setCommentCount(response.data.result.length);
                     setComments(response.data.result);
                 }
             });
         
-        //좋아요 갯수 API
+        //좋아요 갯수 API (Blockmonkey);
+        //현재 글의 _id값을 포함해 axios로 리퀘스트를 보내면,
+        //현재 글의 좋아요 갯수를 가져올 수 있다.
         Axios.get(`/api/like/${props.match.params.id}`)
             .then(response => {
                 setLikeCount(response.data.liked.length);

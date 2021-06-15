@@ -81,6 +81,8 @@ function ModifyPost(props) {
         { value : 9, label : "Network" },
     ]
 
+    //드랍존에 이미지를 올리고 난 뒤, header[config]설정 및 이미지 form-data를 이미지 S3저장 API에 전송 후, (Blockmonkey);
+    //저장된 이미지를 response로 받아옴 (Blockmonkey);
     const imgDropHandler = (file) => {
         let formData = new FormData();
         const config = {
@@ -118,9 +120,13 @@ function ModifyPost(props) {
                     </Dropzone>
                 </div>
 
-                {/* 드랍존에 넣으면 옆에 이미지가 출력되기 위한 이미지태그. */}
+                {/* 드랍존에 넣으면 옆에 이미지가 출력되기 위한 코드.
+                Image 상태값에 이미지를 S3에 올린 뒤, 파일을 받아와서 이미지를 띄워준다.
+                (추가: S3에 올리고 난 뒤 만약, 다른 이미지를 올리면 S3에 기존 이미지가 그대로 남아있다. 개선여부는?)
+                (Blockmonkey); */}
+                
                 <div className='postingImg_Container'>
-                    <img src={Image} alt=""/>
+                    <img src={Image} alt="droped Image"/>
                 </div>
                 
                 <textarea className='postingTextarea' placeholder="내용을 입력하세요." value={EditDescription} onChange={handleDescription}></textarea>
