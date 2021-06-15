@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 function Category(props) {
 
-    //초기에는 카테고리를 분류하지 않고 모두 보여주기 위해 true 값을 디폴트로 지정
+    //초기에는 카테고리를 분류하지 않고 모두 보여주기 위해 true 값을 디폴트로 지정 (Kkevi Do)
     const [HtmlCssCategory, setHtmlCssCategory] = useState(true);
     const [JsCategory, setJsCategory] = useState(true);
     const [ReactCategory, setReactCategory] = useState(true);
@@ -23,6 +23,7 @@ function Category(props) {
     
     //카테고리 버튼을 클릭했을 때 해당하는 카테고리는 제외하고 모두 false값으로 변경한 뒤,
     //props로 해당 카테고리 번호값을 넘겨주기
+    //(Kkevi Do)
     const handleHtmlBtnClick = () => {
         setHtmlCssCategory(true);
         setJsCategory(false);
@@ -166,6 +167,7 @@ function Category(props) {
 
     // 닫기 버튼을 누르면 모든 값이 다시 true로 돌아오고,
     // 카테고리 번호값도 initialState값으로 되돌려줌.
+    //(Kkevi Do)
     const handleCloseBtnClick = () => {
         setHtmlCssCategory(true);
         setJsCategory(true);
@@ -189,7 +191,7 @@ function Category(props) {
             
             <div className="buttonWrapper">
                 <Row gutter={[24, 24]}>
-                    {/* 삼항연산자를 이용하여 해당하지 않는 카테고리 버튼의 투명도를 props를 이용하여 조절함 */}
+                    {/* 삼항연산자를 이용하여 해당하지 않는 카테고리 버튼의 투명도를 props를 이용하여 조절함 (Kkevi Do) */}
                     <Col lg={4} md={6} sm={8}>
                         <CategoryBtn onClick={handleHtmlBtnClick} value={HtmlCssCategory} opacity={HtmlCssCategory ? 1 : 0.3}>HTML/CSS</CategoryBtn>
                     </Col>

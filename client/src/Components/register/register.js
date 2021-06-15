@@ -18,7 +18,7 @@ function Register(props) {
     const [VerifyPwd, setVerifyPwd] = useState("")
 
 
-    //사용자가 입력한 닉네임과 이메일값이 이미 회원가입되어있는 유저와 중복되는 검사
+    //사용자가 입력한 닉네임과 이메일값이 이미 회원가입되어있는 유저와 중복되는 검사 (Kkevi Do)
     useEffect(() => {
 
       let nameCheck = {

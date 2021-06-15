@@ -15,7 +15,7 @@ function Posting(props) {
     const [Image, setImage] = useState("");
     const [UserInfo, setUserInfo] = useState([]);
 
-    //유저 정보를 가져오는 API
+    //유저 정보를 가져오는 API (Kkevi Do)
     useEffect(() => {
         Axios.get("/api/users/auth")
             .then(response => {
@@ -23,27 +23,28 @@ function Posting(props) {
             });
     }, [])
 
-    //실시간으로 input 내용을 감지
+    //실시간으로 input 내용을 감지 (Kkevi Do)
     const handleTitle = (e) => {
         e.preventDefault();
         setTitle(e.currentTarget.value);
     }
 
-    //실시간으로 input 내용을 감지
+    //실시간으로 input 내용을 감지 (Kkevi Do)
     const handleDescription = (e) => {
         e.preventDefault();
         setDescription(e.currentTarget.value);
     }
 
-    //카테고리 값을 변동할 수 있도록 제어
+    //카테고리 값을 변동할 수 있도록 제어 (Kkevi Do)
     const handleCategory = (e) => {
         setCategory({ value: e.target.value });
     }
 
-    //글작성 API
+    //글작성 API (Kkevi Do)
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        //작성한 글 정보들(제목, 내용, 카테고리, 작성자 등등)을 전송해주는 자료 (Kkevi Do)
         const variable = {
             "title": Title,
             "description": Description,

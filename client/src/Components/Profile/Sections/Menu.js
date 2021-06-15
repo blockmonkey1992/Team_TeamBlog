@@ -32,7 +32,6 @@ function Menu(props) {
                 <div className="myMenu__list">
                     <LogoutOutlined />
                     <Logout />
-                    {/* <a href="/">Logout</a> */}
                 </div>
             </div>
         </div>

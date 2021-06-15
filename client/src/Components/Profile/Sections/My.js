@@ -9,7 +9,7 @@ function My(props) {
     const [Email, setEmail] = useState('');
     const [ID, setID] = useState('');
 
-    //Axios를 이용하여 데이터베이스에 있는 유저정보를 가져와 state값에 저장하기
+    //Axios를 이용하여 데이터베이스에 있는 유저정보를 가져와 state값에 저장하기 (Kkevi Do)
     useEffect(() => {
         Axios.get("/api/users/auth")
             .then(response => {
@@ -19,7 +19,7 @@ function My(props) {
             });
     }, []);
 
-    //실시간으로 변경되는 input값 감지
+    //실시간으로 변경되는 input값 감지 (Kkevi Do)
     const handleName = (e) => {
         e.preventDefault();
         setName(e.currentTarget.value);
@@ -28,6 +28,7 @@ function My(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // 변경된 닉네임 값을 다시 전송해주는 자료 (Kkevi Do)
         const variable = {
             'name' : Name,
             'id' : ID,
@@ -35,6 +36,7 @@ function My(props) {
 
         //alert창으로 유저에게 다시 한 번 변경 여부를 물어본 뒤, true값이라면
         //Axios를 이용하여 변경된 유저 닉네임을 전송한다.
+        //(Kkevi Do)
         if(window.confirm(`닉네임을 ${Name}(으)로 수정하시겠습니까?`) === true){
             Axios.post(`/api/users/profile/${props.match.params.userId}`, variable)
             .then(response => {

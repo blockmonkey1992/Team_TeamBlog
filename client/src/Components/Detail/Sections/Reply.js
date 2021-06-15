@@ -5,12 +5,13 @@ import styled from 'styled-components';
 
 function Reply(props) {
 
-    //답글이 존재 여부를 파악할 state값
+    //답글이 존재 여부를 파악할 state값 (Kkevi Do)
     const [ChildCommentNum, setChildCommentNum] = useState(0);
 
     useEffect(() => {
         //초기 답글은 0개
         //전체 덧글 중, 답글이 존재하는 덧글을 찾을 때마다 commentNumber를 하나씩 더해준다.
+        //(Kkevi Do)
         let commentNumber = 0;
         props.commentsList.forEach((comment)=> {
             if(comment.refComment === props.parentCommentId){
@@ -22,7 +23,7 @@ function Reply(props) {
 
     return (
         <div>
-            {/* 만약 답글이 0개 이상이라면 답글을 렌더링한다. */}
+            {/* 만약 답글이 0개 이상이라면 답글을 렌더링한다. (Kkevi Do) */}
             {ChildCommentNum > 0 &&
                 props.commentsList.map((itm, idx) => (
                     itm.refComment === props.parentCommentId &&

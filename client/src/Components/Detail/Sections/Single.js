@@ -9,20 +9,22 @@ function Single(props) {
     const [ReplyContent, setReplyContent] = useState("");   
     const [Toggle, setToggle] = useState(false); 
 
-    //실시간으로 input내용 감지
+    //실시간으로 input내용 감지 (Kkevi Do)
     const handleReplyContent = (e) => {
         setReplyContent(e.currentTarget.value);
     }
 
-    //답글 작성 API
+    //답글 작성 API (Kkevi Do)
     const handleReplySubmit = (e) => {
         if(ReplyContent.length < 3){
             alert("댓글은 3글자 이상 작성해주세요.");
             return ;
         };
 
+        //답글을 작성하려고 하는 덧글을 파악 (Kkevi Do)
         const currentComment_id = props.comment._id
 
+        //작성한 답글의 내용과 답글의 부모 덧글 _id값을 refComment로 넘겨줌. (Kkevi Do)
         const variables = {
             refComment : currentComment_id,
             content : ReplyContent,
@@ -41,7 +43,7 @@ function Single(props) {
             });
     }
 
-    //답글 toggle
+    //답글 toggle (Kkevi Do)
     const handleToggle = (e) => {
         setToggle(!Toggle);
     }
@@ -54,7 +56,7 @@ function Single(props) {
                             <div>{props.comment.creator.name}</div>
                             <div>{props.comment.createdAt.split("T")[0]}</div>    
                         </div>
-                        {/* 덧글 작성자와 덧글을 삭제하려는 자의 name값이 일치하면 삭제 버튼이 보인다. */}
+                        {/* 덧글 작성자와 덧글을 삭제하려는 자의 name값이 일치하면 삭제 버튼이 보인다. (Kkevi Do) */}
                         {props.userInfo.name === props.comment.creator.name ?
                         <CloseOutlined onClick={props.delete} /> : null}
                 </div>

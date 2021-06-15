@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import Axios from "axios";
+
 import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 
 function Like(props){
@@ -28,7 +29,7 @@ function Like(props){
             //만약 로그인이 되어있지 않다면, 아무런 동작도 하지않음;(Blockmonkey)
             return ;
         }
-    }, [user.userData]);
+    }, [user.userData, props]);
 
     //좋아요 버튼을 클릭했을 때, 좋아요 생성 혹은 삭제 (Blockmonkey);
     const likeBtnHandler = (e) => {

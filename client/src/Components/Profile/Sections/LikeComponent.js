@@ -9,7 +9,7 @@ function LikeComponent(props) {
     const history = useHistory();
     const [LikeData, setLikeData] = useState([]);
 
-    //Axios를 이용하여 좋아요를 누른 값을 가져오기
+    //Axios를 이용하여 좋아요를 누른 값들을 가져오기 (Kkevi Do)
     useEffect(() => {
         Axios.get(`/api/users/profile/like/${history.location.pathname.split('/')[3]}`)
             .then(response => {
