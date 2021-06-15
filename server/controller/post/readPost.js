@@ -16,7 +16,11 @@ const postDetail = async (req, res) => {
 const postAll =  async(req, res) => {
         const limit = req.body.limit ? parseInt(req.body.limit) : 6;
         const skip = req.body.skip ? parseInt(req.body.skip) : 0;
-        await Post.find().skip(skip).limit(limit).exec((err, result) => {  
+        await Post.find()
+            .sort({ "updatedAt" : -1 })
+            .skip(skip)
+            .limit(limit)
+            .exec((err, result) => {  
              if(err){
                 res.status(400).json({ success : false, err})
             } else {
