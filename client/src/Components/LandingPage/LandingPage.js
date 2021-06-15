@@ -33,7 +33,7 @@ function LandingPage(props) {
 
         //카테고리 버튼을 누를 때마다 해당 카테고리에 속하는 Cards를 다시 렌더링하도록 함. (Kkevi Do)
         Axios.get(`/api/post/category/${CategoryValue}`)
-            .then( response => {
+            .then(response => {
                 //해당 카테고에 속하는 Cards 값이 0개 이상이면 Cards를 보여주기 (Kkevi Do)
                 if(response.data.result.length > 0){
                     setData(response.data.result)
@@ -41,8 +41,8 @@ function LandingPage(props) {
                     getCards(body)
                 }
             } )
-
-    }, [CategoryValue, Limit, Skip])
+        
+    }, [CategoryValue])
 
     const getCards = (body) => {
         Axios.post('/api/post/postAll', body)
