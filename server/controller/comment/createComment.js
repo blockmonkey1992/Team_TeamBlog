@@ -11,7 +11,7 @@ const createComment = (req, res) => {
             return res.status(200).json({ success: true, comment });
         });
     } catch(err) {
-        return res.status(400).res.send(err);
+        return res.status(400).send(err);
     }
 };
 

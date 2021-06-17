@@ -11,7 +11,7 @@ import Detail from "./Components/Detail/Detail";
 import Profile from './Components/Profile/Profile';
 import Search from './Components/Search/Search';
 import Posting from './Components/Posting/Posting';
-import Register from "./Components/Register/Register";
+import Register from "./Components/Register/register";
 import ModifyPost from './Components/Posting/ModifyPost';
 import AuthCheck from "./hoc/auth";
 

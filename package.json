@@ -1,7 +1,7 @@
 {
   "name": "teamblog",
   "version": "1.0.0",
-  "description": "",
+  "description": "ninjaCoders Blog Project",
   "main": "index.js",
   "scripts": {
     "frontend": "npm run start --prefix client",
