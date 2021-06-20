@@ -1,6 +1,6 @@
 const { User } = require("../../model/User");
 
-
+//유저 닉네임 수정 (minseo)
 const updateUser = async (req, res) => {
     const id = req.user.id
     const name = req.body.name
@@ -14,7 +14,7 @@ const updateUser = async (req, res) => {
         }
     });
 }
-
+//수정된 닉네임 가져오기 (minseo)
 const updatedUser = async(req , res) => {
     const name = req.user.name;
     const email = req.user.email;

@@ -18,9 +18,8 @@ router.post("/register", registerUser);
 router.post("/checkemail", overlapEmailCheck);
 router.post("/checkname", overlapNameCheck);
 
-//회원정보 관리 API (회원정보 수정, updateUser가 두개???뭐니이건, 민서님?);
+//회원정보 관리 API (회원정보 수정, 댓글 남긴 글과 댓글이 남겨진 글 가져오기, 좋아요 누른 글 가져오기) (minseo)
 router.post("/profile/:user", auth, updateUser);
-router.get("/profile/:user", auth, updatedUser);
 router.get("/profile/like/:user", auth, userLiked);
 router.get("/profile/comment/:user", auth, userComment);
 

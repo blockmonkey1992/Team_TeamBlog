@@ -1,5 +1,7 @@
 const { Post } = require("../../model/Post");
 
+
+//게시물 업로드 (minseo)
 const createPost = (req, res) => {
     const post = new Post({
         title : req.body.title,
@@ -17,6 +19,7 @@ const createPost = (req, res) => {
     });
     
 };  
+//게시물의 이미지 업로드 ( minseo )
 const upImg = async(req, res) => {
     const img = req.file.location
     res.json({ img });
