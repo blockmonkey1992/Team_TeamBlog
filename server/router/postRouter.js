@@ -24,7 +24,7 @@ router.post("/uploadImg", uploadImg.single('postImg'), upImg);
 router.post("/create", createPost);
 //게시물 수정
 router.post("/update/:id", updatePost);
-//게시물 삭제( 이미지를 삭제함과 동시에 s3버킷에 있는 이미지 또한 삭제 )
+//게시물 삭제(이미지를 삭제함과 동시에 s3버킷에 있는 이미지 또한 삭제)
 router.delete("/delete/:id", awsDeleteImg, deletePost);
 
 module.exports = router;
