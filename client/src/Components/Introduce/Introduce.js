@@ -31,12 +31,14 @@ function Introduce() {
     
     return (
         <div className='introduceWrapper'>
+
             <div className='introduce__Person'>
                 <div className='introduce_Profile' onClick={showModal3}>
                     <PersonalImg src="https://minseo-test-1.s3.ap-northeast-2.amazonaws.com/KakaoTalk_Photo_2021-07-05-22-37-13.png" alt='blockmonkey' />
                 </div>
                 <div className='introduce_Name'>BlockMonkey</div>
                 <div className='introduce_Intro'>MERNstack Developer</div>
+                
                 <Modal className='introduce__Modal' visible={ModalVisible3}  onCancel={handleCancel} >
                     <div className='introduce__Modal__Profile'>
                         <PersonalImg src="https://minseo-test-1.s3.ap-northeast-2.amazonaws.com/KakaoTalk_Photo_2021-07-05-22-37-13.png" alt='blockmonkey' />
@@ -50,17 +52,20 @@ function Introduce() {
                         </div>
                         <div className='introduce__Modal-footer'>
                             <div className='introduce__Modal__Intro'>현실의 문제를 해결하기 위해 노력하는 개발자</div>
-                            <a className='introduce__Modal__Link' href='/' target='blank'>개인 페이지로 이동 →</a>
+                            <a className='introduce__Modal__Link' href='http://13.125.218.44/' target='blank'>개인 페이지로 이동 →</a>
                         </div>
                     </div>
                     </Modal>
             </div>
+
+
             <div className='introduce__Person'>
                 <div className='introduce_Profile' onClick={showModal2}>
                     <PersonalImg src="https://minseo-test-1.s3.ap-northeast-2.amazonaws.com/KakaoTalk_Photo_2021-07-05-22-37-08.png" alt='kkevido' />
                 </div>
                 <div className='introduce_Name'>Kkevi Do</div>
                 <div className='introduce_Intro'>Front-End Developer & Designer</div>
+
                 <Modal className='introduce__Modal' visible={ModalVisible2} onCancel={handleCancel} >
                     <div className='introduce__Modal__Profile'><PersonalImg src="https://minseo-test-1.s3.ap-northeast-2.amazonaws.com/KakaoTalk_Photo_2021-07-05-22-37-08.png" alt='kkevido' /></div>
                     <div className='introduce__Modal__Contents'>
@@ -74,12 +79,15 @@ function Introduce() {
                     </div>
                </Modal>
             </div>
+
+
             <div className='introduce__Person'>
                 <div className='introduce_Profile' onClick={showModal}>
                     <PersonalImg src="https://minseo-test-1.s3.ap-northeast-2.amazonaws.com/questions-1922476_1920.jpg" alt='minseo' />
                 </div>
                 <div className='introduce_Name'>MinSeo</div>
                 <div className='introduce_Intro'>Node JS Back-End Developer</div>
+
                 <Modal className='introduce__Modal' visible={ModalVisible} onCancel={handleCancel} >
                     <div className='introduce__Modal__Profile'><PersonalImg src="https://minseo-test-1.s3.ap-northeast-2.amazonaws.com/questions-1922476_1920.jpg" alt='minseo' /></div>
                     <div className='introduce__Modal__Contents'>

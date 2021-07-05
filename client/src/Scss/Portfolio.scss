@@ -14,6 +14,10 @@
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         width: 100%; height: 70%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .portfolio_content__Wrapper{
         height: 30%;
