@@ -16,8 +16,13 @@
 
     .introduce_Profile{
         width: 200px; height: 200px;
-        border-radius: 50%;
-        background-color: black;
+        border-radius: 100px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 200px;
     }
 
     .introduce_Name{
@@ -57,6 +62,12 @@
             background-color: black;
             width: 200px; height: 200px;
             border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            height: 300px;
         }
 
         .introduce__Modal__Contents{

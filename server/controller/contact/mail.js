@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const { configs } = require("../../index"); 
 
 
 //Blockmonkey
@@ -13,8 +14,8 @@ const mail = (req, res) => {
         host: "smtp.gmail.com",
         secure: true,
         auth: {
-            user: process.env.GMAIL_MASTER_ID,
-            pass: process.env.GMAIL_MASTER_PASSWORD,
+            user: configs.GMAIL_MASTER_ID,
+            pass: configs.GMAIL_MASTER_PASSWORD,
         }
     });
     

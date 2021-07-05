@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 const saltRounds = 10;
+const { configs } = require("../index");
 
 const userSchema = mongoose.Schema({
     email:{
@@ -73,7 +74,7 @@ userSchema.methods.comparePassword = function(plainPassword, cb){
 userSchema.methods.generateToken = function(cb){
     var user = this;
     //JWT를 활용해 (user의 _id값 + secret Key를 합쳐 토큰을 생성한다.)
-    var token = jwt.sign(user._id.toHexString(), JWT_SECRET_KEY);
+    var token = jwt.sign(user._id.toHexString(), configs.JWT_SECRET_KEY);
     user.token = token;
     user.save((err, user)=>{
         if(err){
@@ -87,7 +88,7 @@ userSchema.methods.generateToken = function(cb){
 //토큰 비교; (Blockmonkey);
 userSchema.statics.compareToken = function(token, cb){
     var user = this;
-    jwt.verify(token, process.env.JWT_SECRET_KEY, function(err, decodedId){
+    jwt.verify(token, configs.JWT_SECRET_KEY, function(err, decodedId){
         user.findOne({ "_id": decodedId, "token": token }, function(err, user){
             if(err){
                 return cb(err);

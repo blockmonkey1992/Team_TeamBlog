@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from "styled-components";
 import { Modal } from 'antd';
 
 import '../../Scss/Introduce.scss';
@@ -32,12 +33,14 @@ function Introduce() {
         <div className='introduceWrapper'>
             <div className='introduce__Person'>
                 <div className='introduce_Profile' onClick={showModal3}>
-                    <img alt='' />
+                    <PersonalImg src="https://minseo-test-1.s3.ap-northeast-2.amazonaws.com/KakaoTalk_Photo_2021-07-05-22-37-13.png" alt='blockmonkey' />
                 </div>
                 <div className='introduce_Name'>BlockMonkey</div>
                 <div className='introduce_Intro'>MERNstack Developer</div>
                 <Modal className='introduce__Modal' visible={ModalVisible3}  onCancel={handleCancel} >
-                    <div className='introduce__Modal__Profile'><img alt='' /></div>
+                    <div className='introduce__Modal__Profile'>
+                        <PersonalImg src="https://minseo-test-1.s3.ap-northeast-2.amazonaws.com/KakaoTalk_Photo_2021-07-05-22-37-13.png" alt='blockmonkey' />
+                    </div>
                     <div className='introduce__Modal__Contents'>
                         <div className='introduce__Modal__Name'>BlockMonkey</div>
                         <div className='introduce__Modal__Date'>1992.08.31</div>
@@ -54,12 +57,12 @@ function Introduce() {
             </div>
             <div className='introduce__Person'>
                 <div className='introduce_Profile' onClick={showModal2}>
-                    <img alt='' />
+                    <PersonalImg src="https://minseo-test-1.s3.ap-northeast-2.amazonaws.com/KakaoTalk_Photo_2021-07-05-22-37-08.png" alt='kkevido' />
                 </div>
                 <div className='introduce_Name'>Kkevi Do</div>
                 <div className='introduce_Intro'>Front-End Developer & Designer</div>
                 <Modal className='introduce__Modal' visible={ModalVisible2} onCancel={handleCancel} >
-                    <div className='introduce__Modal__Profile'><img alt='' /></div>
+                    <div className='introduce__Modal__Profile'><PersonalImg src="https://minseo-test-1.s3.ap-northeast-2.amazonaws.com/KakaoTalk_Photo_2021-07-05-22-37-08.png" alt='kkevido' /></div>
                     <div className='introduce__Modal__Contents'>
                         <div className='introduce__Modal__Name'>Kkevi Do</div>
                         <div className='introduce__Modal__Date'>1998.06.27</div>
@@ -73,12 +76,12 @@ function Introduce() {
             </div>
             <div className='introduce__Person'>
                 <div className='introduce_Profile' onClick={showModal}>
-                    <img alt='' />
+                    <PersonalImg src="https://minseo-test-1.s3.ap-northeast-2.amazonaws.com/questions-1922476_1920.jpg" alt='minseo' />
                 </div>
                 <div className='introduce_Name'>MinSeo</div>
                 <div className='introduce_Intro'>Node JS Back-End Developer</div>
                 <Modal className='introduce__Modal' visible={ModalVisible} onCancel={handleCancel} >
-                    <div className='introduce__Modal__Profile'><img alt='' /></div>
+                    <div className='introduce__Modal__Profile'><PersonalImg src="https://minseo-test-1.s3.ap-northeast-2.amazonaws.com/questions-1922476_1920.jpg" alt='minseo' /></div>
                     <div className='introduce__Modal__Contents'>
                         <div className='introduce__Modal__Name'>MinSeo</div>
                         <div className='introduce__Modal__Date'>1998.06.24</div>
@@ -95,3 +98,9 @@ function Introduce() {
 }
 
 export default Introduce
+
+
+const PersonalImg = styled.img`
+    width: 100%;
+    height: 100%;
+`;
