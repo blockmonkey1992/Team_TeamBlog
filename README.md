@@ -2,7 +2,7 @@
 
 **📌 **프로젝트 동기 :**** NinjaCoders 팀을 만든 후, 첫 팀 프로젝트 작업으로 프로젝트 협업 경험 및 팀 소개 페이지로 활용을 위해 프로젝트 제작
 
-**📌 **주요기능 :**** 유저인증 (JWT & Bcrypt), 글 (CRUD, S3를 연동한 CRUD), 검색 (Regex & Lodash), 좋아요, Nodemailer, 댓글&답글(Create, Read, Delete), HOC(High Order Component를 활용한 Authentication), Reducer, SASS, Antd
+**📌 **주요기능 :**** 유저인증 (JWT & Bcrypt), 글 (CRUD, S3를 연동한 CRUD, 카테고리별 Read API, 좋아요 한 글 Read API), 검색 (Regex & Lodash), 좋아요, Nodemailer, 댓글&답글(Create, Read, Delete), HOC(High Order Component를 활용한 Authentication), Reducer, SASS, Antd
 
 **📌 **개발환경 :**** 
 **OS :** MAC OS Catalina
