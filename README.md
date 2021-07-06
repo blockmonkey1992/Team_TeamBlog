@@ -25,6 +25,6 @@ Backend Development (글 CRUD & S3연동, 회원정보 관리 API 개발)
 
 **📌 배포주소 :** http://13.125.230.121/
 
-##OVERVIEW
+## OVERVIEW
 
 <center><img src="https://user-images.githubusercontent.com/66409384/124611888-d6895e00-deac-11eb-9bf0-b3a50d332bb8.gif" width="500" height="350"></center>
