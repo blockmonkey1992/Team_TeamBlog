@@ -4,7 +4,7 @@
 
 **📌 **주요기능 :**** 유저인증 (JWT & Bcrypt), 글 (CRUD, S3를 연동한 CRUD, 카테고리별 Read API, 좋아요 한 글 Read API), 검색 (Regex & Lodash), 좋아요, Nodemailer, 댓글&답글(Create, Read, Delete), HOC(High Order Component를 활용한 Authentication), Reducer, SASS, Antd
 
-**📌 **개발환경 :**** 
+**📌 **개발환경 :****   
 **OS :** MAC OS Catalina  
 **Tool :** VS CODE  
 **Design Tool :** Adobe Illustrator CC  
