@@ -22,3 +22,8 @@ Designer & Front-End Development (Illustrator를 활용한 디자인 기획 및 
 Backend Development (글 CRUD & S3연동, 회원정보 관리 API 개발)
 
 **📌 제작기간 :** 2021.4.29 ~ 2021.6.11
+
+
+
+##LOGIN
+<center><img src="https://user-images.githubusercontent.com/66409384/124611103-17cd3e00-deac-11eb-8c44-8346aedde489.gif" width="300" height="300"></center>
