@@ -13,7 +13,7 @@
 **📌 **참여인원 :****
 
 ***Blockmonkey :*** 
-Project Manager & FullStack Development (유저인증, 검색, 좋아요, Mail, 댓글&답글 & HOC, Reducer)
+FullStack Development (유저인증, 검색, 좋아요, Mail, 댓글&답글 & HOC, Reducer)
 
 ***Kkevi Do :***
 Designer & Front-End Development (Illustrator를 활용한 디자인 기획 및 React 작업, CSS, Antd Customizing)
